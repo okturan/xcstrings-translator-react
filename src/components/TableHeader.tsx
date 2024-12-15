@@ -20,19 +20,13 @@ export const TableHeader = ({ sourceLanguage, selectedLanguage }: TableHeaderPro
         </th>
 
         {!isSourceSelected && (
-          <>
-            <th className={`${TABLE_COLUMN_WIDTHS.target} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>{selectedLanguage}</th>
-          </>
+          <th className={`${TABLE_COLUMN_WIDTHS.target} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>{selectedLanguage}</th>
         )}
 
         <th className={`${TABLE_COLUMN_WIDTHS.comment} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>Comment</th>
 
-        {!isSourceSelected && (
-          <>
-            <th className={`${TABLE_COLUMN_WIDTHS.status} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>Status</th>
-          </>
-        )}
-        
+        {!isSourceSelected && <th className={`${TABLE_COLUMN_WIDTHS.status} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>Status</th>}
+
         <th className={`${TABLE_COLUMN_WIDTHS.extractionState} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>Extraction State</th>
       </tr>
     </thead>

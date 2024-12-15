@@ -143,12 +143,6 @@
             "value" : "⚠️"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠️"
-          }
-        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -232,8 +226,7 @@
             "value" : "关于"
           }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "about.contact" : {
       "localizations" : {
@@ -590,21 +583,9 @@
           }
         },
         "tr" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Mobil Uygulama"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Web sayfası"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Web sayfası"
           }
         },
         "uk" : {
@@ -706,225 +687,75 @@
     "about.contributors.1.name" : {
       "localizations" : {
         "cs" : {
-          "variations" : {
-            "device" : {
-              "ipod" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Rob Napier"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Rob Napier"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rob Napier"
           }
         },
         "de" : {
-          "variations" : {
-            "device" : {
-              "ipod" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Rob Napier"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Rob Napier"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rob Napier"
           }
         },
         "en" : {
-          "variations" : {
-            "device" : {
-              "ipod" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Rob Napier the iPod guy"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Rob Napier"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rob Napier"
           }
         },
         "es-419" : {
-          "variations" : {
-            "device" : {
-              "appletv" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Rob  Napier the Apple TV guy"
-                }
-              },
-              "ipod" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Rob Napier"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Rob Napier"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rob Napier"
           }
         },
         "fr" : {
-          "variations" : {
-            "device" : {
-              "ipod" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Rob Napier"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Rob Napier"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rob Napier"
           }
         },
         "ko" : {
-          "variations" : {
-            "device" : {
-              "ipod" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Rob Napier"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Rob Napier"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rob Napier"
           }
         },
         "pt-PT" : {
-          "variations" : {
-            "device" : {
-              "ipod" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Rob Napier"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Rob Napier"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rob Napier"
           }
         },
         "ru" : {
-          "variations" : {
-            "device" : {
-              "ipod" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Rob Napier"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Rob Napier"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rob Napier"
           }
         },
         "tr" : {
-          "variations" : {
-            "device" : {
-              "ipod" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Rob Napier"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Rob Napier"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rob Napier"
           }
         },
         "uk" : {
-          "variations" : {
-            "device" : {
-              "ipod" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Rob Napier"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Rob Napier"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rob Napier"
           }
         },
         "zh-Hans" : {
-          "variations" : {
-            "device" : {
-              "ipod" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Rob Napier"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Rob Napier"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rob Napier"
           }
         },
         "zh-Hant" : {
-          "variations" : {
-            "device" : {
-              "ipod" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Rob Napier"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Rob Napier"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rob Napier"
           }
         }
       }
@@ -981,7 +812,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Asenkron Swift'ten paket kurulum sorunlarına kadar pek çok konuda çok değerli yardımlarda bulundu"
           }
         },
@@ -1003,8 +834,7 @@
             "value" : "從非同步 Swift 到阻礙套件安裝等多種問題提供了寶貴的協助。"
           }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "about.contributors.2.name" : {
       "localizations" : {
@@ -3009,201 +2839,69 @@
     "about.translator.3.name" : {
       "localizations" : {
         "cs" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Maurice Meysel"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Maurice Meysel"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maurice Meysel"
           }
         },
         "de" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Maurice Meysel"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Maurice Meysel"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maurice Meysel"
           }
         },
         "en" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Maurice Meysel the iPhone guy"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Maurice Meysel"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maurice Meysel"
           }
         },
         "es-419" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Maurice Meysel"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Maurice Meysel"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maurice Meysel"
           }
         },
         "fr" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Maurice Meysel"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Maurice Meysel"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maurice Meysel"
           }
         },
         "ko" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Maurice Meysel"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Maurice Meysel"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maurice Meysel"
           }
         },
         "pt-PT" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Maurice Meysel"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Maurice Meysel"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maurice Meysel"
           }
         },
         "ru" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Maurice Meysel"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Maurice Meysel"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maurice Meysel"
           }
         },
         "uk" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Maurice Meysel"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Maurice Meysel"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maurice Meysel"
           }
         },
         "zh-Hans" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Maurice Meysel"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Maurice Meysel"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maurice Meysel"
           }
         },
         "zh-Hant" : {
-          "variations" : {
-            "device" : {
-              "iphone" : {
-                "stringUnit" : {
-                  "state" : "needs_review",
-                  "value" : "Maurice Meysel"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Maurice Meysel"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maurice Meysel"
           }
         }
       }
@@ -23459,54 +23157,6 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Установлено %lld пакетов"
-                }
-              }
-            }
-          }
-        },
-        "tr" : {
-          "variations" : {
-            "device" : {
-              "applewatch" : {
-                "variations" : {
-                  "plural" : {
-                    "one" : {
-                      "stringUnit" : {
-                        "state" : "translated",
-                        "value" : "watch one"
-                      }
-                    },
-                    "other" : {
-                      "stringUnit" : {
-                        "state" : "translated",
-                        "value" : "watch other"
-                      }
-                    },
-                    "zero" : {
-                      "stringUnit" : {
-                        "state" : "translated",
-                        "value" : "%lld watch zero installed"
-                      }
-                    }
-                  }
-                }
-              },
-              "mac" : {
-                "variations" : {
-                  "plural" : {
-                    "one" : {
-                      "stringUnit" : {
-                        "state" : "translated",
-                        "value" : "mac one"
-                      }
-                    },
-                    "other" : {
-                      "stringUnit" : {
-                        "state" : "translated",
-                        "value" : "mac other"
-                      }
-                    }
-                  }
                 }
               }
             }

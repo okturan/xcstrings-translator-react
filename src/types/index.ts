@@ -17,17 +17,32 @@ export interface StringEntry {
 
 export interface Localization {
   stringUnit?: StringUnit;
-  variations?: {
-    [variationType: string]: {
-      [variationKey: string]: {
-        stringUnit: StringUnit;
-      };
-    };
-  };
+  variations?: VariationsMap;
   comment?: string;
+}
+
+export interface VariationValue {
+  stringUnit?: StringUnit;
+  variations?: VariationsMap;
 }
 
 export interface StringUnit {
   state: string;
   value: string;
+}
+
+export interface VariationRow {
+  variationType: string;
+  varKey: string;
+  sourceValue: string;
+  targetValue: string;
+  targetState: string | null;
+  depth: number;
+  path: string;
+}
+
+export interface VariationsMap {
+  [variationType: string]: {
+    [variationKey: string]: VariationValue;
+  };
 }
