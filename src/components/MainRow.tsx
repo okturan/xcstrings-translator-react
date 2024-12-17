@@ -44,10 +44,15 @@ export const MainRow = ({ stringKey, entry, sourceLanguage, selectedLanguage, is
       {/* Target Value Column */}
       {!isSourceSelected && (
         <td className={`${CELL_STYLES.base} ${CELL_STYLES.content}`}>
-          <TranslationEditor 
-            value={targetValue} 
-            showEditButton={!hasVariationsFlag} 
+          <TranslationEditor
+            value={targetValue}
+            showEditButton={!hasVariationsFlag}
             onSave={handleSave}
+            translationKey={stringKey}
+            sourceText={sourceValue || ""}
+            targetLanguage={selectedLanguage}
+            sourceLanguage={sourceLanguage}
+            comment={entry.comment || ""}
           />
         </td>
       )}

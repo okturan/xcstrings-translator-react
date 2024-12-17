@@ -12,6 +12,7 @@ interface VariationRowProps {
   entryKey: string;
   onUpdateTranslation?: (key: string, value: string, language: string, path?: string) => Promise<void>;
   selectedLanguage: string;
+  sourceLanguage: string;
 }
 
 interface SingleRowProps extends IVariationRow {
@@ -19,6 +20,7 @@ interface SingleRowProps extends IVariationRow {
   entryKey: string;
   onUpdateTranslation?: (key: string, value: string, language: string, path?: string) => Promise<void>;
   selectedLanguage: string;
+  sourceLanguage: string;
 }
 
 const SingleRow = memo(({ 
@@ -32,7 +34,8 @@ const SingleRow = memo(({
   isSourceSelected,
   entryKey,
   onUpdateTranslation,
-  selectedLanguage
+  selectedLanguage,
+  sourceLanguage
 }: SingleRowProps) => {
   const handleSave = async (newValue: string) => {
     if (!onUpdateTranslation) return;
@@ -59,6 +62,10 @@ const SingleRow = memo(({
               value={targetValue} 
               showEditButton={true}
               onSave={handleSave}
+              translationKey={entryKey}
+              sourceText={sourceValue}
+              targetLanguage={selectedLanguage}
+              sourceLanguage={sourceLanguage}
             />
           </td>
           <td className={`${CELL_STYLES.base} ${CELL_STYLES.content}`} />
@@ -81,7 +88,8 @@ export const VariationRow = memo(({
   isSourceSelected, 
   entryKey,
   onUpdateTranslation,
-  selectedLanguage
+  selectedLanguage,
+  sourceLanguage
 }: VariationRowProps) => {
   const { variationRows } = useVariationRows(sourceLocalization, targetLocalization);
 
@@ -95,6 +103,7 @@ export const VariationRow = memo(({
           entryKey={entryKey}
           onUpdateTranslation={onUpdateTranslation}
           selectedLanguage={selectedLanguage}
+          sourceLanguage={sourceLanguage}
         />
       ))}
     </>
