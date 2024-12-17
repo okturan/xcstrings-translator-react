@@ -6,7 +6,14 @@ import { ErrorDisplay } from "./components/ErrorDisplay";
 import { LoadingSpinner } from "./components/LoadingSpinner";
 
 function App() {
-  const { localizableStrings, error, selectedLanguage, setSelectedLanguage, availableLanguages } = useLocalizableStrings();
+  const { 
+    localizableStrings, 
+    error, 
+    selectedLanguage, 
+    setSelectedLanguage, 
+    availableLanguages,
+    updateTranslation 
+  } = useLocalizableStrings();
 
   if (error) {
     return <ErrorDisplay message={error} />;
@@ -24,7 +31,11 @@ function App() {
         sourceLanguage={localizableStrings.sourceLanguage}
         onLanguageChange={setSelectedLanguage}
       />
-      <TranslationsTable localizableStrings={localizableStrings} selectedLanguage={selectedLanguage} />
+      <TranslationsTable 
+        localizableStrings={localizableStrings} 
+        selectedLanguage={selectedLanguage}
+        onUpdateTranslation={updateTranslation}
+      />
     </div>
   );
 }

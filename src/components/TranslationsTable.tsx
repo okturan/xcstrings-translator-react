@@ -8,9 +8,14 @@ import { hasVariations } from "../utils/stringUtils";
 interface TranslationsTableProps {
   localizableStrings: LocalizableStrings;
   selectedLanguage: string;
+  onUpdateTranslation?: (key: string, value: string, language: string, path?: string) => Promise<void>;
 }
 
-export const TranslationsTable = ({ localizableStrings, selectedLanguage }: TranslationsTableProps) => {
+export const TranslationsTable = ({ 
+  localizableStrings, 
+  selectedLanguage,
+  onUpdateTranslation 
+}: TranslationsTableProps) => {
   const { sourceLanguage, strings } = localizableStrings;
   const isSourceSelected = sourceLanguage === selectedLanguage;
 
@@ -27,6 +32,7 @@ export const TranslationsTable = ({ localizableStrings, selectedLanguage }: Tran
           sourceLanguage={sourceLanguage}
           selectedLanguage={selectedLanguage}
           isSourceSelected={isSourceSelected}
+          onUpdateTranslation={onUpdateTranslation}
         />
         {hasVariationsFlag && (
           <VariationRow
@@ -34,6 +40,8 @@ export const TranslationsTable = ({ localizableStrings, selectedLanguage }: Tran
             sourceLocalization={sourceLocalization}
             targetLocalization={targetLocalization}
             isSourceSelected={isSourceSelected}
+            onUpdateTranslation={onUpdateTranslation}
+            selectedLanguage={selectedLanguage}
           />
         )}
       </React.Fragment>

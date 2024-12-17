@@ -42,10 +42,12 @@ export const BADGE_BASE_STYLES = "inline-flex items-center px-2 py-0.5 m-1 round
 
 export const API_ENDPOINTS = {
   strings: "/Localizable.xcstrings",
+  save: "/api/save-translation"
 } as const;
 
 export const ERROR_MESSAGES = {
   httpError: (status: number) => `HTTP error! status: ${status}`,
   invalidData: "Invalid data structure in Localizable.xcstrings",
   genericError: "An error occurred while loading the strings file",
+  saveFailed: "Failed to save translation",
 } as const;
