@@ -15,17 +15,6 @@ export const TableHeader = ({ sourceLanguage, selectedLanguage, showMissingOnly,
         <th className={`${TABLE_COLUMN_WIDTHS.key} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>
           <div className="flex items-center gap-4">
             <span>Key</span>
-            {!isSourceSelected && (
-              <label className="flex items-center space-x-2 text-sm font-normal">
-                <input
-                  type="checkbox"
-                  checked={showMissingOnly}
-                  onChange={(e) => onShowMissingOnlyChange(e.target.checked)}
-                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                />
-                <span>Show missing only</span>
-              </label>
-            )}
           </div>
         </th>
 
@@ -37,7 +26,18 @@ export const TableHeader = ({ sourceLanguage, selectedLanguage, showMissingOnly,
         </th>
 
         {!isSourceSelected && (
-          <th className={`${TABLE_COLUMN_WIDTHS.target} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>{selectedLanguage}</th>
+          <th className={`${TABLE_COLUMN_WIDTHS.target} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>
+            {selectedLanguage}
+            <label className="flex items-center space-x-2 text-sm font-normal">
+              <input
+                type="checkbox"
+                checked={showMissingOnly}
+                onChange={(e) => onShowMissingOnlyChange(e.target.checked)}
+                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              />
+              <span>Show missing only</span>
+            </label>
+          </th>
         )}
 
         <th className={`${TABLE_COLUMN_WIDTHS.comment} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>Comment</th>

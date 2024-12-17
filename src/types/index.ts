@@ -1,48 +1,52 @@
-export interface LocalizableStrings {
-  sourceLanguage: string;
-  strings: {
-    [key: string]: StringEntry;
-  };
-  version: string;
+export interface StringUnit {
+  value?: string;
+  state?: "new" | "needs_review" | "translated" | "missing";
+  comment?: string;
 }
 
-export interface StringEntry {
-  extractionState?: string;
-  shouldTranslate?: boolean;
-  comment?: string;
-  localizations: {
-    [langCode: string]: Localization;
+export interface VariationsMap {
+  [variationType: string]: {
+    [key: string]: {
+      stringUnit?: StringUnit;
+    };
   };
 }
 
 export interface Localization {
   stringUnit?: StringUnit;
   variations?: VariationsMap;
+}
+
+export interface StringEntry {
+  localizations: {
+    [language: string]: Localization;
+  };
   comment?: string;
+  shouldTranslate?: boolean;
+  extractionState?: string;
 }
 
-export interface VariationValue {
-  stringUnit?: StringUnit;
-  variations?: VariationsMap;
-}
-
-export interface StringUnit {
-  state: string;
-  value: string;
+export interface LocalizableStrings {
+  sourceLanguage: string;
+  strings: {
+    [key: string]: StringEntry;
+  };
 }
 
 export interface VariationRow {
   variationType: string;
   varKey: string;
   sourceValue: string;
-  targetValue: string;
-  targetState: string | null;
+  targetValue?: string;
+  targetState?: StringUnit["state"];
   depth: number;
-  path: string;
+  path?: string;
 }
 
-export interface VariationsMap {
-  [variationType: string]: {
-    [variationKey: string]: VariationValue;
-  };
+export interface TranslationRequest {
+  sourceLanguage: string;
+  targetLanguage: string;
+  translationKey: string;
+  comment?: string;
+  sourceText: string;
 }

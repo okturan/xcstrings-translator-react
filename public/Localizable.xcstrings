@@ -143,6 +143,12 @@
             "value" : "⚠️"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -962,6 +968,12 @@
             "value" : "Исправил множество проблем с асинхронностью и SwiftUI"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çok sayıda async ve SwiftUI sorununu çözdü"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1027,6 +1039,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jierong Li"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jierong Li"
@@ -1102,6 +1120,12 @@
             "value" : "Исправил обновление количества пакетов на домашней странице"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlangıç sayfasındaki paket sayılarının güncellenmemesi sorununu giderdi"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1167,6 +1191,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oscar Bazaldua"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oscar Bazaldua"
@@ -1242,6 +1272,12 @@
             "value" : "Сделал первый одобренный pull request; исправил обновление количества пакетов вместе с Jierong Li"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onaylanan ilk pull request'i yaptı; Jierong Li ile birlikte paket sayım problemini düzeltti"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1307,6 +1343,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Andrey Radchishin"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Andrey Radchishin"
@@ -1382,6 +1424,12 @@
             "value" : "Добавил способ перехода назад на страницу \"Обзор Homebrew\""
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana sayfa durum sayfasına geri dönmenin bir yolunu ekledi"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1447,6 +1495,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Christian Tietze"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Christian Tietze"
@@ -1870,6 +1924,12 @@
             "value" : "Мой собственный пакет, предоставляющий базовый вспомогательный функционал"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kendi paketim, bazı temel kolaylık özellikleri sağlar"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2010,6 +2070,12 @@
             "value" : "Пакет, позволяющий Cork запускаться, когда вы входите в профиль"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş yaptığınızda Cork'un başlamasını sağlayan bir paket"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2096,6 +2162,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "[隱私政策](https://corkmac.app/privacy-en.html)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "[Gizlilik politikası](https://corkmac.app/privacy-en.html)",
+            "state" : "translated"
           }
         }
       }
@@ -2290,6 +2362,12 @@
             "value" : "Реализовал функционал получения вывода команд в реальном времени, тем самым сделав значительную часть Cork намного быстрее"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cork'ta neredeyse tüm özelliklerin çok daha hızlı çalışmasını sağlayan, komutların gerçek zamanlı çıktılarını alan bir fonksiyon geliştirildi"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2352,6 +2430,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Реализовали отключения механизма лицензии для тех, кто скомпилировал Cork сам"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cork'u kendileri derleyenler için lisanslamayı atlama yöntemini geliştirdi"
           }
         },
         "uk" : {
@@ -2423,6 +2507,12 @@
             "state" : "translated",
             "value" : "Dimitri Bouniol"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Dimitri Bouniol",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -2480,6 +2570,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ben Carlsson"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Ben Carlsson",
+            "state" : "translated"
           }
         }
       }
@@ -2552,6 +2648,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "關於 Cork"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Cork Hakkında",
+            "state" : "translated"
           }
         }
       }
@@ -3660,6 +3762,12 @@
             "value" : "Купить Cork"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cork’u satın al"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3728,6 +3836,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отмена"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İptal et"
           }
         },
         "uk" : {
@@ -3800,6 +3914,12 @@
             "value" : "Активировать"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktive et"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3868,6 +3988,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Очистить метаданные"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta verileri temizle"
           }
         },
         "uk" : {
@@ -3940,6 +4066,12 @@
             "value" : "Закрыть"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapat"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4008,6 +4140,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Скопировать"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopyala"
           }
         },
         "uk" : {
@@ -4080,6 +4218,12 @@
             "value" : "Скопировать в буфер обмена"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Panoya Kopyala"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4150,6 +4294,12 @@
             "value" : "Готово"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamamlandı"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4200,6 +4350,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Завершить в Терминале"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminalde Tamamla"
           }
         },
         "uk" : {
@@ -4265,6 +4421,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Страница \"Обзор\""
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durum sayfası"
           }
         },
         "uk" : {
@@ -5214,6 +5376,12 @@
             "value" : "Перезапустить Cork"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cork’u yeniden başlat"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5492,6 +5660,12 @@
             "value" : "Показать вывод Терминала"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminal Çıktısını Göster"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5555,6 +5729,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Обратная связь"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri Bildirim Gönder"
           }
         },
         "uk" : {
@@ -5627,6 +5807,12 @@
             "value" : "Удалить %@"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@'i kaldır"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5697,6 +5883,12 @@
             "value" : "Вы точно хотите удалить %@?"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@'i kaldırmak istediğinizden emin misiniz?"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5737,6 +5929,12 @@
             "value" : "Обновить Homebrew и все пакеты"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew'ü ve tüm paketlerini güncelle"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5775,6 +5973,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Обновить Homebrew через Терминал"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew'ü Terminal Üzerinden Güncelle"
           }
         },
         "uk" : {
@@ -5839,6 +6043,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Использовать Cork без уведомлений"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cork'u bildirimler olmadan kullan"
           }
         },
         "uk" : {
@@ -5909,6 +6119,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Это действие невозможно отменить"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu işlem geri alınamaz"
           }
         },
         "uk" : {
@@ -6013,6 +6229,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Остановить"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durdur"
           }
         },
         "uk" : {
@@ -11563,6 +11785,12 @@
             "value" : "Переместите файл в другое расположение, затем попробуйте еще раз"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yedekleme dosyasını farklı bir konuma taşıyın, sonra tekrar deneyin"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11649,6 +11877,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "備份檔讀取權限不足"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yedekleme dosyasını okumak için yetersiz izinler",
+            "state" : "translated"
           }
         }
       }
@@ -13945,6 +14179,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Перезапустите Cork, и если проблема сохраняется, попробуйте переустановить его"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cork'u yeniden başlatın, sorun devam ederse uygulamayı yeniden yükleyin"
           }
         },
         "uk" : {
@@ -16338,6 +16578,12 @@
             "value" : "%@ não é uma pasta de biblioteca"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ bir paket klasörü değildir"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18105,6 +18351,12 @@
             "state" : "translated",
             "value" : "获取已安装 Cask"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Kurulu Cask'ları Getir",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -18156,6 +18408,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "获取已安装 Formula 列表"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yüklü Formüllerin Listesini Getir",
+            "state" : "translated"
           }
         }
       }
@@ -18209,6 +18467,12 @@
             "state" : "translated",
             "value" : "获取已安装 Formula"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yüklü Formülleri Getir",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -18260,6 +18524,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "获取已安装 Formula 和 Cask 列表"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Kurulu Formüllerin ve Caskların listesini getir",
+            "state" : "translated"
           }
         }
       }
@@ -18313,6 +18583,12 @@
             "state" : "translated",
             "value" : "仅加载手动安装的软件包"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yalnızca manuel olarak yüklenmiş paketleri göster",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -18364,6 +18640,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "获取已安装软件包"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yüklü paketleri getir",
+            "state" : "translated"
           }
         }
       }
@@ -18417,6 +18699,12 @@
             "state" : "translated",
             "value" : "查找已安装软件包更新"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yüklü Paketler için güncellemeleri kontrol et",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -18469,6 +18757,12 @@
             "state" : "translated",
             "value" : "软件包刷新结果"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paket yenileme sonucu",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -18520,6 +18814,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "软件包刷新失败"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paket yenileme başarısız oldu",
+            "state" : "translated"
           }
         }
       }
@@ -18624,6 +18924,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "软件包刷新出现错误"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paketler yenilendi ancak hatalar var",
+            "state" : "translated"
           }
         }
       }
@@ -19341,6 +19647,12 @@
             "state" : "translated",
             "value" : "您可以用下方按鈕或至[網站](https://corkmac.app)購買 Cork。\n不確定 Cork 符合您需求嗎？可以先試用七天。"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Cork'u aşağıdaki düğmeden satın alabilir veya [web sitesini](https://corkmac.app) ziyaret edebilirsiniz.\nCork'un size uygun olup olmadığından emin değil misiniz? 7 günlük demo sürümünü deneyin.",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -19410,6 +19722,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "謝謝您試用 Cork！"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Cork'u kullandığınız için teşekkür ederiz!",
+            "state" : "translated"
           }
         }
       }
@@ -19481,6 +19799,12 @@
             "state" : "translated",
             "value" : "25 歐元"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "25€ tutarında",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -19539,6 +19863,12 @@
             "state" : "translated",
             "value" : "如果你想支持我的应用，请考虑[购买 Cork](https://corkmac.app)"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Uygulamalarımın geliştirilmesini desteklemek isterseniz, [Cork'u satın almayı](https://corkmac.app) düşünebilirsiniz",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -19596,6 +19926,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "你自行编译了 Cork"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Cork'u kendiniz derlediniz",
+            "state" : "translated"
           }
         }
       }
@@ -19667,6 +20003,12 @@
             "state" : "translated",
             "value" : "授權⋯"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Lisans...",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -19736,6 +20078,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "讀取資訊中⋯"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Bilgi yükleniyor…",
+            "state" : "translated"
           }
         }
       }
@@ -19807,6 +20155,12 @@
             "state" : "translated",
             "value" : "讀取熱門套件中⋯"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "En popüler paketler yükleniyor…",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -19876,6 +20230,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "主視窗"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Ana Pencere",
+            "state" : "translated"
           }
         }
       }
@@ -19947,6 +20307,12 @@
             "state" : "translated",
             "value" : "維護完畢"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Bakım tamamlandı",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -20016,6 +20382,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "移除了下載快取"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Önbelleğe alınmış indirmeler silindi",
+            "state" : "translated"
           }
         }
       }
@@ -20087,6 +20459,12 @@
             "state" : "translated",
             "value" : "您回收了 %@"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "%@'i geri kazandınız",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -20157,6 +20535,12 @@
             "state" : "translated",
             "value" : "發現了 Homebrew 的一些問題"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Homebrew ile ilgili bazı sorunlar bulundu",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -20226,6 +20610,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "未發現 Homebrew 任何問題"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Homebrew ile ilgili herhangi bir sorun bulunmadı",
+            "state" : "translated"
           }
         }
       }
@@ -20514,6 +20904,30 @@
               }
             }
           }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld ayrık kalan paket kaldırıldı"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld ayrık kalan paket kaldırıldı"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Hiç artık kalan paket bulunamadı"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -20583,6 +20997,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "卸載了遺孤套件"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Artık kalan paketler kaldırıldı",
+            "state" : "translated"
           }
         }
       }
@@ -20654,6 +21074,12 @@
             "state" : "translated",
             "value" : "無法卸載遺孤套件"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Artık kalan paketler kaldırılamadı",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -20723,6 +21149,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "發生了 %@ 錯誤"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "%@ hatası oluştu",
+            "state" : "translated"
           }
         }
       }
@@ -20794,6 +21226,12 @@
             "state" : "translated",
             "value" : "清除了套件快取"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paket önbelleği temizlendi",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -20863,6 +21301,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "無法清除套件快取"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paket önbelleği temizlenemedi",
+            "state" : "translated"
           }
         }
       }
@@ -20934,6 +21378,12 @@
             "state" : "translated",
             "value" : "發生了 %@ 錯誤"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "%@ hatası oluştu",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -21004,6 +21454,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "有些快取因為 %@ 未更新而未清除"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Bazı önbellekler, %@ güncellenmediği için temizlenemedi",
+            "state" : "translated"
           }
         }
       }
@@ -21238,6 +21694,24 @@
               }
             }
           }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Bazı önbellekler, %1$@ ve %2$lld diğer paketin güncellenmemesi nedeniyle temizlenemedi"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Bazı önbellekler, %1$@ ve %2$lld diğer paket güncellenmediği için temizlenemedi"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -21307,6 +21781,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "移除下載快取⋯"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Önbelleğe alınmış indirmeler siliniyor…",
+            "state" : "translated"
           }
         }
       }
@@ -21379,6 +21859,12 @@
             "state" : "translated",
             "value" : "開始了⋯"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Başlatılıyor…",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -21448,6 +21934,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "移除快取⋯"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Önbellek temizleniyor…",
+            "state" : "translated"
           }
         }
       }
@@ -21519,6 +22011,12 @@
             "state" : "translated",
             "value" : "卸載遺孤套件⋯"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Artık kalan bileşenler kaldırılıyor…\n\nExplanation of translation choices:\n- \"Artık kalan bileşenler\" = \"Orphaned/remaining components\"\n- \"kaldırılıyor\" = \"being removed\" (progressive verb form)\n- Maintained original ellipsis (...) to preserve UI styling\n- Translated in a way that sounds natural in Turkish technical context",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -21588,6 +22086,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "執行健康檢查⋯"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Sistem sağlık kontrolü yapılıyor…",
+            "state" : "translated"
           }
         }
       }
@@ -21659,6 +22163,12 @@
             "state" : "translated",
             "value" : "下載："
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "İndirilenler:",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -21728,6 +22238,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "移除下載快取"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Önbelleğe alınmış indirmeleri sil",
+            "state" : "translated"
           }
         }
       }
@@ -21799,6 +22315,12 @@
             "state" : "translated",
             "value" : "清除 Homebrew 快取"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Homebrew önbelleğini temizle",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -21868,6 +22390,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "其他："
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Diğer:",
+            "state" : "translated"
           }
         }
       }
@@ -21939,6 +22467,12 @@
             "state" : "translated",
             "value" : "執行健康檢查"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Sağlık kontrolünü gerçekleştir",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -22008,6 +22542,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "套件："
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paketler:",
+            "state" : "translated"
           }
         }
       }
@@ -22079,6 +22619,12 @@
             "state" : "translated",
             "value" : "卸載遺孤套件"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Artık kalan paketleri kaldır",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -22148,6 +22694,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開始"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Başlat",
+            "state" : "translated"
           }
         }
       }
@@ -22220,6 +22772,12 @@
             "state" : "translated",
             "value" : "維護"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Bakım",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -22290,6 +22848,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "F: %1$lld | C: %2$lld | T:%3$lld"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "F: %1$lld | C: %2$lld | T:%3$lld",
+            "state" : "translated"
           }
         }
       }
@@ -22362,6 +22926,12 @@
             "state" : "translated",
             "value" : "開啟 Cork"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Cork'u aç",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -22432,6 +23002,12 @@
             "state" : "translated",
             "value" : "請重試或重啟 Cork"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yeniden deneyin veya Cork'u yeniden başlatın",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -22501,6 +23077,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@\n請重試或重啟 Cork"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "%@\nYeniden deneyin veya Cork'u yeniden başlatın",
+            "state" : "translated"
           }
         }
       }
@@ -22573,6 +23155,12 @@
             "state" : "translated",
             "value" : "關於 Cork"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Cork hakkında",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -22642,6 +23230,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "新增 Tap"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Tap ekle",
+            "state" : "translated"
           }
         }
       }
@@ -22713,6 +23307,12 @@
             "state" : "translated",
             "value" : "加入新的 Tap"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yeni bir tap ekle",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -22782,6 +23382,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "安裝套件"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paket yükle",
+            "state" : "translated"
           }
         }
       }
@@ -22854,6 +23460,12 @@
             "state" : "translated",
             "value" : "直接安裝套件"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paketi Doğrudan Yükle",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -22925,6 +23537,12 @@
             "state" : "translated",
             "value" : "略過搜尋，以指定名稱安裝套件"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paket adını doğrudan belirterek yükle",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -22994,6 +23612,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "安裝新套件"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yeni bir paket yükle",
+            "state" : "translated"
           }
         }
       }
@@ -27199,6 +27823,12 @@
             "value" : "Настроить объем функционала..."
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onboarding'i Göster…"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -27337,6 +27967,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добро пожаловать в будущее Homebrew!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew'ün geleceğine hoş geldiniz!"
           }
         },
         "uk" : {
@@ -37662,6 +38298,12 @@
             "value" : "Отключение автоматической очистки может привести к поломке Homebrew."
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otomatik temizleme işlevini devre dışı bırakmak Homebrew kurulumunuzu bozabilir."
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -37732,6 +38374,12 @@
             "value" : "Вы точно хотите отключить автоматическую очистку?"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otomatik temizleme işlevini devre dışı bırakmak istediğinizden emin misiniz?"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -37800,6 +38448,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Установка без очистки быстрее, но делает сам Homebrew медленнее.\nОтключение этой опции может сломать Homebrew.\nЭта опция также отвечает за автоматическую очистку в случае,\nесли вы не использовали Homebrew больше 30 дней."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temizleme işlevini devre dışı bırakmak paket kurulumunu hızlandırır,\nancak genel olarak Homebrew'ı yavaşlatır.\nBu seçeneği devre dışı bırakmak Homebrew kurulumunuzu bozabilir.\nBu seçenek ayrıca Homebrew'ı 30 günden fazla kullanmadığınızda\ngerçekleşen otomatik temizleme işlemlerini de kontrol eder."
           }
         },
         "uk" : {
@@ -37890,6 +38544,12 @@
             "state" : "translated",
             "value" : "顯示安裝中的套件"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yüklenmekte olan paketlerin listesini göster",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -37954,6 +38614,12 @@
             "state" : "translated",
             "value" : "软件包移除:"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paket kaldırma:",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -38017,6 +38683,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "删除软件包时需要确认"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paketleri kaldırırken onay iste",
+            "state" : "translated"
           }
         }
       }
@@ -38089,6 +38761,12 @@
             "state" : "translated",
             "value" : "卸載："
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Kaldırma:",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -38158,6 +38836,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "啟用套件清除"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paket temizliğini etkinleştir",
+            "state" : "translated"
           }
         }
       }
@@ -38229,6 +38913,12 @@
             "state" : "translated",
             "value" : "清除動作可能會導致其他套件故障。\n您確定要繼續？"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paket temizleme işlemi diğer paketlerinize zarar verebilir.\nDevam etmek istediğinizden emin misiniz?",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -38298,6 +38988,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "啟用套件清除"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paket Temizliğini Etkinleştir",
+            "state" : "translated"
           }
         }
       }
@@ -38369,6 +39065,12 @@
             "state" : "translated",
             "value" : "允許套件清除？"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paketlerin temizlenmesine izin verilsin mi?",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -38438,6 +39140,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "清除動作將刪除所有與套件相關的檔案。\n這可能會移除共享的檔案，導致其他套件故障。"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paketlerin tamamen silinmesi tüm ilişkili dosyaları kaldırır.\nBu, paylaşılan dosyaları silebilir ve diğer paketlerinizi bozabilir.",
+            "state" : "translated"
           }
         }
       }
@@ -38510,6 +39218,12 @@
             "state" : "translated",
             "value" : "卸載套件後清除快取"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paket kaldırıldıktan sonra önbelleği temizle",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -38581,6 +39295,12 @@
             "state" : "translated",
             "value" : "卸載套件後清除遺孤套件"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paket kaldırıldıktan sonra artık kalan bağımlılıkları temizle",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -38650,6 +39370,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "實時顯示終端機輸出"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "İşlem çıktılarını gerçek zamanlı göster",
+            "state" : "translated"
           }
         }
       }
@@ -38721,6 +39447,12 @@
             "state" : "translated",
             "value" : "預設實時顯示終端機輸出"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Varsayılan olarak gerçek zamanlı çıktıları göster",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -38790,6 +39522,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "維護"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Bakım",
+            "state" : "translated"
           }
         }
       }
@@ -38862,6 +39600,12 @@
             "state" : "translated",
             "value" : "設定預設步驟"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Varsayılan adımları ayarla",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -38933,6 +39677,12 @@
             "state" : "translated",
             "value" : "通知"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Bildirimler",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -39002,6 +39752,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "啟用通知"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Bildirimleri etkinleştir",
+            "state" : "translated"
           }
         }
       }
@@ -39073,6 +39829,12 @@
             "state" : "translated",
             "value" : "通知只會在 Cork 不是前景程式時顯示。"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Cork penceresi aktif değilken bildirimler gösterilecektir",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -39142,6 +39904,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "􀅴 在系統設定裡為 Cork 啟用通知"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "􀅴 Cork için Sistem Ayarlarından bildirimleri etkinleştirin",
+            "state" : "translated"
           }
         }
       }
@@ -39213,6 +39981,12 @@
             "state" : "translated",
             "value" : "安裝成果"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Kurulum Sonuçları",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -39282,6 +40056,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "更新成果"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Güncelleme Sonuçları",
+            "state" : "translated"
           }
         }
       }
@@ -39353,6 +40133,12 @@
             "state" : "translated",
             "value" : "通知項目："
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Şunlar hakkında bildirim al:",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -39422,6 +40208,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "落伍套件通知型態："
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Güncel olmayan paketler için uyarı türü:",
+            "state" : "translated"
           }
         }
       }
@@ -39493,6 +40285,12 @@
             "state" : "translated",
             "value" : "標記"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Rozet",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -39562,6 +40360,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "標記與通知"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Rozet ve Bildirim",
+            "state" : "translated"
           }
         }
       }
@@ -39633,6 +40437,12 @@
             "state" : "translated",
             "value" : "無"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Hiçbiri",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -39702,6 +40512,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通知"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Bildirim",
+            "state" : "translated"
           }
         }
       }
@@ -39773,6 +40589,12 @@
             "state" : "translated",
             "value" : "高手"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Gelişmiş",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -39842,6 +40664,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "初學"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Temel",
+            "state" : "translated"
           }
         }
       }
@@ -39913,6 +40741,12 @@
             "state" : "translated",
             "value" : "中等"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Dengeli",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -39982,6 +40816,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "進階"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Biraz İleri Düzey",
+            "state" : "translated"
           }
         }
       }
@@ -40053,6 +40893,12 @@
             "state" : "translated",
             "value" : "入門"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Biraz Temel",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -40122,6 +40968,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "您想要如何體驗 Cork？"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Cork'u nasıl kullanmak istersiniz?",
+            "state" : "translated"
           }
         }
       }
@@ -40194,6 +41046,12 @@
             "state" : "translated",
             "value" : "已安裝的套件"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yüklü Paketler",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -40264,6 +41122,12 @@
             "state" : "translated",
             "value" : "已安裝的 Tap"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Eklenen Tap listesi",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -40333,6 +41197,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "移除 %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "%@'i kaldır",
+            "state" : "translated"
           }
         }
       }
@@ -40405,6 +41275,12 @@
             "state" : "translated",
             "value" : "請稍等幾分鐘後再重試，或重啟 Cork。"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Birkaç dakika sonra tekrar deneyin veya Cork'u yeniden başlatın",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -40474,6 +41350,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "移除 %@ 失敗"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "%@ kaldırılamadı",
+            "state" : "translated"
           }
         }
       }
@@ -40545,6 +41427,12 @@
             "state" : "translated",
             "value" : "為 %@ 貼上標籤"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "%@'i etiketle",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -40614,6 +41502,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "為 %@ 移除標籤"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "%@'in etiketini kaldır",
+            "state" : "translated"
           }
         }
       }
@@ -40685,6 +41579,12 @@
             "state" : "translated",
             "value" : "已安裝的 Cask"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yüklü Casklar",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -40754,6 +41654,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已安裝的 Formula"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yüklenmiş Formüller",
+            "state" : "translated"
           }
         }
       }
@@ -40982,6 +41888,24 @@
               }
             }
           }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Tap'ini kurdunuz"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Tap'ini kurdunuz"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -41051,6 +41975,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tap 提供額外的套件"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Tap'ler ek paket kaynakları sunar",
+            "state" : "translated"
           }
         }
       }
@@ -41122,6 +42052,12 @@
             "state" : "translated",
             "value" : "Homebrew 分析功能停用中"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Homebrew analiz verileri devre dışı bırakıldı",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -41191,6 +42127,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Homebrew 不收集您使用方式的任何資訊"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Homebrew, kullanımınız hakkında herhangi bir veri toplamıyor",
+            "state" : "translated"
           }
         }
       }
@@ -41262,6 +42204,12 @@
             "state" : "translated",
             "value" : "Homebrew 分析功能啟用中"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Homebrew analitikleri etkinleştirildi",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -41331,6 +42279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Homebrew 會收集匿名化的使用方式，包括您安裝的套件。"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Homebrew, yüklediğiniz paketlerin listesi gibi bir takım anonim verileri toplar",
+            "state" : "translated"
           }
         }
       }
@@ -41472,6 +42426,12 @@
             "state" : "translated",
             "value" : "刪除下載快取⋯"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "İndirilenler Önbelleğini Sil…",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -41611,6 +42571,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "其他"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Diğerleri",
+            "state" : "translated"
           }
         }
       }
@@ -41980,6 +42946,24 @@
               }
             }
           }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Cask yüklü"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Cask yüklü"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -42049,6 +43033,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cask 是有圖形介面的套件"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Casklar, grafik arayüzü içeren yazılım paketleridir",
+            "state" : "translated"
           }
         }
       }
@@ -42347,6 +43337,12 @@
             "state" : "translated",
             "value" : "Formula 是在終端機裡使用的套件"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Formüller, terminal üzerinden kullandığınız paketlerdir\n\nNotes on translation:\n- \"Formüller\" is the standard Turkish technical term for formulae/packages\n- Maintained the original sentence structure\n- Used clear, direct language appropriate for technical UI context\n- Ensured grammatical correctness in Turkish while preserving original meaning",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -42418,6 +43414,12 @@
             "state" : "translated",
             "value" : "套件下載中⋯"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paketler Yükleniyor…",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -42451,6 +43453,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法检查有更新可用的软件包"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paketlerin güncel olup olmadığı kontrol edilemedi\n\nNote: I corrected the spelling error in the original source text during the translation, providing a clear and grammatically correct Turkish translation that maintains the original meaning of being unable to check package status.",
+            "state" : "translated"
           }
         }
       }
@@ -42522,6 +43530,12 @@
             "state" : "translated",
             "value" : "Homebrew 維護⋯"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Brew Bakımı…",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -42591,6 +43605,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Homebrew 狀態"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Homebrew Durumu",
+            "state" : "translated"
           }
         }
       }
@@ -42662,6 +43682,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "關於 Cork 的重要公告"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Cork için önemli değişiklikleri incele",
+            "state" : "translated"
           }
         }
       }
@@ -42884,6 +43910,24 @@
               }
             }
           }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld paketi güncelle"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld paketi güncelle"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -42953,6 +43997,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "取消全選"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Seçimleri Kaldır",
+            "state" : "translated"
           }
         }
       }
@@ -43024,6 +44074,12 @@
             "state" : "translated",
             "value" : "全選"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Tümünü Seç",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -43093,6 +44149,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "更新"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Güncelle",
+            "state" : "translated"
           }
         }
       }
@@ -43262,6 +44324,24 @@
             }
           }
         },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld adet güncel olmayan paket var"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld adet güncel olmayan paket var"
+                }
+              }
+            }
+          }
+        },
         "uk" : {
           "variations" : {
             "plural" : {
@@ -43361,6 +44441,12 @@
             "state" : "translated",
             "value" : "已安装版本"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yüklü Sürüm",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -43430,6 +44516,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "落伍套件"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Güncel olmayan paketler",
+            "state" : "translated"
           }
         }
       }
@@ -43501,6 +44593,12 @@
             "state" : "translated",
             "value" : "查看套件更新⋯"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paket güncellemesi kontrol ediliyor…",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -43540,6 +44638,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "最新版本"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "En yeni sürüm",
+            "state" : "translated"
           }
         }
       }
@@ -43611,6 +44715,12 @@
             "state" : "translated",
             "value" : "停用"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Devre dışı",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -43638,6 +44748,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "После нажатия кнопки “Открыть Терминал”, используйте ⌘+V, чтобы вставить команду, которую Cork скопировал для вас. Затем, нажмите Return (↩).\nЕсли после нажатия ⌘+V ничего не появилось, наберите “brew update” и нажмите Return (↩)."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Terminal'i Aç\" düğmesine tıkladıktan sonra, Cork'un sizin için kopyaladığı komutu yapıştırmak için ⌘+V tuşlarını kullanın, ardından Return (↩) tuşuna basın.\nEğer herhangi bir komut kopyalanmadıysa, \"brew update\" komutunu yazın ve Return (↩) tuşuna basın."
           }
         },
         "uk" : {
@@ -43678,6 +44794,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Обновление через Терминал"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminal Üzerinden Güncelleniyor"
           }
         },
         "uk" : {
@@ -43761,6 +44883,12 @@
             "state" : "translated",
             "value" : "Tap"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Tap",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -43830,6 +44958,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "內容"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "İçindekiler",
+            "state" : "translated"
           }
         }
       }
@@ -43901,6 +45035,12 @@
             "state" : "translated",
             "value" : "大多為 Cask"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Çoğunlukla Casklar",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -43970,6 +45110,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "僅含 Cask"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Sadece Casklar",
+            "state" : "translated"
           }
         }
       }
@@ -44041,6 +45187,12 @@
             "state" : "translated",
             "value" : "大多為 Formula"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Çoğunlukla Formüller",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -44110,6 +45262,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "僅含 Formula"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Sadece Formüller",
+            "state" : "translated"
           }
         }
       }
@@ -44181,6 +45339,12 @@
             "state" : "translated",
             "value" : "無"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yok",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -44250,6 +45414,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "首頁"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Ana Sayfa",
+            "state" : "translated"
           }
         }
       }
@@ -44321,6 +45491,12 @@
             "state" : "translated",
             "value" : "內含 Cask"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "İçeriğindeki Cask'lar",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -44390,6 +45566,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "內含 Formula"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "İçeriğindeki Formüller",
+            "state" : "translated"
           }
         }
       }
@@ -44462,6 +45644,12 @@
             "state" : "translated",
             "value" : "內含套件"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "İçeriğindeki Paketler",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -44532,6 +45720,12 @@
             "state" : "translated",
             "value" : "資訊"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Bilgi",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -44601,6 +45795,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "下載 Tap 資訊⋯"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Tap bilgileri yükleniyor…",
+            "state" : "translated"
           }
         }
       }
@@ -44673,6 +45873,12 @@
             "state" : "translated",
             "value" : "%@ 是個官方的 Tap。\n內含套件都經過審查以確保安全。"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "%@ resmi bir tap'tir.\nİçeriğindeki paketler güvenlik açısından denetlenmiştir.",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -44742,6 +45948,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "套件數量"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paket Sayısı",
+            "state" : "translated"
           }
         }
       }
@@ -44813,6 +46025,12 @@
             "state" : "translated",
             "value" : "移除 %@"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "%@'i Kaldır",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -44882,6 +46100,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "備份舊版中⋯"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Eski sürüm yedekleniyor…",
+            "state" : "translated"
           }
         }
       }
@@ -44953,6 +46177,12 @@
             "state" : "translated",
             "value" : "清理中⋯"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Temizleniyor...",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -45022,6 +46252,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "下載中⋯"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "İndiriliyor...",
+            "state" : "translated"
           }
         }
       }
@@ -45093,6 +46329,12 @@
             "state" : "translated",
             "value" : "連結新版中⋯"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Yeni sürüm bağlanıyor...",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -45162,6 +46404,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "更新中⋯"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Güncelleniyor...",
+            "state" : "translated"
           }
         }
       }
@@ -45233,6 +46481,12 @@
             "state" : "translated",
             "value" : "套件更新時發生錯誤"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Paketler güncellendi ancak hatalar var",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -45303,6 +46557,12 @@
             "state" : "translated",
             "value" : "請詳查下方資訊"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Güncelleme sırasında bazı hatalar oluştu.\nDaha fazla bilgi için aşağıyı kontrol edin.",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -45349,6 +46609,12 @@
             "state" : "translated",
             "value" : "需要采取行动以完成更新"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Güncellemeyi tamamlamak için işlem gerekiyor",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -45382,6 +46648,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Некоторые из ваших пакетов можно обновить только через Терминал.\nДля этого нажмите “Завершить в Терминале”.\nНажмите ⌘+V, чтобы вставить команду в Терминал, а затем нажмите ↩ (Return), чтобы выполнить команду. После этого следуйте инструкциям.\nПосле завершения выполнения команды вернитесь в Cork."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bazı paketleriniz yalnızca Terminal üzerinden güncellenebilir\nAşağıdaki \"Terminal'de Bitir\"e tıklayın\nKomutu eklemek için ⌘+V'ye basın, ardından komutu çalıştırmak ve talimatları izlemek için ↩ (Return) tuşuna basın\nKomut tamamlandıktan sonra Cork'a geri dönün"
           }
         },
         "uk" : {
@@ -45446,6 +46718,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Обновление пакетов завершено успешно"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paketler başarıyla güncellendi"
           }
         },
         "uk" : {
@@ -45518,6 +46796,12 @@
             "value" : "Проблем не обнаружено"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiç bir hataya rastlanmadı"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -45586,6 +46870,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выбранные пакеты обновлены успешно"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçili paketler başarıyla güncellendi"
           }
         },
         "uk" : {
@@ -45675,6 +46965,12 @@
             "state" : "translated",
             "value" : "發生了未能預見的錯誤"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Bu hatayı almak için ne yaptığını ben de bilmiyorum",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -45744,6 +47040,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "更新 %@⋯"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "%@ güncelleniyor…",
+            "state" : "translated"
           }
         }
       }
@@ -45815,6 +47117,12 @@
             "state" : "translated",
             "value" : "無更新必要"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Mevcut güncelleştirme yok",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -45885,6 +47193,12 @@
             "state" : "translated",
             "value" : "您已有最新版本"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "value" : "Güncel durumdasınız",
+            "state" : "translated"
+          }
         }
       }
     },
@@ -45936,6 +47250,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поиск обновлений..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güncellemeler alınıyor…"
           }
         },
         "uk" : {
@@ -46006,6 +47326,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Обновление завершено"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamamlandı"
           }
         },
         "uk" : {
@@ -46079,6 +47405,12 @@
             "value" : "Обновление начинается"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazır"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -46147,6 +47479,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Обновление пакетов..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paketler güncelleniyor…"
           }
         },
         "uk" : {
@@ -46219,6 +47557,12 @@
             "value" : "Обновление кеша пакетов"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paket önbellekleri güncelleniyor"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -46289,6 +47633,12 @@
             "value" : "v. %@"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "v. %@"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -46353,6 +47703,12 @@
             "value" : "О приложении"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hakkında"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -46409,6 +47765,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Службы"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servisler"
           }
         },
         "uk" : {
@@ -46470,6 +47832,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "􀇾"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "􀇾"
@@ -46545,6 +47913,12 @@
             "value" : "􀐫"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "􀐫"
+          }
+        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -46605,6 +47979,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "􀐫 %@"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "􀐫 %@"

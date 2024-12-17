@@ -18,19 +18,18 @@ export const MainRow = ({ stringKey, entry, sourceLanguage, selectedLanguage, is
   const targetLocalization = entry.localizations?.[selectedLanguage];
   const hasVariationsFlag = hasVariations(sourceLocalization, targetLocalization);
 
-  let sourceValue;
-  let targetValue;
-  let targetState;
-
-  if (!hasVariationsFlag) {
-    sourceValue = sourceLocalization?.stringUnit?.value ?? stringKey;
-    targetValue = targetLocalization?.stringUnit?.value;
-    targetState = targetLocalization?.stringUnit?.state ?? "missing";
-  }
+  const sourceValue: string = sourceLocalization?.stringUnit?.value ?? stringKey;
+  const targetValue: string | undefined = targetLocalization?.stringUnit?.value;
+  const targetState = targetLocalization?.stringUnit?.state ?? "missing";
 
   const handleSave = async (newValue: string) => {
     if (!onUpdateTranslation) return;
     await onUpdateTranslation(stringKey, newValue, selectedLanguage);
+  };
+
+  const handleTransferText = () => {
+    if (!onUpdateTranslation) return;
+    onUpdateTranslation(stringKey, sourceValue, selectedLanguage);
   };
 
   return (
@@ -39,7 +38,19 @@ export const MainRow = ({ stringKey, entry, sourceLanguage, selectedLanguage, is
       <td className={`${CELL_STYLES.base} ${CELL_STYLES.key}`}>{stringKey}</td>
 
       {/* Source Value Column */}
-      <td className={`${CELL_STYLES.base} ${CELL_STYLES.content}`}>{sourceValue}</td>
+      <td className={`${CELL_STYLES.base} ${CELL_STYLES.content}`}>
+        <div className="flex items-center justify-between space-x-2">
+          <span>{sourceValue}</span>
+          {!hasVariationsFlag && !isSourceSelected && (
+            <button
+              onClick={handleTransferText}
+              className="px-2 py-1 text-xs text-gray-600 rounded hover:bg-gray-200"
+              title="Transfer source text">
+              ➡️
+            </button>
+          )}
+        </div>
+      </td>
 
       {/* Target Value Column */}
       {!isSourceSelected && (
@@ -49,7 +60,7 @@ export const MainRow = ({ stringKey, entry, sourceLanguage, selectedLanguage, is
             showEditButton={!hasVariationsFlag}
             onSave={handleSave}
             translationKey={stringKey}
-            sourceText={sourceValue || ""}
+            sourceText={sourceValue}
             targetLanguage={selectedLanguage}
             sourceLanguage={sourceLanguage}
             comment={entry.comment || ""}
