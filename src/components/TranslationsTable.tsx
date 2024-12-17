@@ -66,7 +66,7 @@ export const TranslationsTable = ({ localizableStrings, selectedLanguage, onUpda
   };
 
   return (
-    <table className="table-auto divide-y-2 border border-gray-200 divide-gray-300 text-xs">
+    <table className="table-fixed w-full divide-y-2 border border-gray-200 divide-gray-300 text-xs">
       <TableHeader
         sourceLanguage={sourceLanguage}
         selectedLanguage={selectedLanguage}

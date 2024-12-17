@@ -18,9 +18,9 @@ function App() {
   }
 
   return (
-    <div className="container-xl mx-auto pl-4 h-screen">
-      <div className="flex gap-2">
-        <div className="flex-0 w-40">
+    <div className="container-xl pl-4">
+      <div className="grid grid-cols-12 gap-2">
+        <div className="col-span-1 min-w-18">
           <LanguageSelector
             selectedLanguage={selectedLanguage}
             availableLanguages={availableLanguages}
@@ -28,7 +28,7 @@ function App() {
             onLanguageChange={setSelectedLanguage}
           />
         </div>
-        <div className="flex-1">
+        <div className="col-span-11">
           <TranslationsTable
             localizableStrings={localizableStrings}
             selectedLanguage={selectedLanguage}

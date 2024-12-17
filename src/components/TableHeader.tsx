@@ -46,7 +46,9 @@ export const TableHeader = ({ sourceLanguage, selectedLanguage, showMissingOnly,
 
         {!isSourceSelected && <th className={`${TABLE_COLUMN_WIDTHS.status} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>Status</th>}
 
-        <th className={`${TABLE_COLUMN_WIDTHS.extractionState} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>Extraction State</th>
+        <th className={`${TABLE_COLUMN_WIDTHS.extractionState} ${CELL_STYLES.base} ${CELL_STYLES.header} text-xs text-center`}>
+          Extraction State
+        </th>
       </tr>
     </thead>
   );
