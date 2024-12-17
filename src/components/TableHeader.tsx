@@ -27,16 +27,18 @@ export const TableHeader = ({ sourceLanguage, selectedLanguage, showMissingOnly,
 
         {!isSourceSelected && (
           <th className={`${TABLE_COLUMN_WIDTHS.target} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>
-            {selectedLanguage}
-            <label className="flex items-center space-x-2 text-sm font-normal">
-              <input
-                type="checkbox"
-                checked={showMissingOnly}
-                onChange={(e) => onShowMissingOnlyChange(e.target.checked)}
-                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-              />
-              <span>Show missing only</span>
-            </label>
+            <div className="flex gap-4">
+              {selectedLanguage}
+              <label className="flex items-center space-x-1 text-xs font-normal">
+                <input
+                  type="checkbox"
+                  checked={showMissingOnly}
+                  onChange={(e) => onShowMissingOnlyChange(e.target.checked)}
+                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                />
+                <span className="text-center capitalize">Show missing only</span>
+              </label>
+            </div>
           </th>
         )}
 

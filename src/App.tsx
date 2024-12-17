@@ -6,14 +6,8 @@ import { ErrorDisplay } from "./components/ErrorDisplay";
 import { LoadingSpinner } from "./components/LoadingSpinner";
 
 function App() {
-  const { 
-    localizableStrings, 
-    error, 
-    selectedLanguage, 
-    setSelectedLanguage, 
-    availableLanguages,
-    updateTranslation 
-  } = useLocalizableStrings();
+  const { localizableStrings, error, selectedLanguage, setSelectedLanguage, availableLanguages, updateTranslation } =
+    useLocalizableStrings();
 
   if (error) {
     return <ErrorDisplay message={error} />;
@@ -24,18 +18,24 @@ function App() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-4">
-      <LanguageSelector
-        selectedLanguage={selectedLanguage}
-        availableLanguages={availableLanguages}
-        sourceLanguage={localizableStrings.sourceLanguage}
-        onLanguageChange={setSelectedLanguage}
-      />
-      <TranslationsTable 
-        localizableStrings={localizableStrings} 
-        selectedLanguage={selectedLanguage}
-        onUpdateTranslation={updateTranslation}
-      />
+    <div className="container-xl mx-auto pl-4 h-screen">
+      <div className="flex gap-2">
+        <div className="flex-0 w-40">
+          <LanguageSelector
+            selectedLanguage={selectedLanguage}
+            availableLanguages={availableLanguages}
+            sourceLanguage={localizableStrings.sourceLanguage}
+            onLanguageChange={setSelectedLanguage}
+          />
+        </div>
+        <div className="flex-1">
+          <TranslationsTable
+            localizableStrings={localizableStrings}
+            selectedLanguage={selectedLanguage}
+            onUpdateTranslation={updateTranslation}
+          />
+        </div>
+      </div>
     </div>
   );
 }

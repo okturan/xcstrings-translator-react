@@ -16,7 +16,9 @@ interface UpdateTranslationParams {
 export const useLocalizableStrings = () => {
   const [localizableStrings, setLocalizableStrings] = useState<LocalizableStrings | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [selectedLanguage, setSelectedLanguage] = useState<string>("");
+  const [selectedLanguage, setSelectedLanguage] = useState<string>(() => {
+    return localStorage.getItem("selectedLanguage") || "";
+  });
   const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
 
   const handleError = (err: unknown, context: string) => {
@@ -57,8 +59,18 @@ export const useLocalizableStrings = () => {
   const initializeLanguages = (data: LocalizableStrings) => {
     const languagesArray = extractAvailableLanguages(data.strings);
     setAvailableLanguages(languagesArray);
-    setSelectedLanguage(data.sourceLanguage);
+    // Only set source language if no language was previously selected
+    if (!localStorage.getItem("selectedLanguage")) {
+      setSelectedLanguage(data.sourceLanguage);
+    }
   };
+
+  // Save selected language to localStorage whenever it changes
+  useEffect(() => {
+    if (selectedLanguage) {
+      localStorage.setItem("selectedLanguage", selectedLanguage);
+    }
+  }, [selectedLanguage]);
 
   const initializeLocalization = (strings: LocalizableStrings["strings"], key: string, language: string): Localization => {
     if (!strings[key]) {

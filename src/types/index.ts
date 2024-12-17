@@ -26,11 +26,17 @@ export interface StringEntry {
   extractionState?: string;
 }
 
+export interface VariationValue {
+  stringUnit?: StringUnit;
+  variations?: VariationsMap;
+}
+
 export interface LocalizableStrings {
   sourceLanguage: string;
   strings: {
     [key: string]: StringEntry;
   };
+  version: string;
 }
 
 export interface VariationRow {
