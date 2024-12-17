@@ -6,9 +6,7 @@ export interface StringUnit {
 
 export interface VariationsMap {
   [variationType: string]: {
-    [key: string]: {
-      stringUnit?: StringUnit;
-    };
+    [key: string]: VariationValue;
   };
 }
 
@@ -27,6 +25,11 @@ export interface StringEntry {
 }
 
 export interface VariationValue {
+  stringUnit?: StringUnit;
+  variations?: VariationsMap;
+}
+
+export interface VariationContainer {
   stringUnit?: StringUnit;
   variations?: VariationsMap;
 }

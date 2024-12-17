@@ -40,14 +40,10 @@ export const STATUS_STYLES = {
 
 export const BADGE_BASE_STYLES = "inline-flex items-center px-2 py-0.5 m-1 rounded-full text-[10px] font-medium";
 
-export const API_ENDPOINTS = {
-  strings: "/Localizable.xcstrings",
-  save: "/api/save-translation"
-} as const;
-
 export const ERROR_MESSAGES = {
-  httpError: (status: number) => `HTTP error! status: ${status}`,
   invalidData: "Invalid data structure in Localizable.xcstrings",
-  genericError: "An error occurred while loading the strings file",
-  saveFailed: "Failed to save translation",
+  genericError: "An error occurred while processing the file",
+  importFailed: "Failed to import the file",
+  exportFailed: "Failed to export translations",
+  noFileLoaded: "No file is currently loaded",
 } as const;
