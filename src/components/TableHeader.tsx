@@ -3,14 +3,31 @@ import { TABLE_COLUMN_WIDTHS, CELL_STYLES } from "../constants";
 interface TableHeaderProps {
   sourceLanguage: string;
   selectedLanguage: string;
+  showMissingOnly: boolean;
+  onShowMissingOnlyChange: (value: boolean) => void;
 }
 
-export const TableHeader = ({ sourceLanguage, selectedLanguage }: TableHeaderProps) => {
+export const TableHeader = ({ sourceLanguage, selectedLanguage, showMissingOnly, onShowMissingOnlyChange }: TableHeaderProps) => {
   const isSourceSelected = sourceLanguage == selectedLanguage;
   return (
     <thead className="bg-gray-50 sticky top-0 z-10 shadow-sm">
       <tr>
-        <th className={`${TABLE_COLUMN_WIDTHS.key} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>Key</th>
+        <th className={`${TABLE_COLUMN_WIDTHS.key} ${CELL_STYLES.base} ${CELL_STYLES.header}`}>
+          <div className="flex items-center gap-4">
+            <span>Key</span>
+            {!isSourceSelected && (
+              <label className="flex items-center space-x-2 text-sm font-normal">
+                <input
+                  type="checkbox"
+                  checked={showMissingOnly}
+                  onChange={(e) => onShowMissingOnlyChange(e.target.checked)}
+                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                />
+                <span>Show missing only</span>
+              </label>
+            )}
+          </div>
+        </th>
 
         <th
           className={`${isSourceSelected ? TABLE_COLUMN_WIDTHS.sourceDefault : TABLE_COLUMN_WIDTHS.sourceWithTarget} ${CELL_STYLES.base} ${
