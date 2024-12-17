@@ -12,7 +12,7 @@ export const CELL_STYLES = {
   base: "px-2 py-1 whitespace-normal break-words",
   header: "font-medium text-gray-500 uppercase tracking-wider text-left",
   content: "text-gray-500",
-  key: "text-gray-900",
+  key: "text-gray-600",
 } as const;
 
 export const STATUS_STYLES = {
