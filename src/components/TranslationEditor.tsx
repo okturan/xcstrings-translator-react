@@ -83,8 +83,8 @@ export const TranslationEditor = ({
                 title="Translate with AI">
                 {isTranslating ? "..." : "🤖"}
               </button>
-              <button 
-                onClick={() => setIsEditing(true)} 
+              <button
+                onClick={() => setIsEditing(true)}
                 className="px-2 py-1 text-xs text-gray-600 rounded hover:bg-gray-200"
                 title="Edit manually">
                 ✍️
@@ -100,9 +100,12 @@ export const TranslationEditor = ({
     <div className="flex items-center space-x-2">
       <textarea
         value={editValue}
-        onChange={(e) => setEditValue(e.target.value)}
-        className="w-full p-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-        rows={2}
+        onChange={(e) => {
+          setEditValue(e.target.value);
+          e.target.style.height = "5px";
+          e.target.style.height = e.target.scrollHeight + "px";
+        }}
+        className="w-full h-auto p-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[2.5rem] resize-y overflow-hidden"
         disabled={isSaving}
       />
       <div className="flex flex-col space-y-1">

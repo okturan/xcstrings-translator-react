@@ -18,9 +18,15 @@ export const MainRow = ({ stringKey, entry, sourceLanguage, selectedLanguage, is
   const targetLocalization = entry.localizations?.[selectedLanguage];
   const hasVariationsFlag = hasVariations(sourceLocalization, targetLocalization);
 
-  const sourceValue: string = sourceLocalization?.stringUnit?.value ?? stringKey;
-  const targetValue: string | undefined = targetLocalization?.stringUnit?.value;
-  const targetState = targetLocalization?.stringUnit?.state ?? "missing";
+  let sourceValue: string = stringKey;
+  let targetValue: string | undefined;
+  let targetState: string | undefined;
+
+  if (!hasVariationsFlag) {
+    sourceValue = sourceLocalization?.stringUnit?.value ?? stringKey;
+    targetValue = targetLocalization?.stringUnit?.value;
+    targetState = targetLocalization?.stringUnit?.state ?? "missing";
+  }
 
   const handleSave = async (newValue: string) => {
     if (!onUpdateTranslation) return;
