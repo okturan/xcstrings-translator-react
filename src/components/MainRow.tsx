@@ -50,9 +50,10 @@ export const MainRow = ({ stringKey, entry, sourceLanguage, selectedLanguage, is
           {!hasVariationsFlag && !isSourceSelected && (
             <button
               onClick={handleTransferText}
-              className="px-2 py-1 text-xs text-gray-600 rounded hover:bg-gray-200"
-              title="Transfer source text">
-              ➡️
+              className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-md transition-colors"
+              title="Transfer source text"
+            >
+              →
             </button>
           )}
         </div>

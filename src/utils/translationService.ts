@@ -1,15 +1,9 @@
-import { TranslationRequest } from '../types';
+import { TranslationRequest } from "../types";
 
-const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const MODEL = 'anthropic/claude-3.5-haiku-20241022:beta';
+const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
+const MODEL = "anthropic/claude-3.5-haiku-20241022:beta";
 
-const createTranslationPrompt = ({
-  sourceLanguage,
-  targetLanguage,
-  translationKey,
-  comment,
-  sourceText,
-}: TranslationRequest): string => {
+const createTranslationPrompt = ({ sourceLanguage, targetLanguage, translationKey, comment, sourceText }: TranslationRequest): string => {
   return `
 You are an AI-powered translator specializing in UI string localization for software applications. Your task is to accurately translate text while preserving its original meaning and formatting, especially considering the context of user interface elements.
 
@@ -43,36 +37,32 @@ ${sourceText}
 Instructions:
 1. Carefully read the source text and consider any provided context.
 2. Conduct a translation analysis inside <translation_analysis> tags, including:
-   a. Analyze the source text for any UI-specific terminology or formatting
-   b. Consider cultural nuances in the target language
-   c. Identify the namespace nesting in translation_key. This will provide context where available.
-   d. Plan how to maintain the original tone and style
-3. Translate the source text from the source language to the target language.
-4. Ensure that your translation:
+   a. Plan how to maintain the original tone and style
+   b. Analyze the source text for any UI-specific terminology or formatting
+   c. Consider cultural nuances in the target language
+   d. Identify the namespace nesting in translation_key. This will provide context where available.
+3. Ensure that your translation:
    - Accurately conveys the original meaning
    - Is appropriate for use in a user interface
    - Maintains any formatting present in the original text (e.g., line breaks, punctuation)
    - Does not include any additional metadata, tags, or additional text unless they were present in the original source text.
-
-Output your translation directly, without any surrounding quotes, tags, or additional text unless they were present in the original source text.
+4. Translate the source text from the source language to the target language inside <translation></translation> tags.
 
 Please proceed with the translation task.`;
 };
 
-export const getAITranslation = async (
-  translationRequest: TranslationRequest
-): Promise<string> => {
+export const getAITranslation = async (translationRequest: TranslationRequest): Promise<string> => {
   const response = await fetch(OPENROUTER_API_URL, {
-    method: 'POST',
+    method: "POST",
     headers: {
       Authorization: `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       model: MODEL,
       messages: [
         {
-          role: 'user',
+          role: "user",
           content: createTranslationPrompt(translationRequest),
         },
       ],
@@ -80,12 +70,13 @@ export const getAITranslation = async (
   });
 
   if (!response.ok) {
-    throw new Error('Translation API request failed');
+    throw new Error("Translation API request failed");
   }
 
   const data = await response.json();
   const translation = data.choices[0].message.content.trim();
 
-  // Remove any content between <translation_analysis> tags
-  return translation.replace(/<translation_analysis>[\s\S]*?<\/translation_analysis>/g, '').trim();
+  // Extract only the content between <translation> tags
+  const translationMatch = translation.match(/<translation>([\s\S]*?)<\/translation>/);
+  return translationMatch ? translationMatch[1].trim() : "";
 };

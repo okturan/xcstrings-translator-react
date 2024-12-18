@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getAITranslation } from "../utils/translationService";
+import { LoadingSpinner } from "./LoadingSpinner";
 
 interface TranslationEditorProps {
   value: string | undefined;
@@ -26,6 +27,33 @@ export const TranslationEditor = ({
   const [editValue, setEditValue] = useState(value ?? "");
   const [isSaving, setIsSaving] = useState(false);
   const [isTranslating, setIsTranslating] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const adjustTextareaHeight = (element: HTMLTextAreaElement, initialLoad = false) => {
+    const lineHeight = 20; // Approximate line height in pixels
+    const paddingHeight = 8; // Total vertical padding (4px top + 4px bottom)
+    const charsPerLine = 60; // Number of characters per line
+
+    // Reset height to auto to get proper scrollHeight
+    element.style.height = "auto";
+
+    // Calculate number of lines based on character count
+    const textLength = element.value.length;
+    const lines = Math.ceil(textLength / charsPerLine);
+    const minLines = initialLoad ? Math.max(lines + 1, 1) : Math.max(lines, 1);
+
+    // Set minimum height based on number of lines
+    const minHeight = minLines * lineHeight + paddingHeight;
+
+    // Set height to either minHeight or scrollHeight, whichever is larger
+    element.style.height = `${Math.max(minHeight, element.scrollHeight)}px`;
+  };
+
+  useEffect(() => {
+    if (isEditing && textareaRef.current) {
+      adjustTextareaHeight(textareaRef.current, true);
+    }
+  }, [isEditing]);
 
   const handleSave = async () => {
     if (editValue === value) {
@@ -73,20 +101,27 @@ export const TranslationEditor = ({
     return (
       <div className="flex items-center justify-between space-x-2">
         <span>{value}</span>
-        <div className="flex space-x-1">
+        <div className="flex items-center space-x-1">
           {showEditButton && (
             <>
               <button
                 onClick={handleAITranslate}
                 disabled={isTranslating}
-                className="px-2 py-1 text-xs text-gray-600 rounded hover:bg-gray-200 disabled:opacity-50"
+                className="inline-flex items-center justify-center w-8 h-8 text-gray-600 rounded hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 title="Translate with AI">
-                {isTranslating ? "..." : "🤖"}
+                {isTranslating ? (
+                  <span className="flex items-center justify-center w-full h-full">
+                    <LoadingSpinner size="sm" />
+                  </span>
+                ) : (
+                  "🤖"
+                )}
               </button>
               <button
                 onClick={() => setIsEditing(true)}
-                className="px-2 py-1 text-xs text-gray-600 rounded hover:bg-gray-200"
-                title="Edit manually">
+                className="inline-flex items-center justify-center w-8 h-8 text-gray-600 rounded hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                title="Edit manually"
+                disabled={isTranslating}>
                 ✍️
               </button>
             </>
@@ -99,26 +134,32 @@ export const TranslationEditor = ({
   return (
     <div className="flex items-center space-x-2">
       <textarea
+        ref={textareaRef}
         value={editValue}
         onChange={(e) => {
           setEditValue(e.target.value);
-          e.target.style.height = "5px";
-          e.target.style.height = e.target.scrollHeight + "px";
+          adjustTextareaHeight(e.target);
         }}
-        className="w-full h-auto p-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[2.5rem] resize-y overflow-hidden"
+        className="w-full p-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[2.5rem] resize-y"
         disabled={isSaving}
       />
       <div className="flex flex-col space-y-1">
         <button
           onClick={handleSave}
           disabled={isSaving}
-          className="px-2 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600 disabled:bg-blue-300">
-          {isSaving ? "..." : "Save"}
+          className="inline-flex items-center justify-center w-16 h-7 text-xs text-white bg-blue-500 rounded hover:bg-blue-600 disabled:bg-blue-300 disabled:cursor-not-allowed">
+          {isSaving ? (
+            <span className="flex items-center justify-center w-full h-full">
+              <LoadingSpinner size="sm" color="white" />
+            </span>
+          ) : (
+            "Save"
+          )}
         </button>
         <button
           onClick={handleCancel}
           disabled={isSaving}
-          className="px-2 py-1 text-xs text-gray-600 bg-gray-100 rounded hover:bg-gray-200 disabled:bg-gray-50">
+          className="inline-flex items-center justify-center w-16 h-7 text-xs text-gray-600 bg-gray-100 rounded hover:bg-gray-200 disabled:bg-gray-50 disabled:cursor-not-allowed">
           Cancel
         </button>
       </div>
