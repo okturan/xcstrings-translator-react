@@ -101,28 +101,40 @@ html {
   }
 
   /* Loading Spinner */
-  .spinner-container {
-    @apply flex items-center justify-center min-h-screen;
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   .spinner {
-    @apply animate-spin rounded-full border-t-2 border-b-2;
+    @apply relative inline-block;
+    animation: spin 0.6s linear infinite;
+  }
+
+  .spinner::after {
+    content: '';
+    @apply absolute inset-0 rounded-full border-4 border-transparent;
   }
 
   .spinner-sm {
-    @apply h-6 w-6;
+    @apply h-4 w-4;
   }
 
   .spinner-md {
-    @apply h-8 w-8;
+    @apply h-6 w-6;
   }
 
   .spinner-lg {
-    @apply h-10 w-10;
+    @apply h-8 w-8;
   }
 
-  .spinner-blue {
-    @apply border-blue-500;
+  .spinner-blue::after {
+    @apply border-blue-600 border-t-transparent;
+  }
+
+  .spinner-white::after {
+    @apply border-white border-t-transparent;
   }
 
   /* Error Display */
