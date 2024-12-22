@@ -17,7 +17,7 @@ export const LanguageSelector = ({ selectedLanguage, availableLanguages, sourceL
             className={`text-left px-3 py-2 text-sm rounded-md transition-all duration-200 
               ${
                 selectedLanguage === lang
-                  ? "bg-blue-50 text-black-900 font-semibold font-medium ring-1 ring-blue-700/10 shadow-sm"
+                  ? "bg-blue-50 text-black-900 font-semibold ring-1 ring-blue-700/10 shadow-sm"
                   : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
               }`}>
             {lang === sourceLanguage ? (

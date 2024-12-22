@@ -18,7 +18,7 @@ export const MainRow = ({ stringKey, entry, sourceLanguage, selectedLanguage, is
   const targetLocalization = entry.localizations?.[selectedLanguage];
   const hasVariationsFlag = hasVariations(sourceLocalization, targetLocalization);
 
-  let sourceValue: string = stringKey;
+  let sourceValue: string = "";
   let targetValue: string | undefined;
   let targetState: string | undefined;
 
