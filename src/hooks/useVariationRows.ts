@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { StringEntry, VariationRow, VariationValue, VariationsMap } from "../types";
 
-const getVariationTypes = (sourceVar?: VariationsMap, targetVar?: VariationsMap): string[] => {
-  const types = new Set([...Object.keys(sourceVar || {}), ...Object.keys(targetVar || {})]);
-  return Array.from(types);
+const getVariationTypes = (sourceVar?: VariationsMap): string[] => {
+  // Only include variation types that exist in the source
+  return Object.keys(sourceVar || {});
 };
 
 const createVariationRow = (
@@ -19,7 +19,9 @@ const createVariationRow = (
   varKey,
   sourceValue: sourceValue?.stringUnit?.value || "",
   targetValue: targetValue?.stringUnit?.value || "",
-  targetState: hasNestedVariations ? undefined : targetValue?.stringUnit?.state || "missing",
+  targetState: hasNestedVariations 
+    ? undefined 
+    : targetValue?.stringUnit?.state || (sourceValue?.stringUnit?.value ? "missing" : undefined),
   depth,
   path: currentPath,
 });
@@ -30,12 +32,18 @@ const processNestedVariations = (
   depth: number,
   currentPath: string,
 ): VariationRow[] => {
-  if (!sourceValue?.variations && !targetValue?.variations) return [];
+  if (!sourceValue?.variations) return [];
 
-  const nestedTypes = getVariationTypes(sourceValue?.variations, targetValue?.variations);
+  const nestedTypes = getVariationTypes(sourceValue.variations);
 
   return nestedTypes.flatMap((nestedType) =>
-    processVariationLevel(sourceValue?.variations?.[nestedType], targetValue?.variations?.[nestedType], nestedType, depth + 1, currentPath),
+    processVariationLevel(
+      sourceValue.variations?.[nestedType], 
+      targetValue?.variations?.[nestedType], 
+      nestedType, 
+      depth + 1, 
+      currentPath
+    ),
   );
 };
 
@@ -46,15 +54,16 @@ const processVariationLevel = (
   depth: number = 0,
   parentPath: string = "",
 ): VariationRow[] => {
-  if (!sourceVar && !targetVar) return [];
+  if (!sourceVar) return [];
 
-  const variations = new Set([...Object.keys(sourceVar || {}), ...Object.keys(targetVar || {})]);
+  // Only process variations that exist in the source
+  const variations = Object.keys(sourceVar);
 
-  return Array.from(variations).flatMap((varKey) => {
-    const sourceValue = sourceVar?.[varKey];
+  return variations.flatMap((varKey) => {
+    const sourceValue = sourceVar[varKey];
     const targetValue = targetVar?.[varKey];
     const currentPath = parentPath ? `${parentPath}.${variationType}:${varKey}` : `${variationType}:${varKey}`;
-    const hasNestedVariations = !!(sourceValue?.variations || targetValue?.variations);
+    const hasNestedVariations = !!sourceValue?.variations;
 
     const rows: VariationRow[] = [
       createVariationRow(variationType, varKey, sourceValue, targetValue, depth, currentPath, hasNestedVariations),
@@ -75,14 +84,16 @@ export const useVariationRows = (
 ) => {
   const variationRows = useMemo(() => {
     const sourceVariations = sourceLocalization?.variations;
-    const targetVariations = targetLocalization?.variations;
+    if (!sourceVariations) return [];
 
-    if (!sourceVariations && !targetVariations) return [];
-
-    const variationTypes = getVariationTypes(sourceVariations, targetVariations);
+    const variationTypes = getVariationTypes(sourceVariations);
 
     return variationTypes.flatMap((variationType) =>
-      processVariationLevel(sourceVariations?.[variationType], targetVariations?.[variationType], variationType),
+      processVariationLevel(
+        sourceVariations[variationType], 
+        targetLocalization?.variations?.[variationType], 
+        variationType
+      ),
     );
   }, [sourceLocalization, targetLocalization]);
 

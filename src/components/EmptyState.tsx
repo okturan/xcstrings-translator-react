@@ -16,7 +16,7 @@ export function EmptyState({ onImport, onExport }: EmptyStateProps) {
         Import your <span className="font-mono text-blue-600">.xcstrings</span> file to start managing translations
       </p>
       <ul className="text-gray-600 max-w-md mx-auto text-left list-disc list-inside mb-6 leading-relaxed">
-        <li>Supports iOS localization files (.xcstrings)</li>
+        <li>Supports Apple string catalog localization files (.xcstrings)</li>
         <li>Edit translations for multiple languages</li>
         <li>Export back to .xcstrings format</li>
       </ul>

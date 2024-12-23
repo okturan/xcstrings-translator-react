@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from "react";
+import { toast } from "react-toastify";
 import { getStoredApiKey, setStoredApiKey } from "../utils/apiKeyUtils";
 import { APIKeyButton } from "./APIKeyButton";
 import { APIKeyForm } from "./APIKeyForm";
+import { ModelSelector } from "./ModelSelector";
 import { useClickOutside } from "../hooks/useClickOutside";
+import { useModel } from "../contexts/model";
 
 interface APIKeyState {
   key: string;
@@ -18,6 +21,7 @@ const APIKeyStatus = ({ isSaved }: { isSaved: boolean }) => (
 );
 
 export function APIKeyInput() {
+  const { selectedModel, setSelectedModel } = useModel();
   const [state, setState] = useState<APIKeyState>({
     key: "",
     isEditing: false,
@@ -49,6 +53,7 @@ export function APIKeyInput() {
       isSaved: true,
       isExpanded: false,
     }));
+    toast.success("API key saved successfully");
     setTimeout(() => setState((prev) => ({ ...prev, isSaved: false })), 2000);
   };
 
@@ -58,7 +63,7 @@ export function APIKeyInput() {
   };
 
   return (
-    <div className="absolute right-8 mb-4" ref={containerRef}>
+    <div className="absolute right-8 mb-4 z-50" ref={containerRef}>
       <button
         onClick={toggleExpanded}
         className={`flex items-center gap-2 px-3 py-1.5 rounded-lg ${
@@ -82,7 +87,7 @@ export function APIKeyInput() {
       {state.isExpanded && (
         <div
           id="api-key-panel"
-          className="absolute right-0 mt-2 w-[32rem] bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-10"
+          className="absolute right-0 mt-2 w-[42rem] bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-10"
           role="dialog"
           aria-label="API Key Settings">
           <div className="p-4 border-b border-gray-200">
@@ -103,13 +108,21 @@ export function APIKeyInput() {
             {state.isEditing ? (
               <APIKeyForm apiKey={state.key} onSave={handleSave} onCancel={() => setState((prev) => ({ ...prev, isEditing: false }))} />
             ) : (
-              <div className="flex items-center gap-2">
-                <div className="flex-1">
-                  <div className="text-gray-500">
-                    {state.key ? "API key is set and ready to use." : "Please add your OpenRouter API key to use the translation feature."}
+              <>
+                <div className="flex items-center gap-2">
+                  <div className="flex-1">
+                    <div className="text-gray-500">
+                      {state.key ? "API key is set and ready to use." : "Please add your OpenRouter API key to use the translation feature."}
+                    </div>
                   </div>
                 </div>
-              </div>
+                {state.key && (
+                  <ModelSelector
+                    selectedModel={selectedModel}
+                    onModelSelect={setSelectedModel}
+                  />
+                )}
+              </>
             )}
             <p className="text-sm text-gray-500 mt-4">
               You can get your API key from{" "}

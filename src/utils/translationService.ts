@@ -2,7 +2,6 @@ import { TranslationRequest } from "../types";
 import { getStoredApiKey } from "./apiKeyUtils";
 
 const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
-const MODEL = "anthropic/claude-3.5-haiku-20241022:beta";
 
 const createTranslationPrompt = ({ sourceLanguage, targetLanguage, translationKey, comment, sourceText }: TranslationRequest): string => {
   return `
@@ -52,7 +51,7 @@ Instructions:
 Please proceed with the translation task.`;
 };
 
-export const getAITranslation = async (translationRequest: TranslationRequest): Promise<string> => {
+export const getAITranslation = async (translationRequest: TranslationRequest, model: string): Promise<string> => {
   const response = await fetch(OPENROUTER_API_URL, {
     method: "POST",
     headers: {
@@ -60,7 +59,7 @@ export const getAITranslation = async (translationRequest: TranslationRequest): 
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: MODEL,
+      model: model,
       messages: [
         {
           role: "user",
@@ -75,7 +74,10 @@ export const getAITranslation = async (translationRequest: TranslationRequest): 
     if (response.status === 401) {
       throw new Error("Invalid or missing API key. Please check your OpenRouter API key.");
     }
-    throw new Error(errorData.error?.message || "Translation API request failed");
+    if (errorData.error?.message) {
+      throw new Error(errorData.error.message);
+    }
+    throw new Error("Translation API request failed");
   }
 
   const data = await response.json();

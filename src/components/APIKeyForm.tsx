@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import { APIKeyButton } from './APIKeyButton';
 
 interface APIKeyFormProps {
@@ -14,7 +15,9 @@ export const APIKeyForm = ({ apiKey: initialApiKey, onSave, onCancel }: APIKeyFo
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!key.trim()) {
-      setError('API key is required');
+      const errorMsg = 'API key is required';
+      setError(errorMsg);
+      toast.error(errorMsg);
       return;
     }
     setError('');

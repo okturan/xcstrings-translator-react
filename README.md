@@ -1,14 +1,18 @@
-# iOS Strings Translation Tool
+# Apple Platform Strings Translation Tool
 
-A specialized tool for translating iOS Localizable.xcstrings files using AI. This tool streamlines the localization process by providing context-aware translations while maintaining the structure and formatting of your iOS string files.
+A specialized tool for translating Localizable.xcstrings files using AI. This tool streamlines the localization process by providing context-aware translations while maintaining the structure and formatting of your Apple platform string files.
+
+## About .xcstrings
+
+The .xcstrings format is Apple's modern localization resource format used in Xcode for macOS, iOS, watchOS, and tvOS applications. It uses a structured JSON format that efficiently manages string variations, pluralization rules, and provides valuable context for translators. This format is designed to handle complex localization scenarios while maintaining a clean, organized structure that's both human-readable and machine-processable.
 
 ## Features
 
-- 🔄 Direct support for iOS Localizable.xcstrings files
+- 🔄 Direct support for Localizable.xcstrings files
 - 🤖 AI-powered translations via OpenRouter
 - 🌍 Support for multiple target languages
 - 📝 Preserves string contexts and comments
-- 🎯 Maintains iOS string formatting and placeholders
+- 🎯 Maintains string formatting and placeholders
 - 💾 Export translations back to xcstrings format
 
 ## Getting Started
@@ -54,7 +58,3 @@ Contributions are welcome! Feel free to:
 - Report bugs
 - Suggest features
 - Submit pull requests
-
-## License
-
-[License Type] - See LICENSE file for details

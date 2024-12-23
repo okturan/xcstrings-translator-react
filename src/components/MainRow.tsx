@@ -14,81 +14,85 @@ interface MainRowProps {
   onUpdateTranslation?: (key: string, value: string, language: string) => Promise<void>;
 }
 
-export const MainRow = memo(({ stringKey, entry, sourceLanguage, selectedLanguage, isSourceSelected, onUpdateTranslation }: MainRowProps) => {
-  const sourceLocalization = entry.localizations?.[sourceLanguage];
-  const targetLocalization = entry.localizations?.[selectedLanguage];
-  const hasVariationsFlag = hasVariations(sourceLocalization, targetLocalization);
+export const MainRow = memo(
+  ({ stringKey, entry, sourceLanguage, selectedLanguage, isSourceSelected, onUpdateTranslation }: MainRowProps) => {
+    const sourceLocalization = entry.localizations?.[sourceLanguage];
+    const targetLocalization = entry.localizations?.[selectedLanguage];
+    const hasVariationsFlag = hasVariations(sourceLocalization, targetLocalization);
 
-  let sourceValue: string = "";
-  let targetValue: string | undefined;
-  let targetState: string | undefined;
+    let sourceValue: string = "";
+    let targetValue: string | undefined;
+    let targetState: string | undefined;
 
-  if (!hasVariationsFlag) {
-    sourceValue = sourceLocalization?.stringUnit?.value ?? stringKey;
-    targetValue = targetLocalization?.stringUnit?.value;
-    targetState = targetLocalization?.stringUnit?.state ?? "missing";
-  }
+    if (!hasVariationsFlag) {
+      sourceValue = sourceLocalization?.stringUnit?.value ?? stringKey;
+      targetValue = targetLocalization?.stringUnit?.value;
+      targetState = targetLocalization?.stringUnit?.state ?? "missing";
+    }
 
-  const handleSave = useCallback(async (newValue: string) => {
-    if (!onUpdateTranslation) return;
-    await onUpdateTranslation(stringKey, newValue, selectedLanguage);
-  }, [onUpdateTranslation, stringKey, selectedLanguage]);
+    const handleSave = useCallback(
+      async (newValue: string) => {
+        if (!onUpdateTranslation) return;
+        await onUpdateTranslation(stringKey, newValue, selectedLanguage);
+      },
+      [onUpdateTranslation, stringKey, selectedLanguage],
+    );
 
-  const handleTransferText = useCallback(() => {
-    if (!onUpdateTranslation) return;
-    onUpdateTranslation(stringKey, sourceValue, selectedLanguage);
-  }, [onUpdateTranslation, stringKey, sourceValue, selectedLanguage]);
+    const handleTransferText = useCallback(() => {
+      if (!onUpdateTranslation) return;
+      onUpdateTranslation(stringKey, sourceValue, selectedLanguage);
+    }, [onUpdateTranslation, stringKey, sourceValue, selectedLanguage]);
 
-  return (
-    <tr className="hover:bg-gray-50">
-      {/* Key Column */}
-      <td className={`${CELL_STYLES.base} ${CELL_STYLES.key}`}>{stringKey}</td>
+    return (
+      <tr className="hover:bg-gray-50">
+        {/* Key Column */}
+        <td className={`${CELL_STYLES.base} ${CELL_STYLES.key}`}>{stringKey}</td>
 
-      {/* Source Value Column */}
-      <td className={`${CELL_STYLES.base} ${CELL_STYLES.content}`}>
-        <div className="flex items-center justify-between space-x-2">
-          <span>{sourceValue}</span>
-          {!hasVariationsFlag && !isSourceSelected && (
-            <button
-              onClick={handleTransferText}
-              className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-md transition-colors"
-              title="Transfer source text"
-            >
-              →
-            </button>
-          )}
-        </div>
-      </td>
-
-      {/* Target Value Column */}
-      {!isSourceSelected && (
+        {/* Source Value Column */}
         <td className={`${CELL_STYLES.base} ${CELL_STYLES.content}`}>
-          <TranslationEditor
-            value={targetValue}
-            showEditButton={!hasVariationsFlag}
-            onSave={handleSave}
-            translationKey={stringKey}
-            sourceText={sourceValue}
-            targetLanguage={selectedLanguage}
-            sourceLanguage={sourceLanguage}
-            comment={entry.comment || ""}
-          />
+          <div className="flex items-center justify-between space-x-2">
+            <span>{sourceValue}</span>
+            {!hasVariationsFlag && !isSourceSelected && (
+              <button
+                onClick={handleTransferText}
+                className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-md transition-colors"
+                title="Transfer source text">
+                →
+              </button>
+            )}
+          </div>
         </td>
-      )}
 
-      {/* Comment Column */}
-      <td className={`${CELL_STYLES.base} ${CELL_STYLES.content}`}>{entry.comment || ""}</td>
+        {/* Target Value Column */}
+        {!isSourceSelected && (
+          <td className={`${CELL_STYLES.base} ${CELL_STYLES.content}`}>
+            <TranslationEditor
+              value={targetValue}
+              showEditButton={!hasVariationsFlag}
+              onSave={handleSave}
+              translationKey={stringKey}
+              sourceText={sourceValue}
+              targetLanguage={selectedLanguage}
+              sourceLanguage={sourceLanguage}
+              comment={entry.comment || ""}
+            />
+          </td>
+        )}
 
-      {/* Target State Column */}
-      {!isSourceSelected && <td className={CELL_STYLES.base}>{targetState && <StatusBadge state={targetState} />}</td>}
+        {/* Comment Column */}
+        <td className={`${CELL_STYLES.base} ${CELL_STYLES.content}`}>{entry.comment || ""}</td>
 
-      {/* Extraction State Column */}
-      <td className={CELL_STYLES.base}>
-        {entry.shouldTranslate === false && <StatusBadge state="don't translate" />}
-        {entry.extractionState && <StatusBadge state={entry.extractionState} />}
-      </td>
-    </tr>
-  );
-});
+        {/* Target State Column */}
+        {!isSourceSelected && <td className={CELL_STYLES.base}>{targetState && <StatusBadge state={targetState} />}</td>}
+
+        {/* Extraction State Column */}
+        <td className={CELL_STYLES.base}>
+          {entry.shouldTranslate === false && <StatusBadge state="don't translate" />}
+          {entry.extractionState && <StatusBadge state={entry.extractionState} />}
+        </td>
+      </tr>
+    );
+  },
+);
 
 MainRow.displayName = "MainRow";

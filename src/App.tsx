@@ -1,14 +1,16 @@
 import "./App.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useLocalizableStrings } from "./hooks/useLocalizableStrings";
 import { LanguageSelector } from "./components/LanguageSelector";
 import { TranslationsTable } from "./components/TranslationsTable";
-import { ErrorDisplay } from "./components/ErrorDisplay";
 import { FileControls } from "./components/FileControls";
 import { Header } from "./components/Header";
 import { EmptyState } from "./components/EmptyState";
 import { Layout } from "./components/Layout";
-import { memo } from "react";
+import { memo, useState, useEffect } from "react";
 import { LocalizableStrings } from "./types";
+import { ModelProvider } from "./contexts/model";
 
 interface MainContentProps {
   localizableStrings: LocalizableStrings;
@@ -60,6 +62,7 @@ const MainContent = memo(
 MainContent.displayName = "MainContent";
 
 function App() {
+  const [selectedModel, setSelectedModel] = useState("anthropic/claude-3.5-haiku-20241022:beta");
   const {
     localizableStrings,
     error,
@@ -71,27 +74,32 @@ function App() {
     exportFile,
   } = useLocalizableStrings();
 
-  if (error) {
-    return <ErrorDisplay message={error} />;
-  }
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
 
   return (
-    <Layout>
-      <Header />
-      {localizableStrings ? (
-        <MainContent
-          localizableStrings={localizableStrings}
-          selectedLanguage={selectedLanguage}
-          setSelectedLanguage={setSelectedLanguage}
-          availableLanguages={availableLanguages}
-          updateTranslation={updateTranslation}
-          importFile={importFile}
-          exportFile={exportFile}
-        />
-      ) : (
-        <EmptyState onImport={importFile} onExport={exportFile} />
-      )}
-    </Layout>
+    <ModelProvider selectedModel={selectedModel} setSelectedModel={setSelectedModel}>
+      <ToastContainer position="top-right" autoClose={5000} />
+      <Layout>
+        <Header />
+        {localizableStrings ? (
+          <MainContent
+            localizableStrings={localizableStrings}
+            selectedLanguage={selectedLanguage}
+            setSelectedLanguage={setSelectedLanguage}
+            availableLanguages={availableLanguages}
+            updateTranslation={updateTranslation}
+            importFile={importFile}
+            exportFile={exportFile}
+          />
+        ) : (
+          <EmptyState onImport={importFile} onExport={exportFile} />
+        )}
+      </Layout>
+    </ModelProvider>
   );
 }
 

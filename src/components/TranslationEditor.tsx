@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef, memo } from "react";
+import { toast } from "react-toastify";
 import { getAITranslation } from "../utils/translationService";
 import { getStoredApiKey } from "../utils/apiKeyUtils";
 import { LoadingSpinner } from "./LoadingSpinner";
+import { useModel } from "../contexts/model";
 
 interface TranslationEditorProps {
   value: string | undefined;
@@ -16,12 +18,13 @@ interface TranslationEditorProps {
 
 export const TranslationEditor = memo(
   ({ value, showEditButton, onSave, translationKey, sourceText, sourceLanguage, targetLanguage, comment }: TranslationEditorProps) => {
+    const { selectedModel } = useModel();
     const [isEditing, setIsEditing] = useState(false);
-    const [editValue, setEditValue] = useState(value ?? "");
+    const [editValue, setEditValue] = useState(value || "");
 
     // Update editValue when value or targetLanguage changes
     useEffect(() => {
-      setEditValue(value ?? "");
+      setEditValue(value || "");
     }, [value, targetLanguage]);
 
     const [isSaving, setIsSaving] = useState(false);
@@ -55,24 +58,22 @@ export const TranslationEditor = memo(
     }, [isEditing]);
 
     const handleSave = async () => {
-      if (editValue === value) {
-        setIsEditing(false);
-        return;
-      }
-
       try {
         setIsSaving(true);
         await onSave(editValue);
+        // Update the displayed value immediately after saving
+        setEditValue(editValue || "");
         setIsEditing(false);
       } catch (error) {
-        console.error("Failed to save translation:", error);
+        const errorMessage = error instanceof Error ? error.message : "Failed to save translation";
+        toast.error(errorMessage);
       } finally {
         setIsSaving(false);
       }
     };
 
     const handleCancel = () => {
-      setEditValue(value ?? "");
+      setEditValue(value || "");
       setIsEditing(false);
     };
 
@@ -85,12 +86,13 @@ export const TranslationEditor = memo(
           translationKey,
           sourceText,
           comment,
-        });
+        }, selectedModel);
 
         setEditValue(translation);
         setIsEditing(true);
       } catch (error) {
-        console.error("Failed to get AI translation:", error);
+        const errorMessage = error instanceof Error ? error.message : "Failed to get AI translation";
+        toast.error(errorMessage);
       } finally {
         setIsTranslating(false);
       }
@@ -99,7 +101,7 @@ export const TranslationEditor = memo(
     if (!isEditing) {
       return (
         <div className="flex items-center justify-between space-x-2">
-          <span>{value}</span>
+          <span>{value || ""}</span>
           <div className="flex items-center space-x-1">
             {showEditButton && (
               <>

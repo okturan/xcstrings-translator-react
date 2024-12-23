@@ -52,17 +52,20 @@ export const useLocalizableStrings = () => {
     }
   }, [selectedLanguage]);
 
-  const importFile = useCallback(async (file: File) => {
-    try {
-      const data = await fileManager.importFile(file);
-      validateData(data);
-      setLocalizableStrings(data);
-      initializeLanguages(data);
-      setError(null);
-    } catch (err) {
-      handleError(err, "importFile");
-    }
-  }, [fileManager]);
+  const importFile = useCallback(
+    async (file: File) => {
+      try {
+        const data = await fileManager.importFile(file);
+        validateData(data);
+        setLocalizableStrings(data);
+        initializeLanguages(data);
+        setError(null);
+      } catch (err) {
+        handleError(err, "importFile");
+      }
+    },
+    [fileManager],
+  );
 
   const exportFile = useCallback(async () => {
     if (!localizableStrings) {
@@ -75,27 +78,25 @@ export const useLocalizableStrings = () => {
     }
   }, [fileManager, localizableStrings]);
 
-  const updateTranslation = useCallback(async ({ key, value, language, path }: UpdateTranslationParams): Promise<void> => {
-    if (!localizableStrings) return;
+  const updateTranslation = useCallback(
+    async ({ key, value, language, path }: UpdateTranslationParams): Promise<void> => {
+      if (!localizableStrings) return;
 
-    try {
-      const updatedStrings = fileManager.updateTranslation(
-        localizableStrings,
-        key,
-        language,
-        value,
-        path
-      );
-      setLocalizableStrings(updatedStrings);
-    } catch (err) {
-      handleError(err, "updateTranslation");
-    }
-  }, [fileManager, localizableStrings]);
+      try {
+        const updatedStrings = fileManager.updateTranslation(localizableStrings, key, language, value, path);
+        console.log("Updated strings:", updatedStrings);
+
+        setLocalizableStrings(updatedStrings);
+      } catch (err) {
+        handleError(err, "updateTranslation");
+      }
+    },
+    [fileManager, localizableStrings],
+  );
 
   const memoizedUpdateTranslation = useCallback(
-    (key: string, value: string, language: string, path?: string) =>
-      updateTranslation({ key, value, language, path }),
-    [updateTranslation]
+    (key: string, value: string, language: string, path?: string) => updateTranslation({ key, value, language, path }),
+    [updateTranslation],
   );
 
   const memoizedSetSelectedLanguage = useCallback((language: string) => {
