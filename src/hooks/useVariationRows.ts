@@ -19,7 +19,7 @@ const createVariationRow = (
   varKey,
   sourceValue: sourceValue?.stringUnit?.value || "",
   targetValue: targetValue?.stringUnit?.value || "",
-  targetState: hasNestedVariations ? null : targetValue?.stringUnit?.state || "missing",
+  targetState: hasNestedVariations ? undefined : targetValue?.stringUnit?.state || "missing",
   depth,
   path: currentPath,
 });
