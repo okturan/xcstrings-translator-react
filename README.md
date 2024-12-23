@@ -1,50 +1,60 @@
-# React + TypeScript + Vite
+# iOS Strings Translation Tool
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A specialized tool for translating iOS Localizable.xcstrings files using AI. This tool streamlines the localization process by providing context-aware translations while maintaining the structure and formatting of your iOS string files.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔄 Direct support for iOS Localizable.xcstrings files
+- 🤖 AI-powered translations via OpenRouter
+- 🌍 Support for multiple target languages
+- 📝 Preserves string contexts and comments
+- 🎯 Maintains iOS string formatting and placeholders
+- 💾 Export translations back to xcstrings format
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. Clone and install dependencies:
+```bash
+git clone <repository-url>
+cd translation-tool
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Start the development server:
+```bash
+npm run dev
 ```
+
+3. Set up your OpenRouter API key:
+   - Visit [OpenRouter](https://openrouter.ai/keys) to get your API key
+   - When you launch the app, you'll see an API key input section at the top
+   - Enter your key - it will be securely stored in your browser
+
+## Usage
+
+1. Load your Localizable.xcstrings file using the file picker
+2. Select your target language
+3. Use the AI translation feature to generate translations
+4. Review and edit translations as needed
+5. Export the updated strings file
+
+The tool maintains all metadata, comments, and formatting from your original xcstrings file while adding the new translations.
+
+## Development
+
+Built with:
+- React + TypeScript for robust frontend development
+- Vite for lightning-fast builds
+- Tailwind CSS for styling
+- OpenRouter API (Claude) for AI translations
+
+## Contributing
+
+Contributions are welcome! Feel free to:
+- Report bugs
+- Suggest features
+- Submit pull requests
+
+## License
+
+[License Type] - See LICENSE file for details

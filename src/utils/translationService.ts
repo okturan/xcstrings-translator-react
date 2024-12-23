@@ -1,4 +1,5 @@
 import { TranslationRequest } from "../types";
+import { getStoredApiKey } from "../components/APIKeyInput";
 
 const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
 const MODEL = "anthropic/claude-3.5-haiku-20241022:beta";
@@ -55,7 +56,7 @@ export const getAITranslation = async (translationRequest: TranslationRequest): 
   const response = await fetch(OPENROUTER_API_URL, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
+      Authorization: `Bearer ${getStoredApiKey()}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
@@ -70,7 +71,11 @@ export const getAITranslation = async (translationRequest: TranslationRequest): 
   });
 
   if (!response.ok) {
-    throw new Error("Translation API request failed");
+    const errorData = await response.json().catch(() => ({}));
+    if (response.status === 401) {
+      throw new Error("Invalid or missing API key. Please check your OpenRouter API key.");
+    }
+    throw new Error(errorData.error?.message || "Translation API request failed");
   }
 
   const data = await response.json();
