@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, memo } from "react";
 import { getAITranslation } from "../utils/translationService";
+import { getStoredApiKey } from "../utils/apiKeyUtils";
 import { LoadingSpinner } from "./LoadingSpinner";
 
 interface TranslationEditorProps {
@@ -104,7 +105,7 @@ export const TranslationEditor = memo(
               <>
                 <button
                   onClick={handleAITranslate}
-                  disabled={isTranslating}
+                  disabled={isTranslating || !getStoredApiKey()}
                   className="inline-flex items-center justify-center w-8 h-8 text-gray-600 rounded hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   title="Translate with AI">
                   {isTranslating ? (

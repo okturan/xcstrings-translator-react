@@ -1,5 +1,5 @@
 import { TranslationRequest } from "../types";
-import { getStoredApiKey } from "../components/APIKeyInput";
+import { getStoredApiKey } from "./apiKeyUtils";
 
 const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
 const MODEL = "anthropic/claude-3.5-haiku-20241022:beta";
