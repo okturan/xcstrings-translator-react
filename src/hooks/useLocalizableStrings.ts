@@ -92,15 +92,24 @@ export const useLocalizableStrings = () => {
     }
   }, [fileManager, localizableStrings]);
 
+  const memoizedUpdateTranslation = useCallback(
+    (key: string, value: string, language: string, path?: string) =>
+      updateTranslation({ key, value, language, path }),
+    [updateTranslation]
+  );
+
+  const memoizedSetSelectedLanguage = useCallback((language: string) => {
+    setSelectedLanguage(language);
+  }, []);
+
   return {
     localizableStrings,
     error,
     selectedLanguage,
-    setSelectedLanguage,
+    setSelectedLanguage: memoizedSetSelectedLanguage,
     availableLanguages,
     importFile,
     exportFile,
-    updateTranslation: (key: string, value: string, language: string, path?: string) => 
-      updateTranslation({ key, value, language, path }),
+    updateTranslation: memoizedUpdateTranslation,
   };
 };

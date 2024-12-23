@@ -11,9 +11,7 @@ export function EmptyState({ onImport, onExport }: EmptyStateProps) {
       <div className="text-5xl mb-4" role="img" aria-label="file">
         📄
       </div>
-      <h2 className="text-xl font-bold mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-        No File Loaded
-      </h2>
+      <h2 className="text-xl font-bold mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">No File Loaded</h2>
       <p className="text-gray-600 text-lg leading-relaxed mb-4 max-w-2xl mx-auto">
         Import your <span className="font-mono text-blue-600">.xcstrings</span> file to start managing translations
       </p>

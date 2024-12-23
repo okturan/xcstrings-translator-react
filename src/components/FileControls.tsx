@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, memo } from "react";
 
 interface FileControlsProps {
   onImport: (file: File) => void;
@@ -6,7 +6,7 @@ interface FileControlsProps {
   hasFile: boolean;
 }
 
-export function FileControls({ onImport, onExport, hasFile }: FileControlsProps) {
+export const FileControls = memo(function FileControls({ onImport, onExport, hasFile }: FileControlsProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,4 +38,4 @@ export function FileControls({ onImport, onExport, hasFile }: FileControlsProps)
       )}
     </div>
   );
-}
+});

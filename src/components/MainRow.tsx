@@ -1,3 +1,4 @@
+import { memo, useCallback } from "react";
 import { StringEntry } from "../types";
 import { StatusBadge } from "./StatusBadge";
 import { TranslationEditor } from "./TranslationEditor";
@@ -13,7 +14,7 @@ interface MainRowProps {
   onUpdateTranslation?: (key: string, value: string, language: string) => Promise<void>;
 }
 
-export const MainRow = ({ stringKey, entry, sourceLanguage, selectedLanguage, isSourceSelected, onUpdateTranslation }: MainRowProps) => {
+export const MainRow = memo(({ stringKey, entry, sourceLanguage, selectedLanguage, isSourceSelected, onUpdateTranslation }: MainRowProps) => {
   const sourceLocalization = entry.localizations?.[sourceLanguage];
   const targetLocalization = entry.localizations?.[selectedLanguage];
   const hasVariationsFlag = hasVariations(sourceLocalization, targetLocalization);
@@ -28,15 +29,15 @@ export const MainRow = ({ stringKey, entry, sourceLanguage, selectedLanguage, is
     targetState = targetLocalization?.stringUnit?.state ?? "missing";
   }
 
-  const handleSave = async (newValue: string) => {
+  const handleSave = useCallback(async (newValue: string) => {
     if (!onUpdateTranslation) return;
     await onUpdateTranslation(stringKey, newValue, selectedLanguage);
-  };
+  }, [onUpdateTranslation, stringKey, selectedLanguage]);
 
-  const handleTransferText = () => {
+  const handleTransferText = useCallback(() => {
     if (!onUpdateTranslation) return;
     onUpdateTranslation(stringKey, sourceValue, selectedLanguage);
-  };
+  }, [onUpdateTranslation, stringKey, sourceValue, selectedLanguage]);
 
   return (
     <tr className="hover:bg-gray-50">
@@ -88,4 +89,6 @@ export const MainRow = ({ stringKey, entry, sourceLanguage, selectedLanguage, is
       </td>
     </tr>
   );
-};
+});
+
+MainRow.displayName = "MainRow";

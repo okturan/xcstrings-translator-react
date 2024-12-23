@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, memo } from "react";
 import { getAITranslation } from "../utils/translationService";
 import { LoadingSpinner } from "./LoadingSpinner";
 
@@ -13,7 +13,7 @@ interface TranslationEditorProps {
   comment?: string;
 }
 
-export const TranslationEditor = ({
+export const TranslationEditor = memo(({
   value,
   showEditButton,
   onSave,
@@ -165,4 +165,4 @@ export const TranslationEditor = ({
       </div>
     </div>
   );
-};
+});

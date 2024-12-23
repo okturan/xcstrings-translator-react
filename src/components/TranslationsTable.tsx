@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useMemo, memo } from "react";
 import { LocalizableStrings, StringEntry, VariationsMap } from "../types";
 import { TableHeader } from "./TableHeader";
 import { MainRow } from "./MainRow";
@@ -11,18 +11,18 @@ interface TranslationsTableProps {
   onUpdateTranslation?: (key: string, value: string, language: string, path?: string) => Promise<void>;
 }
 
-export const TranslationsTable = ({ localizableStrings, selectedLanguage, onUpdateTranslation }: TranslationsTableProps) => {
+export const TranslationsTable = memo(({ localizableStrings, selectedLanguage, onUpdateTranslation }: TranslationsTableProps) => {
   const [showMissingOnly, setShowMissingOnly] = useState(false);
   const { sourceLanguage, strings } = localizableStrings;
   const isSourceSelected = sourceLanguage === selectedLanguage;
 
-  const hasAnyMissingVariations = (variations: VariationsMap): boolean => {
+  const hasAnyMissingVariations = useCallback((variations: VariationsMap): boolean => {
     return Object.values(variations).some((variationTypeMap) =>
       Object.values(variationTypeMap).some((variation) => !variation.stringUnit?.value),
     );
-  };
+  }, []);
 
-  const isEntryMissing = (entry: StringEntry): boolean => {
+  const isEntryMissing = useCallback((entry: StringEntry): boolean => {
     const targetLocalization = entry.localizations?.[selectedLanguage];
     // If there are variations, check if any variation is missing
     if (hasVariations(entry.localizations?.[sourceLanguage], targetLocalization)) {
@@ -30,12 +30,14 @@ export const TranslationsTable = ({ localizableStrings, selectedLanguage, onUpda
     }
     // For regular entries, check if the translation is missing
     return targetLocalization?.stringUnit?.state === "missing" || !targetLocalization?.stringUnit?.value;
-  };
+  }, [selectedLanguage, sourceLanguage, hasAnyMissingVariations]);
 
-  const filteredStrings =
-    showMissingOnly && !isSourceSelected ? Object.entries(strings).filter(([, entry]) => isEntryMissing(entry)) : Object.entries(strings);
+  const filteredStrings = useMemo(() =>
+    showMissingOnly && !isSourceSelected ? Object.entries(strings).filter(([, entry]) => isEntryMissing(entry)) : Object.entries(strings),
+    [showMissingOnly, isSourceSelected, strings, isEntryMissing]
+  );
 
-  const renderStringEntry = (key: string, entry: StringEntry) => {
+  const renderStringEntry = useCallback((key: string, entry: StringEntry) => {
     const sourceLocalization = entry.localizations?.[sourceLanguage];
     const targetLocalization = entry.localizations?.[selectedLanguage];
     const hasVariationsFlag = hasVariations(sourceLocalization, targetLocalization);
@@ -63,7 +65,7 @@ export const TranslationsTable = ({ localizableStrings, selectedLanguage, onUpda
         )}
       </React.Fragment>
     );
-  };
+  }, [sourceLanguage, selectedLanguage, isSourceSelected, onUpdateTranslation]);
 
   return (
     <table className="table-fixed w-full divide-y-2 border border-gray-200 divide-gray-300 text-xs">
@@ -76,4 +78,6 @@ export const TranslationsTable = ({ localizableStrings, selectedLanguage, onUpda
       <tbody className="bg-white divide-y divide-gray-200">{filteredStrings.map(([key, entry]) => renderStringEntry(key, entry))}</tbody>
     </table>
   );
-};
+});
+
+TranslationsTable.displayName = "TranslationsTable";

@@ -1,4 +1,6 @@
-export function Header() {
+import { memo } from 'react';
+
+const HeaderComponent = memo(() => {
   return (
     <div className="mb-12 flex flex-col items-center text-center">
       <div className="mb-4 transform hover:scale-105 transition-transform duration-200">
@@ -26,4 +28,6 @@ export function Header() {
       </div>
     </div>
   );
-}
+});
+
+export const Header = memo(HeaderComponent);
