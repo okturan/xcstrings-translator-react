@@ -1,107 +1,25 @@
-import { useState, useEffect, useMemo } from "react";
-import { Model, fetchModels } from "../utils/modelService";
+import { useModels, useModelSelector } from "../contexts/model/hooks";
 import ReactMarkdown from "react-markdown";
 
-interface ModelSelectorProps {
-  selectedModel: string;
-  onModelSelect: (modelId: string) => void;
-}
-
-type GroupedModels = {
-  [provider: string]: Model[];
-};
-
-export function ModelSelector({ selectedModel, onModelSelect }: ModelSelectorProps) {
-  const [models, setModels] = useState<Model[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedProvider, setSelectedProvider] = useState<string>("all");
-  const [sortBy, setSortBy] = useState<"name" | "date" | "price">("date");
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+export function ModelSelector() {
+  const { selectedModel, setSelectedModel, isLoading, error } = useModels();
+  const {
+    filteredModels,
+    searchQuery,
+    setSearchQuery,
+    selectedProvider,
+    setSelectedProvider,
+    sortBy,
+    setSortBy,
+    sortOrder,
+    setSortOrder,
+    providers,
+  } = useModelSelector();
 
   // Extract provider from model ID (e.g., "anthropic/claude-3" -> "anthropic")
   const getProvider = (modelId: string): string => {
     return modelId.split("/")[0];
   };
-
-  // Group models by provider
-  const groupedModels = useMemo(() => {
-    return models.reduce((acc: GroupedModels, model) => {
-      const provider = getProvider(model.id);
-      if (!acc[provider]) {
-        acc[provider] = [];
-      }
-      acc[provider].push(model);
-      return acc;
-    }, {});
-  }, [models]);
-
-  // Get unique providers
-  const providers = useMemo(() => {
-    return ["all", ...Object.keys(groupedModels)].sort();
-  }, [groupedModels]);
-
-  // Filter and sort models
-  const filteredModels = useMemo(() => {
-    let filtered = models;
-
-    // Filter by provider
-    if (selectedProvider !== "all") {
-      filtered = filtered.filter(model => getProvider(model.id) === selectedProvider);
-    }
-
-    // Filter by search query
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(model => 
-        model.name.toLowerCase().includes(query) || 
-        model.description.toLowerCase().includes(query)
-      );
-    }
-
-    // Always include the selected model if it exists
-    const selectedModelData = models.find(m => m.id === selectedModel);
-    if (selectedModelData && !filtered.includes(selectedModelData)) {
-      filtered.push(selectedModelData);
-    }
-
-    // Sort models
-    return filtered.sort((a, b) => {
-      let comparison = 0;
-      if (sortBy === "date") {
-        comparison = a.created - b.created;
-      } else if (sortBy === "price") {
-        // Calculate total price per million tokens
-        const getPricePerMillion = (model: Model) => {
-          const promptPrice = parseFloat(model.pricing.prompt) * 1000000;
-          const completionPrice = parseFloat(model.pricing.completion) * 1000000;
-          const imagePrice = parseFloat(model.pricing.image) * 1000 * 1000;
-          return promptPrice + completionPrice + imagePrice;
-        };
-        comparison = getPricePerMillion(a) - getPricePerMillion(b);
-      } else {
-        comparison = a.name.localeCompare(b.name);
-      }
-      return sortOrder === "asc" ? comparison : -comparison;
-    });
-  }, [models, selectedProvider, searchQuery, sortBy, sortOrder, selectedModel]);
-
-  useEffect(() => {
-    const loadModels = async () => {
-      try {
-        setIsLoading(true);
-        const fetchedModels = await fetchModels();
-        setModels(fetchedModels);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to load models");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadModels();
-  }, []);
 
   if (isLoading) {
     return (
@@ -171,7 +89,7 @@ export function ModelSelector({ selectedModel, onModelSelect }: ModelSelectorPro
         <select
           id="model-select"
           value={selectedModel}
-          onChange={(e) => onModelSelect(e.target.value)}
+          onChange={(e) => setSelectedModel(e.target.value)}
           className="block w-full rounded-md border border-gray-300 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm"
         >
           {filteredModels.map((model) => {
@@ -200,16 +118,16 @@ export function ModelSelector({ selectedModel, onModelSelect }: ModelSelectorPro
         </select>
       </div>
 
-      {selectedModel && (
+      {selectedModel && filteredModels.length > 0 && (
         <>
           <div className="mt-2 text-sm text-gray-500 prose prose-sm max-w-none">
             <ReactMarkdown>
-              {models.find(m => m.id === selectedModel)?.description || ""}
+              {filteredModels.find(m => m.id === selectedModel)?.description || ""}
             </ReactMarkdown>
           </div>
           <div className="mt-2 space-y-1">
             {(() => {
-              const model = models.find(m => m.id === selectedModel);
+              const model = filteredModels.find(m => m.id === selectedModel);
               if (!model) return null;
               return (
                 <>

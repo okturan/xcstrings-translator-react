@@ -1,8 +1,12 @@
 import { createContext } from 'react';
+import { Model } from '../../utils/modelService';
 
-export interface ModelContextType {
+export interface ModelsContextType {
+  models: Model[];
   selectedModel: string;
+  isLoading: boolean;
+  error: string | null;
   setSelectedModel: (model: string) => void;
 }
 
-export const ModelContext = createContext<ModelContextType | undefined>(undefined);
+export const ModelsContext = createContext<ModelsContextType | undefined>(undefined);

@@ -55,8 +55,6 @@ const SingleVariationRow = memo(
     const handleSave = useCallback(
       async (newValue: string) => {
         if (!onUpdateTranslation) return;
-        console.log("handleSave, newValue:", newValue);
-        console.log("handleSave path:", path);
         await onUpdateTranslation(entryKey, newValue, selectedLanguage, path);
       },
       [onUpdateTranslation, entryKey, selectedLanguage, path],

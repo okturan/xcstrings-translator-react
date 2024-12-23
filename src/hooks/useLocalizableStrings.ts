@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { LocalizableStrings } from "../types";
 import { ERROR_MESSAGES } from "../constants";
 import { extractAvailableLanguages } from "../utils/stringUtils";
-import { BrowserFileManager } from "../utils/BrowserFileManager";
+import { FileManager } from "../utils/FileManager";
 
 interface UpdateTranslationParams {
   key: string;
@@ -21,7 +21,7 @@ export const useLocalizableStrings = () => {
     return localStorage.getItem("selectedLanguage") || "";
   });
   const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
-  const [fileManager] = useState(() => new BrowserFileManager());
+  const [fileManager] = useState(() => new FileManager());
 
   const handleError = (err: unknown, context: string) => {
     const errorMessage = err instanceof Error ? err.message : ERROR_MESSAGES.genericError;
