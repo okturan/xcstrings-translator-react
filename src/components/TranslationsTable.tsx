@@ -40,6 +40,7 @@ export const TranslationsTable = memo(({ localizableStrings, selectedLanguage, o
         selectedLanguage={selectedLanguage}
         showMissingOnly={showMissingOnly}
         onShowMissingOnlyChange={setShowMissingOnly}
+        isSourceSelected={isSourceSelected}
       />
       <tbody className="bg-white divide-y divide-gray-200">
         {Object.entries(strings).map(([key, entry]) => renderStringEntry(key, entry))}

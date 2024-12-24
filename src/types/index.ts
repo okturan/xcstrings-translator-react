@@ -29,11 +29,6 @@ export interface VariationValue {
   variations?: VariationsMap;
 }
 
-export interface VariationContainer {
-  stringUnit?: StringUnit;
-  variations?: VariationsMap;
-}
-
 export interface LocalizableStrings {
   sourceLanguage: string;
   strings: {

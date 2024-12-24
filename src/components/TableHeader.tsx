@@ -5,10 +5,16 @@ interface TableHeaderProps {
   selectedLanguage: string;
   showMissingOnly: boolean;
   onShowMissingOnlyChange: (value: boolean) => void;
+  isSourceSelected: boolean;
 }
 
-export const TableHeader = ({ sourceLanguage, selectedLanguage, showMissingOnly, onShowMissingOnlyChange }: TableHeaderProps) => {
-  const isSourceSelected = sourceLanguage == selectedLanguage;
+export const TableHeader = ({
+  sourceLanguage,
+  selectedLanguage,
+  showMissingOnly,
+  onShowMissingOnlyChange,
+  isSourceSelected,
+}: TableHeaderProps) => {
   return (
     <thead className="bg-gray-50 sticky top-0 z-10 shadow-sm">
       <tr>
