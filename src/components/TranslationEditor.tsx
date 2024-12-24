@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef, memo } from "react";
 import { toast } from "react-toastify";
-import { getAITranslation } from "../utils/translationService";
 import { getStoredApiKey } from "../utils/apiKeyUtils";
 import { LoadingSpinner } from "./LoadingSpinner";
-import { useModel } from "../contexts/model";
+import { useAITranslation } from "../hooks/useAITranslation";
 
 interface TranslationEditorProps {
   value: string | undefined;
@@ -18,17 +17,21 @@ interface TranslationEditorProps {
 
 export const TranslationEditor = memo(
   ({ value, showEditButton, onSave, translationKey, sourceText, sourceLanguage, targetLanguage, comment }: TranslationEditorProps) => {
-    const { selectedModel } = useModel();
     const [isEditing, setIsEditing] = useState(false);
     const [editValue, setEditValue] = useState(value || "");
+    const [isSaving, setIsSaving] = useState(false);
+    const { translate, isTranslating } = useAITranslation({
+      sourceLanguage,
+      targetLanguage,
+      translationKey,
+      sourceText,
+      comment,
+    });
 
     // Update editValue when value or targetLanguage changes
     useEffect(() => {
       setEditValue(value || "");
     }, [value, targetLanguage]);
-
-    const [isSaving, setIsSaving] = useState(false);
-    const [isTranslating, setIsTranslating] = useState(false);
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     const adjustTextareaHeight = (element: HTMLTextAreaElement, initialLoad = false) => {
@@ -78,23 +81,12 @@ export const TranslationEditor = memo(
     };
 
     const handleAITranslate = async () => {
-      setIsTranslating(true);
       try {
-        const translation = await getAITranslation({
-          sourceLanguage,
-          targetLanguage,
-          translationKey,
-          sourceText,
-          comment,
-        }, selectedModel);
-
+        const translation = await translate();
         setEditValue(translation);
         setIsEditing(true);
-      } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : "Failed to get AI translation";
-        toast.error(errorMessage);
-      } finally {
-        setIsTranslating(false);
+      } catch {
+        // Error is already handled in the hook
       }
     };
 

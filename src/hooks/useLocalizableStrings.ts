@@ -1,27 +1,15 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { LocalizableStrings } from "../types";
 import { ERROR_MESSAGES } from "../constants";
 import { extractAvailableLanguages } from "../utils/stringUtils";
-import { FileManager } from "../utils/FileManager";
-
-interface UpdateTranslationParams {
-  key: string;
-  value: string;
-  language: string;
-  path?: string;
-}
 
 /**
- * Custom hook to manage localizable strings with support for nested variations.
+ * Custom hook to manage localizable strings state with support for nested variations.
  */
 export const useLocalizableStrings = () => {
   const [localizableStrings, setLocalizableStrings] = useState<LocalizableStrings | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [selectedLanguage, setSelectedLanguage] = useState<string>(() => {
-    return localStorage.getItem("selectedLanguage") || "";
-  });
   const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
-  const [fileManager] = useState(() => new FileManager());
 
   const handleError = (err: unknown, context: string) => {
     const errorMessage = err instanceof Error ? err.message : ERROR_MESSAGES.genericError;
@@ -36,81 +24,64 @@ export const useLocalizableStrings = () => {
     }
   };
 
-  const initializeLanguages = (data: LocalizableStrings) => {
-    const languagesArray = extractAvailableLanguages(data.strings);
-    setAvailableLanguages(languagesArray);
-    // Only set source language if no language was previously selected
-    if (!localStorage.getItem("selectedLanguage")) {
-      setSelectedLanguage(data.sourceLanguage);
-    }
-  };
-
-  // Save selected language to localStorage whenever it changes
-  useEffect(() => {
-    if (selectedLanguage) {
-      localStorage.setItem("selectedLanguage", selectedLanguage);
-    }
-  }, [selectedLanguage]);
-
-  const importFile = useCallback(
-    async (file: File) => {
-      try {
-        const data = await fileManager.importFile(file);
-        validateData(data);
-        setLocalizableStrings(data);
-        initializeLanguages(data);
-        setError(null);
-      } catch (err) {
-        handleError(err, "importFile");
-      }
-    },
-    [fileManager],
-  );
-
-  const exportFile = useCallback(async () => {
-    if (!localizableStrings) {
-      throw new Error("No file loaded");
-    }
+  const initializeStrings = useCallback((data: LocalizableStrings) => {
     try {
-      await fileManager.exportFile(localizableStrings);
+      validateData(data);
+      setLocalizableStrings(data);
+      const languagesArray = extractAvailableLanguages(data.strings);
+      setAvailableLanguages(languagesArray);
+      setError(null);
     } catch (err) {
-      handleError(err, "exportFile");
+      handleError(err, "initializeStrings");
     }
-  }, [fileManager, localizableStrings]);
+  }, []);
 
   const updateTranslation = useCallback(
-    async ({ key, value, language, path }: UpdateTranslationParams): Promise<void> => {
+    (key: string, value: string, language: string, path?: string): void => {
       if (!localizableStrings) return;
 
       try {
-        const updatedStrings = fileManager.updateTranslation(localizableStrings, key, language, value, path);
-        console.log("Updated strings:", updatedStrings);
+        // Create a deep copy of the current state
+        const updatedStrings = JSON.parse(JSON.stringify(localizableStrings));
+        
+        // Navigate to the correct location in the strings object
+        let target = updatedStrings.strings[key];
+        if (!target) {
+          throw new Error(`Key not found: ${key}`);
+        }
+
+        if (path) {
+          // Split the path and traverse to the correct variation
+          const pathParts = path.split('.');
+          for (const part of pathParts) {
+            target = target.variations?.[part];
+            if (!target) {
+              throw new Error(`Invalid variation path: ${path}`);
+            }
+          }
+        }
+
+        // Update the translation
+        if (!target.localizations) {
+          target.localizations = {};
+        }
+        target.localizations[language] = value;
 
         setLocalizableStrings(updatedStrings);
+        setError(null);
       } catch (err) {
         handleError(err, "updateTranslation");
       }
     },
-    [fileManager, localizableStrings],
+    [localizableStrings],
   );
-
-  const memoizedUpdateTranslation = useCallback(
-    (key: string, value: string, language: string, path?: string) => updateTranslation({ key, value, language, path }),
-    [updateTranslation],
-  );
-
-  const memoizedSetSelectedLanguage = useCallback((language: string) => {
-    setSelectedLanguage(language);
-  }, []);
 
   return {
     localizableStrings,
     error,
-    selectedLanguage,
-    setSelectedLanguage: memoizedSetSelectedLanguage,
     availableLanguages,
-    importFile,
-    exportFile,
-    updateTranslation: memoizedUpdateTranslation,
+    validateData,
+    initializeStrings,
+    updateTranslation,
   };
 };

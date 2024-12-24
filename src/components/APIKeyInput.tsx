@@ -5,8 +5,6 @@ import { APIKeyButton } from "./APIKeyButton";
 import { APIKeyForm } from "./APIKeyForm";
 import { ModelSelector } from "./ModelSelector";
 import { useClickOutside } from "../hooks/useClickOutside";
-import { useModel } from "../contexts/model";
-
 interface APIKeyState {
   key: string;
   isEditing: boolean;
@@ -21,7 +19,6 @@ const APIKeyStatus = ({ isSaved }: { isSaved: boolean }) => (
 );
 
 export function APIKeyInput() {
-  const { selectedModel, setSelectedModel } = useModel();
   const [state, setState] = useState<APIKeyState>({
     key: "",
     isEditing: false,
@@ -116,12 +113,7 @@ export function APIKeyInput() {
                     </div>
                   </div>
                 </div>
-                {state.key && (
-                  <ModelSelector
-                    selectedModel={selectedModel}
-                    onModelSelect={setSelectedModel}
-                  />
-                )}
+                {state.key && <ModelSelector />}
               </>
             )}
             <p className="text-sm text-gray-500 mt-4">

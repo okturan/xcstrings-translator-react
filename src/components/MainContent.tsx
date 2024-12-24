@@ -1,29 +1,22 @@
 import { memo } from "react";
-import { LocalizableStrings } from "../types";
 import { FileControls } from "./FileControls";
 import { LanguageSelector } from "./LanguageSelector";
 import { TranslationsTable } from "./TranslationsTable";
+import { useStrings } from "../contexts/strings";
 
-export interface MainContentProps {
-  localizableStrings: LocalizableStrings;
-  selectedLanguage: string;
-  setSelectedLanguage: (language: string) => void;
-  availableLanguages: string[];
-  updateTranslation: (key: string, value: string, language: string, path?: string) => Promise<void>;
-  importFile: (file: File) => Promise<void>;
-  exportFile: () => Promise<void>;
-}
-
-export const MainContent = memo(
-  ({
-    localizableStrings,
+export const MainContent = memo(() => {
+  const {
+    localizableStrings: strings,
     selectedLanguage,
     setSelectedLanguage,
     availableLanguages,
     updateTranslation,
     importFile,
     exportFile,
-  }: MainContentProps) => {
+  } = useStrings();
+
+  // We know strings is not null because MainContent is only rendered when localizableStrings exists
+  const localizableStrings = strings!;
     return (
       <>
         <div className="mb-6 flex justify-center">
