@@ -32,7 +32,7 @@ export class FileManager {
     const jsonString = JSON.stringify(data, null, 2);
     // Optionally tweak formatting if desired:
     const formattedJson = jsonString.replace(/"([^"]+)":/g, '"$1" :');
-    
+
     const blob = new Blob([formattedJson], { type: "application/json" });
     const url = URL.createObjectURL(blob);
 
@@ -52,13 +52,7 @@ export class FileManager {
    * - If `path` is provided, updates/deletes a nested variation.
    * - Otherwise updates/deletes the main stringUnit.
    */
-  updateTranslation(
-    strings: LocalizableStrings,
-    key: string,
-    language: string,
-    value: string,
-    path?: string
-  ): LocalizableStrings {
+  updateTranslation(strings: LocalizableStrings, key: string, language: string, value: string, path?: string): LocalizableStrings {
     const updatedStrings = this.cloneData(strings);
     const localization = this.getOrCreateLocalization(updatedStrings, key, language);
     const trimmedValue = value?.trim();
@@ -92,8 +86,8 @@ export class FileManager {
         // Non-empty => store in stringUnit, remove variations
         delete localization.variations;
         localization.stringUnit = {
-          value: trimmedValue,
           state: "translated",
+          value: trimmedValue,
         };
       } else {
         // Empty => delete main stringUnit
@@ -112,11 +106,7 @@ export class FileManager {
   /**
    * Safely retrieves or creates a localization object for the given key/language.
    */
-  private getOrCreateLocalization(
-    strings: LocalizableStrings,
-    key: string,
-    language: string
-  ) {
+  private getOrCreateLocalization(strings: LocalizableStrings, key: string, language: string) {
     const entry = strings.strings[key];
     if (!entry) {
       throw new Error(`String key not found: ${key}`);
@@ -131,11 +121,7 @@ export class FileManager {
   /**
    * Updates a nested variation at a specified path with a non-empty value.
    */
-  private updateVariationAtPath(
-    variations: VariationsMap,
-    pathParts: string[],
-    value: string
-  ): void {
+  private updateVariationAtPath(variations: VariationsMap, pathParts: string[], value: string): void {
     let current = variations;
 
     pathParts.forEach((part, index) => {
@@ -163,10 +149,7 @@ export class FileManager {
   /**
    * Ensures a nested variation object exists at the given key, creating it if necessary.
    */
-  private ensureNestedVariation(
-    container: { [key: string]: VariationValue },
-    key: string
-  ): VariationValue {
+  private ensureNestedVariation(container: { [key: string]: VariationValue }, key: string): VariationValue {
     if (!container[key]) {
       container[key] = { variations: {} };
     } else if (!container[key].variations) {
@@ -178,10 +161,7 @@ export class FileManager {
   /**
    * Deletes a specific nested variation node (leaf) at the given path.
    */
-  private deleteVariationAtPath(
-    variations: VariationsMap,
-    pathParts: string[]
-  ): void {
+  private deleteVariationAtPath(variations: VariationsMap, pathParts: string[]): void {
     let current = variations;
 
     for (let i = 0; i < pathParts.length; i++) {
@@ -211,10 +191,7 @@ export class FileManager {
   /**
    * Cleans up any leftover empty variation objects up the chain.
    */
-  private cleanupEmptyVariations(
-    variations: VariationsMap,
-    pathParts: string[]
-  ): void {
+  private cleanupEmptyVariations(variations: VariationsMap, pathParts: string[]): void {
     // We track all ancestors so we can remove empty parents.
     const stack: Array<{
       variations: VariationsMap;
