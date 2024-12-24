@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { BADGE_BASE_STYLES, STATUS_STYLES } from "../constants";
 
 interface StatusBadgeProps {
