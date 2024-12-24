@@ -22,50 +22,57 @@ export const TranslationsTable = memo(({ localizableStrings, selectedLanguage, o
     );
   }, []);
 
-  const isEntryMissing = useCallback((entry: StringEntry): boolean => {
-    const targetLocalization = entry.localizations?.[selectedLanguage];
-    // If there are variations, check if any variation is missing
-    if (hasVariations(entry.localizations?.[sourceLanguage], targetLocalization)) {
-      return !targetLocalization?.variations || hasAnyMissingVariations(targetLocalization.variations);
-    }
-    // For regular entries, check if the translation is missing
-    return targetLocalization?.stringUnit?.state === "missing" || !targetLocalization?.stringUnit?.value;
-  }, [selectedLanguage, sourceLanguage, hasAnyMissingVariations]);
-
-  const filteredStrings = useMemo(() =>
-    showMissingOnly && !isSourceSelected ? Object.entries(strings).filter(([, entry]) => isEntryMissing(entry)) : Object.entries(strings),
-    [showMissingOnly, isSourceSelected, strings, isEntryMissing]
+  const isEntryMissing = useCallback(
+    (entry: StringEntry): boolean => {
+      const targetLocalization = entry.localizations?.[selectedLanguage];
+      // If there are variations, check if any variation is missing
+      if (hasVariations(entry.localizations?.[sourceLanguage], targetLocalization)) {
+        return !targetLocalization?.variations || hasAnyMissingVariations(targetLocalization.variations);
+      }
+      // For regular entries, check if the translation is missing
+      return targetLocalization?.stringUnit?.state === "missing" || !targetLocalization?.stringUnit?.value;
+    },
+    [selectedLanguage, sourceLanguage, hasAnyMissingVariations],
   );
 
-  const renderStringEntry = useCallback((key: string, entry: StringEntry) => {
-    const sourceLocalization = entry.localizations?.[sourceLanguage];
-    const targetLocalization = entry.localizations?.[selectedLanguage];
-    const hasVariationsFlag = hasVariations(sourceLocalization, targetLocalization);
+  const filteredStrings = useMemo(
+    () =>
+      showMissingOnly && !isSourceSelected ? Object.entries(strings).filter(([, entry]) => isEntryMissing(entry)) : Object.entries(strings),
+    [showMissingOnly, isSourceSelected, strings, isEntryMissing],
+  );
 
-    return (
-      <React.Fragment key={key}>
-        <MainRow
-          stringKey={key}
-          entry={entry}
-          sourceLanguage={sourceLanguage}
-          selectedLanguage={selectedLanguage}
-          isSourceSelected={isSourceSelected}
-          onUpdateTranslation={onUpdateTranslation}
-        />
-        {hasVariationsFlag && (
-          <VariationRows
-            entryKey={key}
+  const renderStringEntry = useCallback(
+    (key: string, entry: StringEntry) => {
+      const sourceLocalization = entry.localizations?.[sourceLanguage];
+      const targetLocalization = entry.localizations?.[selectedLanguage];
+      const hasVariationsFlag = hasVariations(sourceLocalization, targetLocalization);
+
+      return (
+        <React.Fragment key={key}>
+          <MainRow
+            stringKey={key}
+            entry={entry}
             sourceLanguage={sourceLanguage}
-            sourceLocalization={sourceLocalization}
-            targetLocalization={targetLocalization}
+            selectedLanguage={selectedLanguage}
             isSourceSelected={isSourceSelected}
             onUpdateTranslation={onUpdateTranslation}
-            selectedLanguage={selectedLanguage}
           />
-        )}
-      </React.Fragment>
-    );
-  }, [sourceLanguage, selectedLanguage, isSourceSelected, onUpdateTranslation]);
+          {hasVariationsFlag && (
+            <VariationRows
+              entryKey={key}
+              sourceLanguage={sourceLanguage}
+              sourceLocalization={sourceLocalization}
+              targetLocalization={targetLocalization}
+              isSourceSelected={isSourceSelected}
+              onUpdateTranslation={onUpdateTranslation}
+              selectedLanguage={selectedLanguage}
+            />
+          )}
+        </React.Fragment>
+      ); 
+    },
+    [sourceLanguage, selectedLanguage, isSourceSelected, onUpdateTranslation],
+  );
 
   return (
     <table className="table-fixed w-full divide-y-2 border border-gray-200 divide-gray-300 text-xs">
