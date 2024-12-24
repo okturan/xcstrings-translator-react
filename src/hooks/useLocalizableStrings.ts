@@ -36,52 +36,12 @@ export const useLocalizableStrings = () => {
     }
   }, []);
 
-  const updateTranslation = useCallback(
-    (key: string, value: string, language: string, path?: string): void => {
-      if (!localizableStrings) return;
-
-      try {
-        // Create a deep copy of the current state
-        const updatedStrings = JSON.parse(JSON.stringify(localizableStrings));
-        
-        // Navigate to the correct location in the strings object
-        let target = updatedStrings.strings[key];
-        if (!target) {
-          throw new Error(`Key not found: ${key}`);
-        }
-
-        if (path) {
-          // Split the path and traverse to the correct variation
-          const pathParts = path.split('.');
-          for (const part of pathParts) {
-            target = target.variations?.[part];
-            if (!target) {
-              throw new Error(`Invalid variation path: ${path}`);
-            }
-          }
-        }
-
-        // Update the translation
-        if (!target.localizations) {
-          target.localizations = {};
-        }
-        target.localizations[language] = value;
-
-        setLocalizableStrings(updatedStrings);
-        setError(null);
-      } catch (err) {
-        handleError(err, "updateTranslation");
-      }
-    },
-    [localizableStrings],
-  );
-
   return {
     localizableStrings,
     error,
+    setError,
     availableLanguages,
     validateData,
     initializeStrings,
-    updateTranslation,
   };
 };

@@ -15,11 +15,11 @@ export const StringsProvider = ({ children }: StringsProviderProps) => {
     availableLanguages,
     validateData,
     initializeStrings,
-    updateTranslation,
+    setError,
   } = useLocalizableStrings();
 
   const { selectedLanguage, setSelectedLanguage } = usePersistedLanguageState("");
-  const { importStringsFile, exportStringsFile } = useFileManager();
+  const { importStringsFile, exportStringsFile, fileManager } = useFileManager();
 
   async function handleImportFile(file: File) {
     try {
@@ -51,7 +51,22 @@ export const StringsProvider = ({ children }: StringsProviderProps) => {
         importFile: handleImportFile,
         exportFile: handleExportFile,
         updateTranslation: async (key: string, value: string, language: string, path?: string) => {
-          updateTranslation(key, value, language, path);
+          if (!localizableStrings) return;
+          try {
+            const updated = fileManager.updateTranslation(
+              localizableStrings,
+              key,
+              language,
+              value,
+              path
+            );
+            setError(null);
+            initializeStrings(updated);
+          } catch (err) {
+            const errorMessage = err instanceof Error ? err.message : "Failed to update translation";
+            setError(errorMessage);
+            console.error("Update error:", err);
+          }
         },
       }}
     >
