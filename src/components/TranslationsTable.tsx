@@ -2,7 +2,7 @@ import React, { useState, useCallback, useMemo, memo } from "react";
 import { LocalizableStrings, StringEntry, VariationsMap } from "../types";
 import { TableHeader } from "./TableHeader";
 import { MainRow } from "./MainRow";
-import { VariationRow } from "./VariationRow";
+import { VariationRows } from "./VariationRows";
 import { hasVariations } from "../utils/stringUtils";
 
 interface TranslationsTableProps {
@@ -53,7 +53,7 @@ export const TranslationsTable = memo(({ localizableStrings, selectedLanguage, o
           onUpdateTranslation={onUpdateTranslation}
         />
         {hasVariationsFlag && (
-          <VariationRow
+          <VariationRows
             entryKey={key}
             sourceLanguage={sourceLanguage}
             sourceLocalization={sourceLocalization}

@@ -1,28 +1,26 @@
-import { useState, useCallback } from "react";
-import { LocalizableStrings } from "../types";
-import { ERROR_MESSAGES } from "../constants";
-import { extractAvailableLanguages } from "../utils/stringUtils";
+import { useState, useCallback } from 'react';
+import { LocalizableStrings } from '../types';
+import { ERROR_MESSAGES } from '../constants';
+import { extractAvailableLanguages } from '../utils/stringUtils';
 
-/**
- * Custom hook to manage localizable strings state with support for nested variations.
- */
-export const useLocalizableStrings = () => {
+interface UseLocalizableStringsReturn {
+  localizableStrings: LocalizableStrings | null;
+  error: string | null;
+  availableLanguages: string[];
+  initializeStrings: (data: LocalizableStrings) => void;
+  setError: React.Dispatch<React.SetStateAction<string | null>>;
+}
+
+export function useLocalizableStrings(): UseLocalizableStringsReturn {
   const [localizableStrings, setLocalizableStrings] = useState<LocalizableStrings | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
 
-  const handleError = (err: unknown, context: string) => {
-    const errorMessage = err instanceof Error ? err.message : ERROR_MESSAGES.genericError;
-    setError(errorMessage);
-    console.error(`Error in ${context}:`, err);
-    throw err;
-  };
-
-  const validateData = (data: LocalizableStrings) => {
+  const validateData = useCallback((data: LocalizableStrings) => {
     if (!data.sourceLanguage || !data.strings || !data.version) {
       throw new Error(ERROR_MESSAGES.invalidData);
     }
-  };
+  }, []);
 
   const initializeStrings = useCallback((data: LocalizableStrings) => {
     try {
@@ -32,16 +30,18 @@ export const useLocalizableStrings = () => {
       setAvailableLanguages(languagesArray);
       setError(null);
     } catch (err) {
-      handleError(err, "initializeStrings");
+      const errorMessage = err instanceof Error ? err.message : ERROR_MESSAGES.genericError;
+      setError(errorMessage);
+      console.error("Error initializing strings:", err);
+      throw err;
     }
-  }, []);
+  }, [validateData]);
 
   return {
     localizableStrings,
     error,
-    setError,
     availableLanguages,
-    validateData,
     initializeStrings,
+    setError,
   };
-};
+}
