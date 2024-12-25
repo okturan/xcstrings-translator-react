@@ -6,6 +6,10 @@ A specialized tool for translating Localizable.xcstrings files using AI. This to
 
 The .xcstrings format is Apple's modern localization resource format used in Xcode for macOS, iOS, watchOS, and tvOS applications. It uses a structured JSON format that efficiently manages string variations, pluralization rules, and provides valuable context for translators. This format is designed to handle complex localization scenarios while maintaining a clean, organized structure that's both human-readable and machine-processable.
 
+## Live Demo
+
+Try the tool now at [https://xcstrings-translator-react.pages.dev/](https://xcstrings-translator-react.pages.dev/)
+
 ## Features
 
 - 🔄 Direct support for Localizable.xcstrings files
