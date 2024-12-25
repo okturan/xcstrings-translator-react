@@ -19,8 +19,8 @@ The .xcstrings format is Apple's modern localization resource format used in Xco
 
 1. Clone and install dependencies:
 ```bash
-git clone <repository-url>
-cd translation-tool
+git clone https://github.com/okturan/xcstrings-translator-react.git
+cd xcstrings-translator-react
 npm install
 ```
 
