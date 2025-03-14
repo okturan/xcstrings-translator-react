@@ -8,7 +8,9 @@ The .xcstrings format is Apple's modern localization resource format used in Xco
 
 ## Live Demo
 
-Try the tool now at [https://xcstrings-translator-react.pages.dev/](https://xcstrings-translator-react.pages.dev/)
+Try the tool now at [https://xcstrings-translator-react.pages.dev/](https://xcstrings-translator-react.pages.dev/).
+![Screenshot of the application](screenshot.jpg)
+
 
 ## Features
 
