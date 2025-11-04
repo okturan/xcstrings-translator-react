@@ -1,6 +1,7 @@
 import { useModels, useModelSelector } from "../contexts/model/hooks";
 import ReactMarkdown from "react-markdown";
 import { PRICING_MULTIPLIERS } from "../constants";
+import { extractProviderFromModelId, capitalizeProvider } from "../utils/modelUtils";
 
 export function ModelSelector() {
   const { selectedModel, setSelectedModel, isLoading, error } = useModels();
@@ -17,10 +18,6 @@ export function ModelSelector() {
     providers,
   } = useModelSelector();
 
-  // Extract provider from model ID (e.g., "anthropic/claude-3" -> "anthropic")
-  const getProvider = (modelId: string): string => {
-    return modelId.split("/")[0];
-  };
 
   if (isLoading) {
     return (
@@ -61,7 +58,7 @@ export function ModelSelector() {
           >
             {providers.map((provider) => (
               <option key={provider} value={provider}>
-                {provider.charAt(0).toUpperCase() + provider.slice(1)}
+                {capitalizeProvider(provider)}
               </option>
             ))}
           </select>
@@ -94,7 +91,7 @@ export function ModelSelector() {
           className="block w-full rounded-md border border-gray-300 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm"
         >
           {filteredModels.map((model) => {
-            const provider = getProvider(model.id);
+            const provider = extractProviderFromModelId(model.id);
             const pricing = (() => {
               if (model.pricing.prompt === "0" && model.pricing.completion === "0" && model.pricing.image === "0") {
                 return "Free";

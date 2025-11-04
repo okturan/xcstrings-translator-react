@@ -1,5 +1,6 @@
 import { LocalizableStrings, VariationsMap, VariationValue } from "../types";
 import { EXPORT_FORMAT } from "../constants";
+import { parsePathPart } from "./pathUtils";
 
 export class FileManager {
   private currentFile: LocalizableStrings | null = null;
@@ -129,7 +130,7 @@ export class FileManager {
     let current = variations;
 
     pathParts.forEach((part, index) => {
-      const [variationType, variationKey] = part.split(":");
+      const { variationType, variationKey } = parsePathPart(part);
       if (!current[variationType]) {
         current[variationType] = {};
       }
@@ -169,7 +170,7 @@ export class FileManager {
     let current = variations;
 
     for (let i = 0; i < pathParts.length; i++) {
-      const [variationType, variationKey] = pathParts[i].split(":");
+      const { variationType, variationKey } = parsePathPart(pathParts[i]);
 
       // Final part => remove the node
       if (i === pathParts.length - 1) {
@@ -205,7 +206,7 @@ export class FileManager {
 
     let current = variations;
     for (const part of pathParts) {
-      const [variationType, variationKey] = part.split(":");
+      const { variationType, variationKey } = parsePathPart(part);
       stack.push({ variations: current, variationType, variationKey });
 
       const deeperVariations = current[variationType]?.[variationKey]?.variations;

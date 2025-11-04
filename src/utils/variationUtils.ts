@@ -1,4 +1,5 @@
 import { StringEntry, VariationRow, VariationValue, VariationsMap } from "../types";
+import { parsePathPart } from "./pathUtils";
 
 export const getVariationValue = (variations: VariationsMap | undefined, path: string | undefined): string | undefined => {
   if (!variations || !path) return undefined;
@@ -7,7 +8,7 @@ export const getVariationValue = (variations: VariationsMap | undefined, path: s
   let current = variations;
 
   for (const part of parts) {
-    const [type, key] = part.split(":");
+    const { variationType: type, variationKey: key } = parsePathPart(part);
     const variationValue = current[type]?.[key];
     if (!variationValue) return undefined;
 
