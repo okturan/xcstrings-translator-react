@@ -1,7 +1,6 @@
 import { TranslationRequest } from "../types";
 import { getStoredApiKey } from "./apiKeyUtils";
-
-const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
+import { API_ENDPOINTS } from "../config/env";
 
 const createTranslationPrompt = ({ sourceLanguage, targetLanguage, translationKey, comment, sourceText }: TranslationRequest): string => {
   return `
@@ -52,7 +51,7 @@ Please proceed with the translation task.`;
 };
 
 export const getAITranslation = async (translationRequest: TranslationRequest, model: string): Promise<string> => {
-  const response = await fetch(OPENROUTER_API_URL, {
+  const response = await fetch(API_ENDPOINTS.CHAT_COMPLETIONS, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${getStoredApiKey()}`,

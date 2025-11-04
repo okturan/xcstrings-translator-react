@@ -1,4 +1,5 @@
 import { getStoredApiKey } from "./apiKeyUtils";
+import { API_ENDPOINTS } from "../config/env";
 
 interface ModelPricing {
   prompt: string;
@@ -31,7 +32,7 @@ export interface Model {
 }
 
 export const fetchModels = async (): Promise<Model[]> => {
-  const response = await fetch("https://openrouter.ai/api/v1/models", {
+  const response = await fetch(API_ENDPOINTS.MODELS, {
     headers: {
       Authorization: `Bearer ${getStoredApiKey()}`,
     },
