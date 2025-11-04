@@ -10,11 +10,39 @@ export class FileManager {
     try {
       const text = await file.text();
       const data = JSON.parse(text) as LocalizableStrings;
+
+      // Validate structure
+      this.validateStructure(data);
+
       this.currentFile = data;
       return data;
     } catch (err) {
       console.error("Import error:", err);
-      throw new Error("Failed to parse the imported file. Please ensure it's a valid JSON file.");
+      if (err instanceof SyntaxError) {
+        throw new Error("Invalid JSON syntax. Please ensure the file is valid JSON.");
+      }
+      throw new Error(err instanceof Error ? err.message : "Failed to parse the imported file. Please ensure it's a valid xcstrings file.");
+    }
+  }
+
+  /**
+   * Validates the basic structure of an xcstrings file
+   */
+  private validateStructure(data: LocalizableStrings): void {
+    if (!data || typeof data !== "object") {
+      throw new Error("Invalid xcstrings format: root must be an object");
+    }
+
+    if (!data.version || typeof data.version !== "string") {
+      throw new Error('Invalid xcstrings format: missing or invalid "version" field');
+    }
+
+    if (!data.sourceLanguage || typeof data.sourceLanguage !== "string") {
+      throw new Error('Invalid xcstrings format: missing or invalid "sourceLanguage" field');
+    }
+
+    if (!data.strings || typeof data.strings !== "object") {
+      throw new Error('Invalid xcstrings format: missing or invalid "strings" field');
     }
   }
 
@@ -122,10 +150,23 @@ export class FileManager {
    * Updates a nested variation at a specified path with a non-empty value.
    */
   private updateVariationAtPath(variations: VariationsMap, pathParts: string[], value: string): void {
+    if (!variations || pathParts.length === 0) {
+      throw new Error("Invalid variation update: empty variations or path");
+    }
+
     let current = variations;
 
     pathParts.forEach((part, index) => {
+      if (!part || !part.includes(":")) {
+        throw new Error(`Invalid path segment: "${part}". Expected format "type:key"`);
+      }
+
       const [variationType, variationKey] = part.split(":");
+
+      if (!variationType || !variationKey) {
+        throw new Error(`Invalid path segment: "${part}". Both type and key are required`);
+      }
+
       if (!current[variationType]) {
         current[variationType] = {};
       }
@@ -141,6 +182,9 @@ export class FileManager {
       } else {
         // Traverse deeper
         const nested = this.ensureNestedVariation(current[variationType], variationKey);
+        if (!nested.variations) {
+          throw new Error(`Cannot traverse deeper at ${part}: variations not found`);
+        }
         current = nested.variations as VariationsMap;
       }
     });
@@ -162,10 +206,26 @@ export class FileManager {
    * Deletes a specific nested variation node (leaf) at the given path.
    */
   private deleteVariationAtPath(variations: VariationsMap, pathParts: string[]): void {
+    if (!variations || pathParts.length === 0) {
+      return; // Nothing to delete
+    }
+
     let current = variations;
 
     for (let i = 0; i < pathParts.length; i++) {
-      const [variationType, variationKey] = pathParts[i].split(":");
+      const part = pathParts[i];
+
+      if (!part || !part.includes(":")) {
+        console.warn(`Invalid path segment during deletion: "${part}". Skipping.`);
+        return;
+      }
+
+      const [variationType, variationKey] = part.split(":");
+
+      if (!variationType || !variationKey) {
+        console.warn(`Invalid path segment during deletion: "${part}". Skipping.`);
+        return;
+      }
 
       // Final part => remove the node
       if (i === pathParts.length - 1) {

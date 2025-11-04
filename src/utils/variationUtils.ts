@@ -7,7 +7,19 @@ export const getVariationValue = (variations: VariationsMap | undefined, path: s
   let current = variations;
 
   for (const part of parts) {
+    // Validate path segment format
+    if (!part || !part.includes(":")) {
+      console.warn(`Invalid path segment: "${part}". Expected format "type:key"`);
+      return undefined;
+    }
+
     const [type, key] = part.split(":");
+
+    if (!type || !key) {
+      console.warn(`Invalid path segment: "${part}". Both type and key are required`);
+      return undefined;
+    }
+
     const variationValue = current[type]?.[key];
     if (!variationValue) return undefined;
 
