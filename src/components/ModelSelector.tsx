@@ -1,7 +1,7 @@
 import { useModels, useModelSelector } from "../contexts/model/hooks";
 import ReactMarkdown from "react-markdown";
-import { PRICING_MULTIPLIERS } from "../constants";
 import { extractProviderFromModelId, capitalizeProvider } from "../utils/modelUtils";
+import { formatModelPricing } from "../utils/pricingUtils";
 
 export function ModelSelector() {
   const { selectedModel, setSelectedModel, isLoading, error } = useModels();
@@ -92,21 +92,7 @@ export function ModelSelector() {
         >
           {filteredModels.map((model) => {
             const provider = extractProviderFromModelId(model.id);
-            const pricing = (() => {
-              if (model.pricing.prompt === "0" && model.pricing.completion === "0" && model.pricing.image === "0") {
-                return "Free";
-              }
-              const parts = [];
-              const promptPrice = parseFloat(model.pricing.prompt) * PRICING_MULTIPLIERS.TOKENS_PER_MILLION;
-              const completionPrice = parseFloat(model.pricing.completion) * PRICING_MULTIPLIERS.TOKENS_PER_MILLION;
-              const imagePrice = parseFloat(model.pricing.image) * PRICING_MULTIPLIERS.IMAGES_PER_THOUSAND;
-              
-              if (promptPrice > 0) parts.push(`Input: $${promptPrice.toFixed(2)}/M`);
-              if (completionPrice > 0 && completionPrice !== promptPrice) parts.push(`Output: $${completionPrice.toFixed(2)}/M`);
-              if (imagePrice > 0) parts.push(`Image: $${imagePrice.toFixed(2)}/K`);
-              
-              return parts.join(" | ");
-            })();
+            const pricing = formatModelPricing(model.pricing);
             return (
               <option key={model.id} value={model.id}>
                 {`${provider.toUpperCase()}: ${model.name} (${pricing})`}
@@ -133,21 +119,7 @@ export function ModelSelector() {
                     Context Length: {model.context_length.toLocaleString()} tokens
                   </div>
                   <div className="text-xs text-gray-600">
-                    Pricing: {(() => {
-                      if (model.pricing.prompt === "0" && model.pricing.completion === "0" && model.pricing.image === "0") {
-                        return "Free";
-                      }
-                      const parts = [];
-                      const promptPrice = parseFloat(model.pricing.prompt) * PRICING_MULTIPLIERS.TOKENS_PER_MILLION;
-                      const completionPrice = parseFloat(model.pricing.completion) * PRICING_MULTIPLIERS.TOKENS_PER_MILLION;
-                      const imagePrice = parseFloat(model.pricing.image) * PRICING_MULTIPLIERS.IMAGES_PER_THOUSAND;
-                      
-                      if (promptPrice > 0) parts.push(`Input: $${promptPrice.toFixed(2)}/M tokens`);
-                      if (completionPrice > 0 && completionPrice !== promptPrice) parts.push(`Output: $${completionPrice.toFixed(2)}/M tokens`);
-                      if (imagePrice > 0) parts.push(`Image: $${imagePrice.toFixed(2)}/K`);
-                      
-                      return parts.join(" | ");
-                    })()}
+                    Pricing: {formatModelPricing(model.pricing, true)}
                   </div>
                 </>
               );
