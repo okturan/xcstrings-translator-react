@@ -1,4 +1,5 @@
 import { LocalizableStrings, VariationsMap, VariationValue } from "../types";
+import { EXPORT_FORMAT } from "../constants";
 
 export class FileManager {
   private currentFile: LocalizableStrings | null = null;
@@ -29,9 +30,12 @@ export class FileManager {
    * Exports the current data as a file named "Localizable.xcstrings".
    */
   async exportFile(data: LocalizableStrings): Promise<void> {
-    const jsonString = JSON.stringify(data, null, 2);
+    const jsonString = JSON.stringify(data, null, EXPORT_FORMAT.JSON_INDENT);
     // Optionally tweak formatting if desired:
-    const formattedJson = jsonString.replace(/"([^"]+)":/g, '"$1" :');
+    const formattedJson = jsonString.replace(
+      EXPORT_FORMAT.KEY_VALUE_SPACING_REGEX,
+      EXPORT_FORMAT.KEY_VALUE_SPACING_REPLACEMENT
+    );
 
     const blob = new Blob([formattedJson], { type: "application/json" });
     const url = URL.createObjectURL(blob);

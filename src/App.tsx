@@ -9,6 +9,7 @@ import { ModelsProvider } from "./contexts/ModelContext";
 import { MainContent } from "./components/MainContent";
 import { StringsProvider } from "./contexts/strings";
 import { useStrings } from "./contexts/strings";
+import { TOAST_CONFIG } from "./constants";
 
 function AppContent() {
   const { localizableStrings, error, importFile, exportFile } = useStrings();
@@ -35,7 +36,7 @@ function App() {
   return (
     <ModelsProvider>
       <StringsProvider>
-        <ToastContainer position="top-right" autoClose={5000} />
+        <ToastContainer {...TOAST_CONFIG} />
         <AppContent />
       </StringsProvider>
     </ModelsProvider>

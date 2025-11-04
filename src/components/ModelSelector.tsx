@@ -1,5 +1,6 @@
 import { useModels, useModelSelector } from "../contexts/model/hooks";
 import ReactMarkdown from "react-markdown";
+import { PRICING_MULTIPLIERS } from "../constants";
 
 export function ModelSelector() {
   const { selectedModel, setSelectedModel, isLoading, error } = useModels();
@@ -99,9 +100,9 @@ export function ModelSelector() {
                 return "Free";
               }
               const parts = [];
-              const promptPrice = parseFloat(model.pricing.prompt) * 1000000;
-              const completionPrice = parseFloat(model.pricing.completion) * 1000000;
-              const imagePrice = parseFloat(model.pricing.image) * 1000; // Per thousand for images
+              const promptPrice = parseFloat(model.pricing.prompt) * PRICING_MULTIPLIERS.TOKENS_PER_MILLION;
+              const completionPrice = parseFloat(model.pricing.completion) * PRICING_MULTIPLIERS.TOKENS_PER_MILLION;
+              const imagePrice = parseFloat(model.pricing.image) * PRICING_MULTIPLIERS.IMAGES_PER_THOUSAND;
               
               if (promptPrice > 0) parts.push(`Input: $${promptPrice.toFixed(2)}/M`);
               if (completionPrice > 0 && completionPrice !== promptPrice) parts.push(`Output: $${completionPrice.toFixed(2)}/M`);
@@ -140,9 +141,9 @@ export function ModelSelector() {
                         return "Free";
                       }
                       const parts = [];
-                      const promptPrice = parseFloat(model.pricing.prompt) * 1000000;
-                      const completionPrice = parseFloat(model.pricing.completion) * 1000000;
-                      const imagePrice = parseFloat(model.pricing.image) * 1000; // Per thousand for images
+                      const promptPrice = parseFloat(model.pricing.prompt) * PRICING_MULTIPLIERS.TOKENS_PER_MILLION;
+                      const completionPrice = parseFloat(model.pricing.completion) * PRICING_MULTIPLIERS.TOKENS_PER_MILLION;
+                      const imagePrice = parseFloat(model.pricing.image) * PRICING_MULTIPLIERS.IMAGES_PER_THOUSAND;
                       
                       if (promptPrice > 0) parts.push(`Input: $${promptPrice.toFixed(2)}/M tokens`);
                       if (completionPrice > 0 && completionPrice !== promptPrice) parts.push(`Output: $${completionPrice.toFixed(2)}/M tokens`);

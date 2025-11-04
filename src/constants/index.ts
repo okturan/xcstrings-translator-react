@@ -47,3 +47,26 @@ export const ERROR_MESSAGES = {
   exportFailed: "Failed to export translations",
   noFileLoaded: "No file is currently loaded",
 } as const;
+
+export const TEXTAREA_CONFIG = {
+  LINE_HEIGHT: 20,
+  PADDING_HEIGHT: 8,
+  CHARS_PER_LINE: 60,
+} as const;
+
+export const EXPORT_FORMAT = {
+  JSON_INDENT: 2,
+  KEY_VALUE_SPACING_REGEX: /"([^"]+)":/g,
+  KEY_VALUE_SPACING_REPLACEMENT: '"$1" :',
+} as const;
+
+export const PRICING_MULTIPLIERS = {
+  TOKENS_PER_MILLION: 1000000,
+  IMAGES_PER_THOUSAND: 1000,
+} as const;
+
+export const TOAST_CONFIG = {
+  position: "top-right" as const,
+  autoClose: 5000,
+  hideProgressBar: false,
+} as const;

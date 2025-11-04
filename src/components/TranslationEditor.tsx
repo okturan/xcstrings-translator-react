@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { getStoredApiKey } from "../utils/apiKeyUtils";
 import { LoadingSpinner } from "./LoadingSpinner";
 import { useAITranslation } from "../hooks/useAITranslation";
+import { TEXTAREA_CONFIG } from "../constants";
 
 interface TranslationEditorProps {
   value: string | undefined;
@@ -35,20 +36,16 @@ export const TranslationEditor = memo(
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     const adjustTextareaHeight = (element: HTMLTextAreaElement, initialLoad = false) => {
-      const lineHeight = 20; // Approximate line height in pixels
-      const paddingHeight = 8; // Total vertical padding (4px top + 4px bottom)
-      const charsPerLine = 60; // Number of characters per line
-
       // Reset height to auto to get proper scrollHeight
       element.style.height = "auto";
 
       // Calculate number of lines based on character count
       const textLength = element.value.length;
-      const lines = Math.ceil(textLength / charsPerLine);
+      const lines = Math.ceil(textLength / TEXTAREA_CONFIG.CHARS_PER_LINE);
       const minLines = initialLoad ? Math.max(lines + 1, 1) : Math.max(lines, 1);
 
       // Set minimum height based on number of lines
-      const minHeight = minLines * lineHeight + paddingHeight;
+      const minHeight = minLines * TEXTAREA_CONFIG.LINE_HEIGHT + TEXTAREA_CONFIG.PADDING_HEIGHT;
 
       // Set height to either minHeight or scrollHeight, whichever is larger
       element.style.height = `${Math.max(minHeight, element.scrollHeight)}px`;
