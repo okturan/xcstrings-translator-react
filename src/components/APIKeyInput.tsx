@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { toast } from "react-toastify";
-import { getStoredApiKey, setStoredApiKey } from "../utils/apiKeyUtils";
+import { getStoredApiKey, removeStoredApiKey, setStoredApiKey } from "../utils/apiKeyUtils";
 import { APIKeyButton } from "./APIKeyButton";
 import { APIKeyForm } from "./APIKeyForm";
 import { ModelSelector } from "./ModelSelector";
@@ -14,7 +14,7 @@ interface APIKeyState {
 
 const APIKeyStatus = ({ isSaved }: { isSaved: boolean }) => (
   <span className="px-2 py-0.5 bg-blue-50 text-blue-700 text-xs rounded-full ring-1 ring-blue-700/10">
-    {isSaved ? "Saved!" : "Securely Stored"}
+    {isSaved ? "Saved!" : "Stored in this browser"}
   </span>
 );
 
@@ -54,6 +54,18 @@ export function APIKeyInput() {
     setTimeout(() => setState((prev) => ({ ...prev, isSaved: false })), 2000);
   };
 
+  const handleRemove = () => {
+    removeStoredApiKey();
+    setState((prev) => ({
+      ...prev,
+      key: "",
+      isEditing: false,
+      isSaved: false,
+      isExpanded: false,
+    }));
+    toast.success("API key removed from this browser");
+  };
+
   const toggleExpanded = () => {
     if (state.isEditing) return;
     setState((prev) => ({ ...prev, isExpanded: !prev.isExpanded }));
@@ -91,7 +103,14 @@ export function APIKeyInput() {
             <div className="flex items-center justify-between">
               <h2 className="text-sm font-semibold text-gray-900">OpenRouter API Key</h2>
               {!state.isEditing && (
-                <APIKeyButton onClick={() => setState((prev) => ({ ...prev, isEditing: true }))}>{state.key ? "Edit" : "Add"}</APIKeyButton>
+                <div className="flex gap-2">
+                  {state.key && (
+                    <APIKeyButton onClick={handleRemove} variant="secondary">
+                      Remove
+                    </APIKeyButton>
+                  )}
+                  <APIKeyButton onClick={() => setState((prev) => ({ ...prev, isEditing: true }))}>{state.key ? "Edit" : "Add"}</APIKeyButton>
+                </div>
               )}
             </div>
             {state.key && !state.isEditing && (

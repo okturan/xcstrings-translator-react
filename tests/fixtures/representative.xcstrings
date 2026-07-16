@@ -1,0 +1,187 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "welcome.user": {
+      "comment": "Greeting on the signed-in home screen. Keep the positional placeholder.",
+      "extractionState": "manual",
+      "shouldTranslate": true,
+      "developerMetadata": {
+        "screen": "home",
+        "ticket": "LOC-42"
+      },
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome, %1$@!",
+            "comment": "Source-unit context"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Willkommen, %1$@!"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bienvenue, %1$@ !",
+            "comment": "Preserve this reviewer note"
+          }
+        }
+      }
+    },
+    "cart.items": {
+      "comment": "Cart item count. %lld is supplied by the application.",
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld item"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld items"
+                }
+              }
+            }
+          }
+        },
+        "fr": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld article"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld articles"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "device.cart": {
+      "comment": "Nested device and plural variants supported by the editor.",
+      "localizations": {
+        "en": {
+          "variations": {
+            "device": {
+              "iphone": {
+                "variations": {
+                  "plural": {
+                    "one": {
+                      "stringUnit": {
+                        "state": "translated",
+                        "value": "%lld item on iPhone"
+                      }
+                    },
+                    "other": {
+                      "stringUnit": {
+                        "state": "translated",
+                        "value": "%lld items on iPhone"
+                      }
+                    }
+                  }
+                }
+              },
+              "ipad": {
+                "variations": {
+                  "plural": {
+                    "one": {
+                      "stringUnit": {
+                        "state": "translated",
+                        "value": "%lld item on iPad"
+                      }
+                    },
+                    "other": {
+                      "stringUnit": {
+                        "state": "translated",
+                        "value": "%lld items on iPad"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "fr": {
+          "variations": {
+            "device": {
+              "iphone": {
+                "variations": {
+                  "plural": {
+                    "one": {
+                      "stringUnit": {
+                        "state": "translated",
+                        "value": "%lld article sur iPhone"
+                      }
+                    },
+                    "other": {
+                      "stringUnit": {
+                        "state": "needs_review",
+                        "value": "%lld articles sur iPhone",
+                        "comment": "Preserve this variation review note"
+                      }
+                    }
+                  }
+                }
+              },
+              "ipad": {
+                "variations": {
+                  "plural": {
+                    "one": {
+                      "stringUnit": {
+                        "state": "translated",
+                        "value": "%lld article sur iPad"
+                      }
+                    },
+                    "other": {
+                      "stringUnit": {
+                        "state": "translated",
+                        "value": "%lld articles sur iPad"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "source.only %@": {
+      "comment": "This source entry intentionally has no localizations object.",
+      "shouldTranslate": true
+    },
+    "configuration.example": {
+      "comment": "Quoted JSON-like content exercises export serialization.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configuration: {\"count\": %lld}"
+          }
+        }
+      }
+    },
+    "PRODUCT_NAME": {
+      "comment": "Product identifier; intentionally excluded from translation.",
+      "shouldTranslate": false
+    }
+  },
+  "version": "1.0"
+}

@@ -1,66 +1,75 @@
-# Apple Platform Strings Translation Tool
+# Apple XCStrings Translation Tool
 
-A specialized tool for translating Localizable.xcstrings files using AI. This tool streamlines the localization process by providing context-aware translations while maintaining the structure and formatting of your Apple platform string files.
+A browser-based React and TypeScript editor for reviewing Apple `Localizable.xcstrings` catalogs and requesting individual translations from OpenRouter. It is designed for a human-in-the-loop workflow: import a catalog, select an existing target language, review or edit simple and variation values, then export the updated JSON.
 
-## About .xcstrings
+## Live demo
 
-The .xcstrings format is Apple's modern localization resource format used in Xcode for macOS, iOS, watchOS, and tvOS applications. It uses a structured JSON format that efficiently manages string variations, pluralization rules, and provides valuable context for translators. This format is designed to handle complex localization scenarios while maintaining a clean, organized structure that's both human-readable and machine-processable.
+Try the deployed app at [xcstrings-translator-react.pages.dev](https://xcstrings-translator-react.pages.dev/).
 
-## Live Demo
+![Screenshot of the XCStrings translation editor](screenshot.jpg)
 
-Try the tool now at [https://xcstrings-translator-react.pages.dev/](https://xcstrings-translator-react.pages.dev/).
-![Screenshot of the application](screenshot.jpg)
+## Verified capabilities
 
+- Imports structurally supported XCStrings JSON with catalog version `1.0`.
+- Displays the source language and every localization already present in the catalog.
+- Edits simple `stringUnit` values and variation paths represented by the source catalog.
+- Handles plural variations and recursively nested structures such as device → plural.
+- Sends one selected string, its key, language pair, and optional entry comment to OpenRouter for an AI-assisted translation.
+- Exports the updated catalog as `Localizable.xcstrings`.
 
-## Features
+The deterministic fixture suite covers positional and integer placeholders, entry and unit comments, extraction/translation metadata, multiple localizations, plural variations, nested device/plural variations, source-only entries, malformed JSON, unsupported versions, and unsupported structural shapes.
 
-- 🔄 Direct support for Localizable.xcstrings files
-- 🤖 AI-powered translations via OpenRouter
-- 🌍 Support for multiple target languages
-- 📝 Preserves string contexts and comments
-- 🎯 Maintains string formatting and placeholders
-- 💾 Export translations back to xcstrings format
+## Preservation contract and limits
 
-## Getting Started
+Import/export is a semantic JSON round trip, not a byte-for-byte file round trip. Export uses two-space JSON indentation and a trailing newline, so the original whitespace and formatting are not preserved.
 
-1. Clone and install dependencies:
+Untouched entries, localizations, comments, known metadata, and additional JSON fields are passed through. When a value is edited, the editor changes that unit's `value` and sets its state to `translated`; surrounding whitespace in a non-empty value and existing unit notes are retained. A whitespace-only edit is treated as deletion. Switching a localization between a simple unit and variations intentionally removes the mutually exclusive representation.
+
+Placeholder tokens such as `%@`, `%lld`, and `%1$@` are not rewritten during import/export. The app does not currently verify placeholder parity in manual or AI-generated translations, so placeholders must be reviewed before export.
+
+The importer performs targeted validation for the structures this editor uses; it is not a complete implementation of every current or future Apple XCStrings schema rule. It rejects malformed JSON, catalog versions other than `1.0`, and malformed string/localization/variation shapes instead of attempting a lossy import.
+
+The UI can select languages already represented somewhere in the imported catalog. It does not currently provide a control for creating a completely new target language.
+
+## API key and data handling
+
+This is a client-side application with no application backend in this repository. Imported catalogs are parsed in the browser. An AI translation request sends the selected source text, translation key, source/target languages, and optional entry comment directly from the browser to OpenRouter.
+
+The OpenRouter API key is stored unencrypted in this origin's browser `localStorage` under `openrouter_api_key` so it persists across visits. A password-style input only masks the display; it does not encrypt the stored value. Scripts running on the same origin and browser extensions with suitable access may be able to read it. Use a scoped or low-limit key, remove it with the app's **Remove** control when finished, and avoid entering a production credential on a device or deployment you do not trust.
+
+## Local development
+
+The supported toolchain is Node.js 22 with npm 10.9.4, recorded in `.nvmrc`, `engines`, and `packageManager` metadata.
+
 ```bash
 git clone https://github.com/okturan/xcstrings-translator-react.git
 cd xcstrings-translator-react
-npm install
-```
-
-2. Start the development server:
-```bash
+nvm use
+npm ci
 npm run dev
 ```
 
-3. Set up your OpenRouter API key:
-   - Visit [OpenRouter](https://openrouter.ai/keys) to get your API key
-   - When you launch the app, you'll see an API key input section at the top
-   - Enter your key - it will be securely stored in your browser
+Open the local Vite URL, import a `.xcstrings` file, and add an OpenRouter key only if you want to exercise AI translation. Import, editing, round-trip tests, lint, and production builds do not require an API key.
 
-## Usage
+## Quality checks
 
-1. Load your Localizable.xcstrings file using the file picker
-2. Select your target language
-3. Use the AI translation feature to generate translations
-4. Review and edit translations as needed
-5. Export the updated strings file
+```bash
+npm test
+npm run lint
+npm run build
+npm audit
+```
 
-The tool maintains all metadata, comments, and formatting from your original xcstrings file while adding the new translations.
+GitHub Actions runs the locked install, behavior tests, lint, and production build on Node.js 22. The workflow has read-only repository permissions, disables persisted checkout credentials, and pins official actions to immutable commit SHAs.
 
-## Development
+## Stack
 
-Built with:
-- React + TypeScript for robust frontend development
-- Vite for lightning-fast builds
-- Tailwind CSS for styling
-- OpenRouter API (Claude) for AI translations
+- React 18 and TypeScript
+- Vite 6
+- Tailwind CSS
+- Vitest behavior tests
+- OpenRouter API for model discovery and translation requests
 
 ## Contributing
 
-Contributions are welcome! Feel free to:
-- Report bugs
-- Suggest features
-- Submit pull requests
+Issues and pull requests are welcome. For parser or editor changes, add or update a deterministic fixture that demonstrates both the supported behavior and any intentional preservation boundary.
