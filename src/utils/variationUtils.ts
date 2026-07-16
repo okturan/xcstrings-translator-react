@@ -44,6 +44,7 @@ const createVariationRow = (
     : targetValue?.stringUnit?.state || (sourceValue?.stringUnit?.value ? "missing" : undefined),
   depth,
   path: currentPath,
+  isTerminal: !hasNestedVariations,
 });
 
 const processNestedVariations = (

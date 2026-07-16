@@ -63,6 +63,7 @@ export class FileManager {
 
     if (path) {
       const pathParts = this.parseVariationPath(path);
+      this.assertSourceVariationLeaf(entry, updatedStrings.sourceLanguage, pathParts, path);
 
       // Variation update
       if (hasValue) {
@@ -106,6 +107,10 @@ export class FileManager {
           return updatedStrings;
         }
 
+        if (localization.substitutions !== undefined) {
+          throw new Error("Cannot delete a stringUnit that is required by substitutions.");
+        }
+
         // Empty => delete main stringUnit
         delete localization.stringUnit;
         this.removeEmptyLocalization(entry, language);
@@ -145,6 +150,9 @@ export class FileManager {
       if (index === pathParts.length - 1) {
         // Final segment => set stringUnit
         const existingValue = current[variationType][variationKey] ?? {};
+        if (existingValue.variations) {
+          throw new Error("Cannot replace a variation container with a stringUnit.");
+        }
         const updatedValue: VariationValue = {
           ...existingValue,
           stringUnit: {
@@ -153,7 +161,6 @@ export class FileManager {
             value,
           },
         };
-        delete updatedValue.variations;
         current[variationType][variationKey] = updatedValue;
       } else {
         // Traverse deeper
@@ -170,9 +177,11 @@ export class FileManager {
     if (!container[key]) {
       container[key] = { variations: {} };
     } else if (!container[key].variations) {
+      if (container[key].stringUnit) {
+        throw new Error("Cannot replace a variation stringUnit with a container.");
+      }
       container[key].variations = {};
     }
-    delete container[key].stringUnit;
     return container[key];
   }
 
@@ -188,6 +197,9 @@ export class FileManager {
     }
 
     if (index === pathParts.length - 1) {
+      if (variationValue.variations) {
+        throw new Error("Cannot delete a variation container through a leaf path.");
+      }
       delete variationTypeMap[variationKey];
     } else if (variationValue.variations) {
       const deleted = this.deleteVariationAtPath(variationValue.variations, pathParts, index + 1);
@@ -216,6 +228,39 @@ export class FileManager {
       throw new Error(`Unsupported variation path: ${path}`);
     }
     return parts;
+  }
+
+  private assertSourceVariationLeaf(
+    entry: LocalizableStrings["strings"][string],
+    sourceLanguage: string,
+    pathParts: string[],
+    path: string,
+  ): void {
+    let current = entry.localizations?.[sourceLanguage]?.variations;
+
+    for (const [index, part] of pathParts.entries()) {
+      const [variationType, variationKey] = part.split(":");
+      const variationValue = current?.[variationType]?.[variationKey];
+      const isTerminalSegment = index === pathParts.length - 1;
+
+      if (!variationValue) {
+        throw new Error(`Unsupported variation path: ${path}`);
+      }
+
+      if (isTerminalSegment) {
+        if (!variationValue.stringUnit || variationValue.variations) {
+          throw new Error(`Variation path is not an editable source leaf: ${path}`);
+        }
+        return;
+      }
+
+      if (!variationValue.variations || variationValue.stringUnit) {
+        throw new Error(`Unsupported variation path: ${path}`);
+      }
+      current = variationValue.variations;
+    }
+
+    throw new Error(`Unsupported variation path: ${path}`);
   }
 
   private removeEmptyLocalization(entry: LocalizableStrings["strings"][string], language: string): void {

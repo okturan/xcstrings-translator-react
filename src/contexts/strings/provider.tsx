@@ -18,7 +18,11 @@ export const StringsProvider = ({ children }: StringsProviderProps) => {
     setError,
   } = useLocalizableStrings();
 
-  const { selectedLanguage, setSelectedLanguage } = usePersistedLanguageState("");
+  const { selectedLanguage, setSelectedLanguage } = usePersistedLanguageState(
+    "",
+    availableLanguages,
+    localizableStrings?.sourceLanguage ?? "",
+  );
 
   const { importFile, exportFile } = useFileControls({
     initializeStrings,

@@ -9,6 +9,7 @@ const readFixture = (name: string): string =>
   readFileSync(new URL(`./fixtures/${name}`, import.meta.url), "utf8");
 
 const representativeFixture = () => parseXCStrings(readFixture("representative.xcstrings"));
+const substitutionFixture = () => parseXCStrings(readFixture("substitutions.xcstrings"));
 
 describe("XCStrings behavior-level round trips", () => {
   it("round-trips placeholders, comments, metadata, localizations, and variations semantically", () => {
@@ -106,7 +107,56 @@ describe("XCStrings behavior-level round trips", () => {
       sourceValue: "%lld items on iPhone",
       targetValue: "%lld articles sur iPhone",
       targetState: "needs_review",
+      isTerminal: true,
     });
+    expect(rows.find((row) => row.path === "device:iphone")).toMatchObject({
+      isTerminal: false,
+    });
+  });
+
+  it.each(["", "Replacement parent value"])(
+    "rejects parent variation saves without changing descendants (value %j)",
+    (value) => {
+      const original = representativeFixture();
+      const originalSnapshot = structuredClone(original);
+
+      expect(() =>
+        new FileManager().updateTranslation(
+          original,
+          "device.cart",
+          "fr",
+          value,
+          "device:iphone",
+        ),
+      ).toThrow("Variation path is not an editable source leaf: device:iphone");
+      expect(original).toEqual(originalSnapshot);
+      expect(
+        getVariationValue(
+          original.strings["device.cart"].localizations?.fr.variations,
+          "device:iphone.plural:other",
+        ),
+      ).toBe("%lld articles sur iPhone");
+    },
+  );
+
+  it.each([
+    "plural:many",
+    "plural:one.device:iphone",
+    "device:watch.plural:other",
+  ])("rejects source-absent or overlong variation path %s", (path) => {
+    const original = representativeFixture();
+    const originalSnapshot = structuredClone(original);
+
+    expect(() =>
+      new FileManager().updateTranslation(
+        original,
+        "cart.items",
+        "fr",
+        "unsafe update",
+        path,
+      ),
+    ).toThrow(`Unsupported variation path: ${path}`);
+    expect(original).toEqual(originalSnapshot);
   });
 
   it("adds a translation to a valid source-only entry", () => {
@@ -174,5 +224,66 @@ describe("XCStrings behavior-level round trips", () => {
         "plural",
       ),
     ).toThrow("Unsupported variation path: plural");
+  });
+
+  it("round-trips substitution-backed localizations without changing their structure", () => {
+    const source = readFixture("substitutions.xcstrings");
+    const parsed = parseXCStrings(source);
+    const serialized = serializeXCStrings(parsed);
+
+    expect(JSON.parse(serialized)).toEqual(JSON.parse(source));
+    expect(parsed.strings["%d of %d left"].localizations?.fr.substitutions?.left).toEqual(
+      JSON.parse(source).strings["%d of %d left"].localizations.fr.substitutions.left,
+    );
+  });
+
+  it("updates a substitution-backed top stringUnit while preserving substitutions", () => {
+    const original = substitutionFixture();
+    const originalSubstitutions = structuredClone(
+      original.strings["%d of %d left"].localizations?.fr.substitutions,
+    );
+
+    const updated = new FileManager().updateTranslation(
+      original,
+      "%d of %d left",
+      "fr",
+      "%d parmi %#@left@",
+    );
+    const target = parseXCStrings(serializeXCStrings(updated)).strings["%d of %d left"]
+      .localizations?.fr;
+
+    expect(target?.stringUnit).toEqual({
+      state: "translated",
+      value: "%d parmi %#@left@",
+      comment: "Keep this top-level review note.",
+    });
+    expect(target?.substitutions).toEqual(originalSubstitutions);
+  });
+
+  it("fails closed when deleting a stringUnit required by substitutions", () => {
+    const manager = new FileManager();
+    const current = manager.updateTranslation(
+      substitutionFixture(),
+      "%d of %d left",
+      "fr",
+      "%d parmi %#@left@",
+    );
+    const currentSnapshot = structuredClone(current);
+
+    expect(() =>
+      manager.updateTranslation(current, "%d of %d left", "fr", "   "),
+    ).toThrow("Cannot delete a stringUnit that is required by substitutions.");
+    expect(current).toEqual(currentSnapshot);
+    expect(manager.getCurrentFile()).toEqual(currentSnapshot);
+    expect(parseXCStrings(serializeXCStrings(current))).toEqual(currentSnapshot);
+  });
+
+  it("rejects orphan substitutions without their required top stringUnit", () => {
+    const orphan = substitutionFixture();
+    delete orphan.strings["%d of %d left"].localizations?.fr.stringUnit;
+
+    expect(() => serializeXCStrings(orphan)).toThrow(
+      "Unsupported Localizable.xcstrings: strings.%d of %d left.localizations.fr.substitutions requires stringUnit.",
+    );
   });
 });

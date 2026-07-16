@@ -14,6 +14,16 @@ export interface VariationsMap {
 export interface Localization {
   stringUnit?: StringUnit;
   variations?: VariationsMap;
+  substitutions?: {
+    [name: string]: Substitution;
+  };
+  [key: string]: unknown;
+}
+
+export interface Substitution {
+  argNum?: number;
+  formatSpecifier?: string;
+  variations?: VariationsMap;
   [key: string]: unknown;
 }
 
@@ -50,6 +60,7 @@ export interface VariationRow {
   targetState?: StringUnit["state"];
   depth: number;
   path?: string;
+  isTerminal: boolean;
 }
 
 export interface TranslationRequest {

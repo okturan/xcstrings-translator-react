@@ -132,7 +132,7 @@ export const TableRows = memo(
                     <td className={`${CELL_STYLES.base} ${CELL_STYLES.content}`}>
                       <TranslationEditor
                         value={currentTargetValue ?? ""}
-                        showEditButton={true}
+                        showEditButton={row.isTerminal}
                         onSave={(newValue) => handleSave(newValue, row.path)}
                         translationKey={stringKey}
                         sourceText={row.sourceValue}

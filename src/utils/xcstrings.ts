@@ -55,6 +55,31 @@ function validateVariations(value: unknown, path: string): void {
   });
 }
 
+function validateSubstitutions(value: unknown, path: string): void {
+  if (!isRecord(value)) {
+    unsupported(`${path} must be an object.`);
+  }
+
+  Object.entries(value).forEach(([name, substitution]) => {
+    const substitutionPath = `${path}.${name}`;
+    if (!isRecord(substitution)) {
+      unsupported(`${substitutionPath} must be an object.`);
+    }
+
+    if (substitution.argNum !== undefined && typeof substitution.argNum !== "number") {
+      unsupported(`${substitutionPath}.argNum must be a number.`);
+    }
+
+    if (substitution.formatSpecifier !== undefined && typeof substitution.formatSpecifier !== "string") {
+      unsupported(`${substitutionPath}.formatSpecifier must be a string.`);
+    }
+
+    if (substitution.variations !== undefined) {
+      validateVariations(substitution.variations, `${substitutionPath}.variations`);
+    }
+  });
+}
+
 export function validateXCStrings(value: unknown): asserts value is LocalizableStrings {
   if (!isRecord(value)) {
     unsupported("the document root must be an object.");
@@ -102,6 +127,13 @@ export function validateXCStrings(value: unknown): asserts value is LocalizableS
 
       if (localization.variations !== undefined) {
         validateVariations(localization.variations, `${localizationPath}.variations`);
+      }
+
+      if (localization.substitutions !== undefined) {
+        if (localization.stringUnit === undefined) {
+          unsupported(`${localizationPath}.substitutions requires stringUnit.`);
+        }
+        validateSubstitutions(localization.substitutions, `${localizationPath}.substitutions`);
       }
 
       if (localization.stringUnit !== undefined && localization.variations !== undefined) {
