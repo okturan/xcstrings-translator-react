@@ -1,4 +1,4 @@
-import { StringEntry, VariationRow, VariationValue, VariationsMap } from "../types";
+import { Localization, VariationRow, VariationValue, VariationsMap } from "../types";
 
 export const getVariationValue = (variations: VariationsMap | undefined, path: string | undefined): string | undefined => {
   if (!variations || !path) return undefined;
@@ -44,6 +44,7 @@ const createVariationRow = (
     : targetValue?.stringUnit?.state || (sourceValue?.stringUnit?.value ? "missing" : undefined),
   depth,
   path: currentPath,
+  isTerminal: !hasNestedVariations,
 });
 
 const processNestedVariations = (
@@ -99,8 +100,8 @@ export const processVariationLevel = (
 };
 
 export function processVariationRows(
-  sourceLocalization: StringEntry["localizations"][string] | undefined,
-  targetLocalization: StringEntry["localizations"][string] | undefined
+  sourceLocalization: Localization | undefined,
+  targetLocalization: Localization | undefined
 ): VariationRow[] {
   const sourceVariations = sourceLocalization?.variations;
   if (!sourceVariations) return [];

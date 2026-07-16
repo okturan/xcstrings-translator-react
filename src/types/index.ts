@@ -1,7 +1,8 @@
 export interface StringUnit {
   value?: string;
-  state?: "new" | "needs_review" | "translated" | "missing";
+  state?: "new" | "needs_review" | "translated" | "missing" | "stale";
   comment?: string;
+  [key: string]: unknown;
 }
 
 export interface VariationsMap {
@@ -13,20 +14,33 @@ export interface VariationsMap {
 export interface Localization {
   stringUnit?: StringUnit;
   variations?: VariationsMap;
+  substitutions?: {
+    [name: string]: Substitution;
+  };
+  [key: string]: unknown;
+}
+
+export interface Substitution {
+  argNum?: number;
+  formatSpecifier?: string;
+  variations?: VariationsMap;
+  [key: string]: unknown;
 }
 
 export interface StringEntry {
-  localizations: {
+  localizations?: {
     [language: string]: Localization;
   };
   comment?: string;
   shouldTranslate?: boolean;
   extractionState?: string;
+  [key: string]: unknown;
 }
 
 export interface VariationValue {
   stringUnit?: StringUnit;
   variations?: VariationsMap;
+  [key: string]: unknown;
 }
 
 export interface LocalizableStrings {
@@ -35,6 +49,7 @@ export interface LocalizableStrings {
     [key: string]: StringEntry;
   };
   version: string;
+  [key: string]: unknown;
 }
 
 export interface VariationRow {
@@ -45,6 +60,7 @@ export interface VariationRow {
   targetState?: StringUnit["state"];
   depth: number;
   path?: string;
+  isTerminal: boolean;
 }
 
 export interface TranslationRequest {

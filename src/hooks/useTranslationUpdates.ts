@@ -33,9 +33,10 @@ export function useTranslationUpdates({
       setError(null);
       initializeStrings(updated);
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "Failed to update translation";
-      setError(errorMessage);
-      console.error("Update error:", err);
+      const error = err instanceof Error ? err : new Error("Failed to update translation");
+      setError(error.message);
+      console.error("Update error:", error);
+      throw error;
     }
   }, [fileManager, localizableStrings, initializeStrings, setError]);
 
