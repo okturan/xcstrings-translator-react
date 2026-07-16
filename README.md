@@ -14,20 +14,23 @@ Try the deployed app at [xcstrings-translator-react.pages.dev](https://xcstrings
 - Displays the source language and every localization already present in the catalog.
 - Edits simple `stringUnit` values and variation paths represented by the source catalog.
 - Handles plural variations and recursively nested structures such as device → plural.
+- Preserves substitution-backed localization trees while allowing safe edits to their required top-level `stringUnit`.
 - Sends one selected string, its key, language pair, and optional entry comment to OpenRouter for an AI-assisted translation.
 - Exports the updated catalog as `Localizable.xcstrings`.
 
-The deterministic fixture suite covers positional and integer placeholders, entry and unit comments, extraction/translation metadata, multiple localizations, plural variations, nested device/plural variations, source-only entries, malformed JSON, unsupported versions, and unsupported structural shapes.
+The deterministic fixture suite covers positional and integer placeholders, entry and unit comments, extraction/translation metadata, multiple localizations, plural variations, nested device/plural variations, substitution-backed localizations, source-only entries, malformed JSON, unsupported versions, and unsupported structural shapes.
 
 ## Preservation contract and limits
 
 Import/export is a semantic JSON round trip, not a byte-for-byte file round trip. Export uses two-space JSON indentation and a trailing newline, so the original whitespace and formatting are not preserved.
 
-Untouched entries, localizations, comments, known metadata, and additional JSON fields are passed through. When a value is edited, the editor changes that unit's `value` and sets its state to `translated`; surrounding whitespace in a non-empty value and existing unit notes are retained. A whitespace-only edit is treated as deletion. Switching a localization between a simple unit and variations intentionally removes the mutually exclusive representation.
+Untouched entries, localizations, comments, known metadata, and additional JSON fields are passed through. When a value is edited, the editor changes that unit's `value` and sets its state to `translated`; surrounding whitespace in a non-empty value and existing unit notes are retained. A whitespace-only edit is treated as deletion, except when substitutions require the top-level unit; that unsafe deletion is rejected and the localization remains unchanged. Switching a localization between a simple unit and variations intentionally removes the mutually exclusive representation.
+
+Only terminal variation rows backed by a source `stringUnit` are editable. Intermediate variation containers are display-only, and the data layer independently rejects container, source-absent, and overlong variation paths so a malformed save cannot replace or delete a descendant tree.
 
 Placeholder tokens such as `%@`, `%lld`, and `%1$@` are not rewritten during import/export. The app does not currently verify placeholder parity in manual or AI-generated translations, so placeholders must be reviewed before export.
 
-The importer performs targeted validation for the structures this editor uses; it is not a complete implementation of every current or future Apple XCStrings schema rule. It rejects malformed JSON, catalog versions other than `1.0`, and malformed string/localization/variation shapes instead of attempting a lossy import.
+The importer performs targeted validation for the structures this editor uses; it is not a complete implementation of every current or future Apple XCStrings schema rule. It rejects malformed JSON, catalog versions other than `1.0`, malformed string/localization/variation shapes, and orphan substitutions without their required top-level `stringUnit` instead of attempting a lossy import.
 
 The UI can select languages already represented somewhere in the imported catalog. It does not currently provide a control for creating a completely new target language.
 
