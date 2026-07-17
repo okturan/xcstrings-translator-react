@@ -7,7 +7,23 @@ const fixturePath = (name: string) =>
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "No File Loaded" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Bring a string catalog—or explore the sample" }),
+  ).toBeVisible();
+});
+
+test("opens a representative catalog without a file or API key", async ({ page }) => {
+  await page.getByRole("button", { name: "Try sample catalog" }).click();
+
+  await expect(page.getByRole("button", { name: "de", exact: true })).toBeVisible();
+  await expect(page.getByText("welcome.user", { exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Export Translations" })).toBeVisible();
+  await expect(
+    page.getByText(
+      "Your catalog remains in this browser. Only an AI translation request sends the selected string to OpenRouter.",
+      { exact: true },
+    ),
+  ).toBeVisible();
 });
 
 test("imports, edits, and exports a catalog through the production UI", async ({ page }) => {
@@ -76,6 +92,8 @@ test("rejects malformed input without leaving the empty state", async ({ page })
       exact: true,
     }),
   ).toBeVisible();
-  await expect(page.getByRole("heading", { name: "No File Loaded" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Bring a string catalog—or explore the sample" }),
+  ).toBeVisible();
   await expect(page.getByRole("button", { name: "Export Translations" })).toHaveCount(0);
 });

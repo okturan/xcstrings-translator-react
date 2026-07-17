@@ -12,9 +12,8 @@ const HeaderComponent = memo(() => {
         </h1>
       </div>
       <p className="text-gray-600 max-w-2xl text-lg leading-relaxed">
-        A powerful tool for managing and translating xcode localization files. Import your
-        <span className="font-mono text-blue-600">.xcstrings</span> file, edit translations,
-        and export with ease.
+        Review Apple <span className="font-mono text-blue-600">.xcstrings</span> catalogs,
+        preserve their structure, and export production-ready translations.
       </p>
       <div className="mt-6 flex items-center gap-3 bg-gradient-to-r from-purple-100 to-blue-100 p-4 rounded-lg shadow-sm">
         <div className="bg-white p-2 rounded-full shadow-sm">
@@ -23,7 +22,7 @@ const HeaderComponent = memo(() => {
           </span>
         </div>
         <p className="text-gray-700">
-          Powered by <span className="font-semibold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">AI</span> for accurate, context-aware translations
+          Local-first manual editing with optional <span className="font-semibold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">AI</span> assistance
         </p>
       </div>
     </div>
