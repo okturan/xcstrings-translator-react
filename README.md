@@ -5,12 +5,14 @@ A browser-based React and TypeScript editor for reviewing Apple `Localizable.xcs
 ## Live demo
 
 Try the deployed app at [xcstrings-translator-react.pages.dev](https://xcstrings-translator-react.pages.dev/).
+No catalog or API key is required to explore it: choose **Try sample catalog** to open the representative catalog used by the deterministic test suite.
 
-![Screenshot of the XCStrings translation editor](screenshot.jpg)
+![XCStrings editor showing a representative French catalog with plural, device, status, and metadata rows](docs/screenshots/catalog-workflow.png)
 
 ## Verified capabilities
 
 - Imports structurally supported XCStrings JSON with catalog version `1.0`.
+- Opens a safe representative sample from the landing screen for a zero-setup product tour.
 - Displays the source language and every localization already present in the catalog.
 - Edits simple `stringUnit` values and variation paths represented by the source catalog.
 - Handles plural variations and recursively nested structures such as device → plural.
@@ -36,7 +38,7 @@ The UI can select languages already represented somewhere in the imported catalo
 
 ## API key and data handling
 
-This is a client-side application with no application backend in this repository. Imported catalogs are parsed in the browser. An AI translation request sends the selected source text, translation key, source/target languages, and optional entry comment directly from the browser to OpenRouter.
+This is a client-side application with no application backend in this repository. Imported catalogs are parsed in the browser. Manual review, editing, and export do not require an API key. An AI translation request sends the selected source text, translation key, source/target languages, and optional entry comment directly from the browser to OpenRouter only when the user requests it.
 
 The OpenRouter API key is stored unencrypted in this origin's browser `localStorage` under `openrouter_api_key` so it persists across visits. A password-style input only masks the display; it does not encrypt the stored value. Scripts running on the same origin and browser extensions with suitable access may be able to read it. Use a scoped or low-limit key, remove it with the app's **Remove** control when finished, and avoid entering a production credential on a device or deployment you do not trust.
 
@@ -66,7 +68,7 @@ npm run build
 npm audit
 ```
 
-The browser suite loads the production bundle in Chromium, imports the representative fixture through the real file input, proves that a placeholder-breaking edit is rejected without changing state, completes a valid edit through the table UI, validates the downloaded Blob-backed catalog, and verifies that malformed input remains fail-closed in the empty state.
+The browser suite loads the production bundle in Chromium, opens the zero-setup sample, imports the representative fixture through the real file input, proves that a placeholder-breaking edit is rejected without changing state, completes a valid edit through the table UI, validates the downloaded Blob-backed catalog, and verifies that malformed input remains fail-closed in the empty state.
 
 GitHub Actions runs the locked install, behavior tests, lint, production build, and browser workflow on Node.js 22. It retains the Playwright report for seven days so a failed interaction has inspectable traces and screenshots. The workflow has read-only repository permissions, disables persisted checkout credentials, and pins official actions to immutable commit SHAs.
 
