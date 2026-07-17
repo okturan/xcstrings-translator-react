@@ -40,6 +40,8 @@ This is a client-side application with no application backend in this repository
 
 The OpenRouter API key is stored unencrypted in this origin's browser `localStorage` under `openrouter_api_key` so it persists across visits. A password-style input only masks the display; it does not encrypt the stored value. Scripts running on the same origin and browser extensions with suitable access may be able to read it. Use a scoped or low-limit key, remove it with the app's **Remove** control when finished, and avoid entering a production credential on a device or deployment you do not trust.
 
+Report suspected vulnerabilities privately through the repository's [security policy](SECURITY.md), without attaching API keys or private catalog content.
+
 ## Local development
 
 The supported toolchain is Node.js 22 with npm 10.9.4, recorded in `.nvmrc`, `engines`, and `packageManager` metadata.
