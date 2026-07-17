@@ -28,7 +28,7 @@ Untouched entries, localizations, comments, known metadata, and additional JSON 
 
 Only terminal variation rows backed by a source `stringUnit` are editable. Intermediate variation containers are display-only, and the data layer independently rejects container, source-absent, and overlong variation paths so a malformed save cannot replace or delete a descendant tree.
 
-Placeholder tokens such as `%@`, `%lld`, and `%1$@` are not rewritten during import/export. The app does not currently verify placeholder parity in manual or AI-generated translations, so placeholders must be reviewed before export.
+Placeholder tokens such as `%@`, `%lld`, `%1$@`, and named substitution markers are not rewritten during import/export. Manual and AI-assisted edits fail closed when they remove, change, duplicate, or introduce a placeholder argument. Equivalent positional forms and reordered positional arguments remain valid, and locale-specific substitution units are checked against their existing named-marker contract. Placeholder meaning and surrounding grammar still require human review before export.
 
 The importer performs targeted validation for the structures this editor uses; it is not a complete implementation of every current or future Apple XCStrings schema rule. It rejects malformed JSON, catalog versions other than `1.0`, malformed string/localization/variation shapes, and orphan substitutions without their required top-level `stringUnit` instead of attempting a lossy import.
 
@@ -64,7 +64,7 @@ npm run build
 npm audit
 ```
 
-The browser suite loads the production bundle in Chromium, imports the representative fixture through the real file input, edits a translation through the table UI, validates the downloaded Blob-backed catalog, and verifies that malformed input remains fail-closed in the empty state.
+The browser suite loads the production bundle in Chromium, imports the representative fixture through the real file input, proves that a placeholder-breaking edit is rejected without changing state, completes a valid edit through the table UI, validates the downloaded Blob-backed catalog, and verifies that malformed input remains fail-closed in the empty state.
 
 GitHub Actions runs the locked install, behavior tests, lint, production build, and browser workflow on Node.js 22. It retains the Playwright report for seven days so a failed interaction has inspectable traces and screenshots. The workflow has read-only repository permissions, disables persisted checkout credentials, and pins official actions to immutable commit SHAs.
 

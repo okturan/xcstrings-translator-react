@@ -28,6 +28,16 @@ test("imports, edits, and exports a catalog through the production UI", async ({
   await welcomeRow.getByTitle("Edit manually").click();
   const editor = welcomeRow.locator("textarea");
   await expect(editor).toHaveCount(1);
+  await editor.fill("Salut !");
+  await welcomeRow.getByRole("button", { name: "Save", exact: true }).click();
+  await expect(
+    page.getByText("Placeholder mismatch: missing %1$@.", { exact: true }).first(),
+  ).toBeVisible();
+  await expect(editor).toHaveValue("Salut !");
+  await welcomeRow.getByRole("button", { name: "Cancel", exact: true }).click();
+  await expect(welcomeRow).toContainText("Bienvenue, %1$@ !");
+
+  await welcomeRow.getByTitle("Edit manually").click();
   await editor.fill("Salut, %1$@ !");
   await welcomeRow.getByRole("button", { name: "Save", exact: true }).click();
   await expect(welcomeRow).toContainText("Salut, %1$@ !");
