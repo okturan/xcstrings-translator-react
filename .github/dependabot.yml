@@ -1,0 +1,20 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    target-branch: browser-api
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Europe/Tirane
+    open-pull-requests-limit: 5
+    groups:
+      npm-minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+    commit-message:
+      prefix: deps
