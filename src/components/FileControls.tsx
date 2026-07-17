@@ -23,7 +23,14 @@ export const FileControls = memo(function FileControls({ onImport, onExport, has
 
   return (
     <div className="flex gap-2 mb-4">
-      <input type="file" ref={fileInputRef} onChange={handleFileChange} accept=".xcstrings" className="hidden" />
+      <input
+        type="file"
+        ref={fileInputRef}
+        onChange={handleFileChange}
+        accept=".xcstrings"
+        aria-label="Choose XCStrings file"
+        className="hidden"
+      />
       <button
         onClick={handleImportClick}
         className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-md hover:opacity-90">
