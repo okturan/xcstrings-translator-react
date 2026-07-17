@@ -58,12 +58,15 @@ Open the local Vite URL, import a `.xcstrings` file, and add an OpenRouter key o
 
 ```bash
 npm test
+npm run test:e2e
 npm run lint
 npm run build
 npm audit
 ```
 
-GitHub Actions runs the locked install, behavior tests, lint, and production build on Node.js 22. The workflow has read-only repository permissions, disables persisted checkout credentials, and pins official actions to immutable commit SHAs.
+The browser suite loads the production bundle in Chromium, imports the representative fixture through the real file input, edits a translation through the table UI, validates the downloaded Blob-backed catalog, and verifies that malformed input remains fail-closed in the empty state.
+
+GitHub Actions runs the locked install, behavior tests, lint, production build, and browser workflow on Node.js 22. It retains the Playwright report for seven days so a failed interaction has inspectable traces and screenshots. The workflow has read-only repository permissions, disables persisted checkout credentials, and pins official actions to immutable commit SHAs.
 
 ## Stack
 
@@ -71,6 +74,7 @@ GitHub Actions runs the locked install, behavior tests, lint, and production bui
 - Vite 6
 - Tailwind CSS
 - Vitest behavior tests
+- Playwright Chromium workflow tests
 - OpenRouter API for model discovery and translation requests
 
 ## Contributing
