@@ -1,4 +1,6 @@
 import { LocalizableStrings, VariationsMap, VariationValue } from "../types";
+import { assertPlaceholderParity } from "./placeholders";
+import { getVariationValue } from "./variationUtils";
 import { isEmptyVariationsMap, parseXCStrings, serializeXCStrings } from "./xcstrings";
 
 export class FileManager {
@@ -53,17 +55,33 @@ export class FileManager {
    * - Otherwise updates/deletes the main stringUnit.
    */
   updateTranslation(strings: LocalizableStrings, key: string, language: string, value: string, path?: string): LocalizableStrings {
-    const updatedStrings = this.cloneData(strings);
-    const entry = updatedStrings.strings[key];
-    if (!entry) {
+    const originalEntry = strings.strings[key];
+    if (!originalEntry) {
       throw new Error(`String key not found: ${key}`);
     }
 
     const hasValue = value.trim().length > 0;
+    const sourceLanguage = strings.sourceLanguage;
+    const sourceValue = path
+      ? this.assertSourceVariationLeaf(originalEntry, sourceLanguage, this.parseVariationPath(path), path)
+      : originalEntry.localizations?.[sourceLanguage]?.stringUnit?.value ?? key;
+    const targetLocalization = originalEntry.localizations?.[language];
+    const existingTargetValue = path
+      ? getVariationValue(targetLocalization?.variations, path)
+      : targetLocalization?.stringUnit?.value;
+    const placeholderContract = !path && targetLocalization?.substitutions && existingTargetValue !== undefined
+      ? existingTargetValue
+      : sourceValue;
+
+    if (hasValue) {
+      assertPlaceholderParity(placeholderContract, value);
+    }
+
+    const updatedStrings = this.cloneData(strings);
+    const entry = updatedStrings.strings[key];
 
     if (path) {
       const pathParts = this.parseVariationPath(path);
-      this.assertSourceVariationLeaf(entry, updatedStrings.sourceLanguage, pathParts, path);
 
       // Variation update
       if (hasValue) {
@@ -235,7 +253,7 @@ export class FileManager {
     sourceLanguage: string,
     pathParts: string[],
     path: string,
-  ): void {
+  ): string {
     let current = entry.localizations?.[sourceLanguage]?.variations;
 
     for (const [index, part] of pathParts.entries()) {
@@ -251,7 +269,7 @@ export class FileManager {
         if (!variationValue.stringUnit || variationValue.variations) {
           throw new Error(`Variation path is not an editable source leaf: ${path}`);
         }
-        return;
+        return variationValue.stringUnit.value ?? "";
       }
 
       if (!variationValue.variations || variationValue.stringUnit) {

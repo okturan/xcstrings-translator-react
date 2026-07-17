@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 import { FileManager } from "../src/utils/FileManager";
+import { assertPlaceholderParity, placeholderMismatch } from "../src/utils/placeholders";
 import { getVariationValue, processVariationRows } from "../src/utils/variationUtils";
 import { parseXCStrings, serializeXCStrings } from "../src/utils/xcstrings";
 
@@ -12,6 +13,20 @@ const representativeFixture = () => parseXCStrings(readFixture("representative.x
 const substitutionFixture = () => parseXCStrings(readFixture("substitutions.xcstrings"));
 
 describe("XCStrings behavior-level round trips", () => {
+  it("accepts equivalent positional placeholders and reordered arguments", () => {
+    expect(() => assertPlaceholderParity("User %@ has %lld items", "%2$lld éléments pour %1$@"))
+      .not.toThrow();
+    expect(() => assertPlaceholderParity("Progress: 100%% for %1$@", "Progression : 100%% pour %@"))
+      .not.toThrow();
+  });
+
+  it("reports missing, changed, repeated, and unexpected placeholders", () => {
+    expect(placeholderMismatch("%@ %@ %lld", "%@ %ld %d")).toEqual({
+      missing: ["%@", "%lld"],
+      unexpected: ["%ld", "%d"],
+    });
+  });
+
   it("round-trips placeholders, comments, metadata, localizations, and variations semantically", () => {
     const source = readFixture("representative.xcstrings");
     const parsed = parseXCStrings(source);
@@ -56,6 +71,19 @@ describe("XCStrings behavior-level round trips", () => {
     expect(roundTripped.strings["welcome.user"].localizations?.de).toEqual(
       originalSnapshot.strings["welcome.user"].localizations?.de,
     );
+  });
+
+  it("rejects a placeholder mismatch without mutating the catalog", () => {
+    const original = representativeFixture();
+    const originalSnapshot = structuredClone(original);
+
+    expect(() =>
+      new FileManager().updateTranslation(original, "welcome.user", "fr", "Bonjour !"),
+    ).toThrow("Placeholder mismatch: missing %1$@.");
+    expect(() =>
+      new FileManager().updateTranslation(original, "configuration.example", "fr", "Configuration : {\"count\": %ld}"),
+    ).toThrow("Placeholder mismatch: missing %lld; unexpected %ld.");
+    expect(original).toEqual(originalSnapshot);
   });
 
   it("updates a nested device/plural leaf while preserving its note and every sibling", () => {
@@ -258,6 +286,16 @@ describe("XCStrings behavior-level round trips", () => {
       comment: "Keep this top-level review note.",
     });
     expect(target?.substitutions).toEqual(originalSubstitutions);
+  });
+
+  it("preserves locale-specific named substitution markers during edits", () => {
+    const original = substitutionFixture();
+    const originalSnapshot = structuredClone(original);
+
+    expect(() =>
+      new FileManager().updateTranslation(original, "%d of %d left", "fr", "%d restant"),
+    ).toThrow("Placeholder mismatch: missing %#@left@.");
+    expect(original).toEqual(originalSnapshot);
   });
 
   it("fails closed when deleting a stringUnit required by substitutions", () => {
