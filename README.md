@@ -49,7 +49,7 @@ Report suspected vulnerabilities privately through the repository's [security po
 The supported toolchain is Node.js 22 with npm 10.9.4, recorded in `.nvmrc`, `engines`, and `packageManager` metadata.
 
 ```bash
-git clone https://github.com/okturan/xcstrings-translator-react.git
+git clone https://github.com/okanerturan/xcstrings-translator-react.git
 cd xcstrings-translator-react
 nvm use
 npm ci

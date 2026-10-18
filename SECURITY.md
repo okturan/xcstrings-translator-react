@@ -6,7 +6,7 @@ This repository deploys a rolling browser application rather than versioned rele
 
 ## Reporting a vulnerability
 
-Please do not disclose a suspected vulnerability in a public issue, discussion, or pull request. Use GitHub's [private vulnerability reporting form](https://github.com/okturan/xcstrings-translator-react/security/advisories/new) instead.
+Please do not disclose a suspected vulnerability in a public issue, discussion, or pull request. Use GitHub's [private vulnerability reporting form](https://github.com/okanerturan/xcstrings-translator-react/security/advisories/new) instead.
 
 Include the affected URL or commit, browser and operating system, reproduction steps, impact, and any suggested mitigation. Remove API keys, private localization content, and other sensitive data from screenshots, catalogs, traces, and logs before attaching them.
 
